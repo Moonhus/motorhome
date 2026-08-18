@@ -10,8 +10,8 @@ export default function NotFound() {
         That used motorhome listing is gone.
       </h1>
       <p className="mt-4 text-muted">
-        The van may have sold, or the link is out of date. Browse current stock
-        below.
+        The motorhome may have sold, or the link is out of date. Browse current
+        used motorhomes for sale in Brisbane.
       </p>
       <Link
         href="/inventory"

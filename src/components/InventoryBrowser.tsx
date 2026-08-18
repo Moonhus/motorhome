@@ -18,6 +18,7 @@ export function InventoryBrowser({
   const [filters, setFilters] = useState<InventoryFilters>({
     query: "",
     brand: "",
+    licence: "",
     sort: "newest",
   });
 
@@ -29,7 +30,7 @@ export function InventoryBrowser({
   return (
     <div>
       <form
-        className="mb-8 grid gap-3 rounded-2xl border border-forest/10 bg-white p-4 sm:grid-cols-3"
+        className="mb-8 grid gap-3 rounded-2xl border border-forest/10 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4"
         onSubmit={(event) => event.preventDefault()}
       >
         <label className="block text-sm">
@@ -42,7 +43,7 @@ export function InventoryBrowser({
             onChange={(event) =>
               setFilters((current) => ({ ...current, query: event.target.value }))
             }
-            placeholder="Model, chassis, stock no."
+            placeholder="Motorhome, chassis, stock no."
             className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
           />
         </label>
@@ -63,6 +64,25 @@ export function InventoryBrowser({
                 {brand}
               </option>
             ))}
+          </select>
+        </label>
+        <label className="block text-sm">
+          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+            Licence
+          </span>
+          <select
+            value={filters.licence}
+            onChange={(event) =>
+              setFilters((current) => ({
+                ...current,
+                licence: event.target.value as InventoryFilters["licence"],
+              }))
+            }
+            className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
+          >
+            <option value="">All licences</option>
+            <option value="Car">Car licence</option>
+            <option value="Light Rigid">Light Rigid</option>
           </select>
         </label>
         <label className="block text-sm">
@@ -88,8 +108,8 @@ export function InventoryBrowser({
       </form>
 
       <p className="mb-5 text-sm text-muted">
-        {results.length} motorhome{results.length === 1 ? "" : "s"} in NSW
-        stock
+        {results.length} motorhome{results.length === 1 ? "" : "s"} at our South
+        Australia yard
       </p>
 
       {results.length === 0 ? (

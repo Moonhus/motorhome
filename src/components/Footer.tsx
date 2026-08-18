@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <BrandMark compact onDark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand/80">
-            Used motorhomes for sale from Bennetts Green, NSW, with delivery
-            into Brisbane and across Australia. Enquire with email and SMS.
+            Used motorhomes for sale in Brisbane. South Australia yard, free
+            delivery, 12-month warranty. Email us today.
           </p>
         </div>
         <div>
@@ -40,11 +40,13 @@ export function Footer() {
             Yard & delivery
           </p>
           <p className="mt-3 text-sm leading-relaxed text-sand/80">
-            {site.address}
+            {site.location} based
             <br />
-            Delivery to {site.market}
+            Yard: {site.yard}
+            <br />
+            {site.delivery}
           </p>
-          <p className="mt-3 text-sm text-sand">★★★★★ Five-star handover standard</p>
+          <p className="mt-3 text-sm text-sand">{site.warranty} on every motorhome</p>
           <a
             href={`mailto:${site.email}`}
             className="mt-3 inline-block text-sm text-sand underline decoration-copper/70 underline-offset-4 hover:text-cream"
@@ -54,8 +56,9 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-4 text-center text-xs text-sand/50">
-        © {new Date().getFullYear()} {site.legalName}. All prices in AUD, drive
-        away unless stated. Specifications as listed.
+        © {new Date().getFullYear()} {site.legalName}. Prices in AUD, drive
+        away. Free delivery to Brisbane. 12-month warranty. Specifications as
+        listed.
       </div>
     </footer>
   );

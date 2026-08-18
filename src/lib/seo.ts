@@ -13,30 +13,30 @@ export function listingPath(slug: string) {
   return `/inventory/${slug}/`;
 }
 
-export function listingHeadline(van: Motorhome) {
-  return `${van.year} ${van.brand} ${van.model} motorhome for sale`;
+export function listingHeadline(motorhome: Motorhome) {
+  return `${motorhome.year} ${motorhome.brand} ${motorhome.model} motorhome for sale Brisbane`;
 }
 
 export const siteFaqs = [
   {
-    question: "Where are these used motorhomes for sale?",
+    question: "Where can I buy a used motorhome in Brisbane?",
     answer:
-      "Every van listed sits at our Bennetts Green, NSW yard. Commercial Motorhomes is the Brisbane-facing site of Australian Motor Homes Pty Ltd. We quote delivery into Brisbane, Queensland and the rest of Australia.",
+      "Commercial Motorhomes is Brisbane based. Stock sits at our South Australia yard and we offer free delivery to Brisbane. Browse price and kilometres on every listing, then email us today — we will be in touch shortly.",
   },
   {
-    question: "Are the prices drive away?",
+    question: "Is delivery to Brisbane really free?",
     answer:
-      "Yes. Listed prices are in AUD, drive away, unless a listing says otherwise. Send your email and mobile and we confirm the van, kilometres and a delivery quote.",
+      "Yes. Used motorhomes for sale here include free delivery to Brisbane, plus a 12-month warranty. Drive-away prices are in AUD as listed.",
   },
   {
-    question: "What licence do I need to drive a motorhome in Australia?",
+    question: "Do I need more than a car licence?",
     answer:
-      "Car-licence vans sit at or under 4.5 tonne GVM. Light Rigid (LR) vans sit above that. Each listing shows the licence, GVM, berths and chassis so you can match the van to your licence before you enquire.",
+      "Most motorhomes we list are car licence (under 4.5 t GVM). If a motorhome needs Light Rigid, the listing says so clearly. If you hold a standard car licence, email us today and we will point you to the right motorhome.",
   },
   {
-    question: "How do I enquire about a motorhome?",
+    question: "What is included when I enquire?",
     answer:
-      "Open the listing you want and send your name, email and mobile number for SMS. We reply with the van, the drive-away price and delivery into Brisbane or your state. No yard visit is required to start.",
+      "Send your name, email, mobile and a message with any extra details. We confirm the motorhome, kilometres, free Brisbane delivery and the 12-month warranty, then we are in touch shortly.",
   },
 ] as const;
 
@@ -51,13 +51,11 @@ export function dealerJsonLd() {
     description: site.description,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "31 Pacific Hwy",
-      addressLocality: "Bennetts Green",
-      addressRegion: "NSW",
-      postalCode: "2290",
+      addressLocality: "Brisbane",
+      addressRegion: "QLD",
       addressCountry: "AU",
     },
-    areaServed: ["Brisbane", "Queensland", "Australia"],
+    areaServed: ["Brisbane", "Queensland", "South Australia", "Australia"],
     brand: ["Avida", "Sunliner", "Avan", "KEA"],
   };
 }
@@ -77,31 +75,31 @@ export function faqJsonLd(faqs: readonly { question: string; answer: string }[])
   };
 }
 
-export function vehicleJsonLd(van: Motorhome) {
+export function vehicleJsonLd(motorhome: Motorhome) {
   return {
     "@context": "https://schema.org",
     "@type": "Vehicle",
-    name: listingHeadline(van),
-    brand: van.brand,
-    model: van.model,
-    vehicleModelDate: String(van.year),
+    name: listingHeadline(motorhome),
+    brand: motorhome.brand,
+    model: motorhome.model,
+    vehicleModelDate: String(motorhome.year),
     mileageFromOdometer: {
       "@type": "QuantitativeValue",
-      value: van.kilometres,
+      value: motorhome.kilometres,
       unitCode: "KMT",
     },
-    vehicleEngine: van.engine,
-    vehicleTransmission: van.transmission,
-    fuelType: van.fuel,
-    seatingCapacity: van.seatbelts,
-    description: van.summary,
-    image: van.gallery.map((src) => absoluteUrl(src)),
-    sku: van.stockNumber,
+    vehicleEngine: motorhome.engine,
+    vehicleTransmission: motorhome.transmission,
+    fuelType: motorhome.fuel,
+    seatingCapacity: motorhome.seatbelts,
+    description: motorhome.summary,
+    image: motorhome.gallery.map((src) => absoluteUrl(src)),
+    sku: motorhome.stockNumber,
     offers: {
       "@type": "Offer",
-      url: absoluteUrl(listingPath(van.slug)),
+      url: absoluteUrl(listingPath(motorhome.slug)),
       priceCurrency: "AUD",
-      price: van.price,
+      price: motorhome.price,
       availability: "https://schema.org/InStock",
       itemCondition: "https://schema.org/UsedCondition",
       seller: {
@@ -112,22 +110,22 @@ export function vehicleJsonLd(van: Motorhome) {
   };
 }
 
-export function listingFaqs(van: Motorhome) {
+export function listingFaqs(motorhome: Motorhome) {
   return [
     {
-      question: `What licence do I need for the ${van.year} ${van.brand} ${van.model}?`,
+      question: `What licence do I need for the ${motorhome.year} ${motorhome.brand} ${motorhome.model}?`,
       answer:
-        van.licence === "Car"
-          ? `This used motorhome is ${van.gvmKg.toLocaleString("en-AU")} kg GVM, so it can be driven on a standard Australian car licence.`
-          : `This used motorhome is ${van.gvmKg.toLocaleString("en-AU")} kg GVM and needs a Light Rigid (LR) truck licence.`,
+        motorhome.licence === "Car"
+          ? `A standard Australian car licence is enough. This used motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM. Email us today and we will be in touch shortly.`
+          : `This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM, so it needs a Light Rigid (LR) licence. Prefer car licence? Browse our other used motorhomes for sale in Brisbane or email us today.`,
     },
     {
-      question: `Can you deliver this ${van.brand} motorhome to Brisbane?`,
-      answer: `Yes. Stock ${van.stockNumber} is at Bennetts Green, NSW. Send your email and mobile and we quote delivery into Brisbane and nationwide.`,
+      question: `Is delivery to Brisbane free for this ${motorhome.brand} motorhome?`,
+      answer: `Yes. Stock ${motorhome.stockNumber} is at our South Australia yard with free delivery to Brisbane and a 12-month warranty. Email us today.`,
     },
     {
-      question: `How many people does the ${van.model} sleep?`,
-      answer: `It sleeps ${van.berths} and has ${van.seatbelts} seatbelts. Layout, ensuite and touring gear are listed on this page.`,
+      question: `How many kilometres has the ${motorhome.model} done?`,
+      answer: `It has travelled ${motorhome.kilometres.toLocaleString("en-AU")} km and sleeps ${motorhome.berths}. Price, kilometres and photos are on this page.`,
     },
   ];
 }

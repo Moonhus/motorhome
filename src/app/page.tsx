@@ -12,16 +12,16 @@ import { site } from "@/lib/site";
 
 const highlights = [
   {
-    title: "NSW stock you can buy today",
-    body: "Avida, Sunliner, Avan and KEA motorhomes sit at Bennetts Green. What you see listed is what we can deliver.",
+    title: "Car licence motorhomes",
+    body: "Most layouts here drive on a standard car licence. Price and kilometres sit up front on every motorhome card.",
   },
   {
-    title: "Brisbane and nationwide delivery",
-    body: "Send your email and mobile. We quote the van, the drive-away price and delivery into Queensland or your state.",
+    title: "Free delivery to Brisbane",
+    body: "We are Brisbane based. Stock leaves our South Australia yard with free delivery to Brisbane included.",
   },
   {
-    title: "More van for the money",
-    body: "Island beds, slide-outs, ensuites, lithium and solar — late-model Australian coachbuilts at used drive-away prices.",
+    title: "12-month warranty",
+    body: "Every used motorhome for sale includes a 12-month warranty. Email us today — we will be in touch shortly.",
   },
 ];
 
@@ -35,7 +35,7 @@ export default function Home() {
       <section className="relative isolate min-h-[78vh] overflow-hidden">
         <Image
           src={withBasePath("/images/hero-brisbane.jpg")}
-          alt="Used motorhome for sale, ready for delivery to Brisbane"
+          alt="Used motorhomes for sale in Brisbane with free delivery"
           fill
           priority
           className="object-cover"
@@ -44,38 +44,40 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/70 to-forest/25" />
         <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand">
-            Used motorhomes for sale · {site.market}
+            Used motorhomes for sale Brisbane · {site.delivery}
           </p>
           <h1 className="display mt-3 max-w-3xl text-5xl leading-[1.05] text-cream sm:text-7xl">
-            Used motorhomes for sale, delivered to Brisbane.
+            Used motorhomes for sale in Brisbane.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand/90">
-            Avida, Sunliner, Avan and KEA from our NSW yard. Drive-away prices
-            from {formatPrice(lowest.price)}. Send your email and mobile — we
-            come back with the van and a delivery quote.
+            Avida, Sunliner, Avan and KEA from our South Australia yard. Free
+            delivery to Brisbane. 12-month warranty. Hold a car licence? Email
+            us today — we will be in touch shortly. From{" "}
+            {formatPrice(lowest.price)} drive away.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/inventory"
               className="rounded-full bg-copper px-6 py-3 text-sm font-semibold text-white hover:bg-copper-dark"
             >
-              Browse used motorhomes
+              Browse motorhomes
             </Link>
             <Link
               href="/contact"
               className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold text-cream hover:bg-white/10"
             >
-              Enquire
+              Email us today
             </Link>
           </div>
         </div>
       </section>
 
       <section className="border-y border-forest/10 bg-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:grid-cols-3">
-          <Stat value={`${motorhomes.length}`} label="Used motorhomes in stock" />
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:grid-cols-4">
+          <Stat value={`${motorhomes.length}`} label="Motorhomes in stock" />
           <Stat value={formatPrice(lowest.price)} label="From (drive away)" />
-          <Stat value="QLD" label="Delivery to Brisbane" />
+          <Stat value="Free" label="Delivery to Brisbane" />
+          <Stat value="12 mo" label="Warranty included" />
         </div>
       </section>
 
@@ -83,17 +85,17 @@ export default function Home() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
-              Current stock
+              Easy browsing · price and kilometres first
             </p>
             <h2 className="display mt-2 text-4xl text-forest">
-              Motorhomes ready to deliver
+              Used motorhomes ready for Brisbane
             </h2>
           </div>
           <Link
             href="/inventory"
             className="text-sm font-medium text-forest underline decoration-copper/70 underline-offset-4"
           >
-            See all {motorhomes.length} used motorhomes
+            See all {motorhomes.length} motorhomes
           </Link>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -109,16 +111,15 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand/70">
-              Highest-value used motorhomes
+              Car licence · free delivery · 12-month warranty
             </p>
             <h2 className="display mt-3 text-4xl">
-              Late-model Australian coachbuilts. Used prices. Brisbane delivery.
+              Brisbane buyers. South Australia stock. Email us today.
             </h2>
             <p className="mt-4 max-w-lg text-sand/85 leading-relaxed">
-              Island beds, slide-outs, ensuites, lithium and solar — the spec
-              people pay new-van money for, listed drive away from Bennetts
-              Green. Queensland buyers start with an email and SMS. We handle
-              the rest.
+              Island beds, slide-outs, ensuites, lithium and solar — late-model
+              Australian motorhomes at used drive-away prices. If you hold a
+              car licence, email us today and we will be in touch shortly.
             </p>
           </div>
           <div className="grid gap-6">
@@ -138,7 +139,7 @@ export default function Home() {
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
             src={withBasePath("/images/interior-living.jpg")}
-            alt="Used motorhome interior with dinette and timber cabinetry"
+            alt="Used motorhome for sale Brisbane — living area and dinette"
             fill
             className="object-cover"
             sizes="(min-width: 1024px) 50vw, 100vw"
@@ -149,35 +150,36 @@ export default function Home() {
             How it works
           </p>
           <h2 className="display mt-3 text-4xl text-forest">
-            Pick a van. Send email and SMS.
+            Pick a motorhome. Email us today.
           </h2>
           <ol className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
             <li>
-              <span className="font-semibold text-forest">1. Choose a listing.</span>{" "}
-              Year, chassis, berths, kilometres and a drive-away price are on
-              every card.
+              <span className="font-semibold text-forest">1. Browse price and kilometres.</span>{" "}
+              Every motorhome card leads with drive-away price and km so it is
+              easy to compare.
             </li>
             <li>
-              <span className="font-semibold text-forest">2. Enquire with email and mobile.</span>{" "}
-              Name, email and SMS are required. We reply with the van and
-              delivery into Brisbane or your state.
+              <span className="font-semibold text-forest">2. Email us today.</span>{" "}
+              Name, email, mobile and a message. If you hold a car licence, we
+              will be in touch shortly.
             </li>
             <li>
-              <span className="font-semibold text-forest">3. We deliver.</span>{" "}
-              Stock leaves Bennetts Green, NSW. Paperwork travels with the van.
+              <span className="font-semibold text-forest">3. Free delivery to Brisbane.</span>{" "}
+              The motorhome leaves our South Australia yard with a 12-month
+              warranty and paperwork.
             </li>
           </ol>
           <Link
             href="/contact"
             className="mt-8 inline-flex rounded-full bg-forest px-6 py-3 text-sm font-semibold text-cream hover:bg-forest-deep"
           >
-            Send an enquiry
+            Email us today
           </Link>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pb-20">
-        <Faq items={siteFaqs} title="Used motorhomes — common questions" />
+        <Faq items={siteFaqs} title="Used motorhomes for sale Brisbane — FAQs" />
       </section>
     </>
   );

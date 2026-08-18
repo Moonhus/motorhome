@@ -63,11 +63,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10783", 22),
     summary:
-      "Used 6-berth KEA River M721 motorhome for sale. Mercedes-Benz, car licence, cab-over plus rear lounge. Drive away, delivered to Brisbane.",
+      "Family 6-berth Mercedes motorhome for sale in Brisbane. Car licence. Free delivery and 12-month warranty.",
     description: [
-      "This 2021 KEA River M721 is the family used motorhome on the yard: Mercedes-Benz chassis, 2.2-litre turbo-diesel automatic, and a 4,490 kg GVM so you stay on a standard car licence.",
-      "Sleeps six without a bigger truck. Cab-over bed, café dinette that converts, and a rear U-lounge that becomes a double. Kitchen, combination bathroom and house air-conditioning are already in.",
-      "Stock 10783, 136,444 km, NSW. Enquire with your email and mobile and we quote Brisbane delivery.",
+      "Looking for a used motorhome for sale in Brisbane that the whole family can drive on a car licence? This 2021 KEA River M721 sits on a Mercedes-Benz chassis with a smooth 2.2-litre turbo-diesel automatic.",
+      "Three real sleeping zones — cab-over, dinette conversion and a rear U-lounge that becomes a double — so six people tour without booking motels. Kitchen, combination bathroom and house air-conditioning are ready for the first weekend away.",
+      "136,444 km, stock 10783, South Australia yard. Free delivery to Brisbane and a 12-month warranty. Email us today and we will be in touch shortly.",
     ],
     benefits: [
       "Six genuine berths on a car licence — rare at this price",
@@ -116,14 +116,14 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10806", 24),
     summary:
-      "Low-km 2023 Avida Birdsville C7454SL for sale. Electric slide-out, island bed, washing machine, Fiat Ducato auto. Delivered to Brisbane.",
+      "Low-km 2023 Avida Birdsville motorhome for sale in Brisbane. Slide-out island bed. Car licence. 14,857 km.",
     description: [
-      "A 2023 Avida Birdsville C7454SL with 14,857 km is the late-model slide-out most buyers wait to order new. This one is used, in stock, and priced to move.",
-      "Fiat Ducato 160 hp automatic, 4,400 kg GVM, car licence. The electric slide-out opens a café dinette and east/west island bed. Over-cab bed for guests. Rear dry ensuite with a washing machine.",
-      "Lithium, dual solar and a diesel heater mean you tour without cheap-van compromises. Stock 10806. Email and SMS to lock Brisbane delivery.",
+      "This 2023 Avida Birdsville C7454SL is the slide-out motorhome Brisbane buyers hunt for: 14,857 km, Fiat Ducato automatic, and a car licence GVM.",
+      "Park up, open the electric slide-out, and you have a café dinette plus an east/west island bed you walk around. Guests take the over-cab bed. The rear dry ensuite even has a washing machine.",
+      "Lithium, dual solar and a diesel heater for real touring. Stock 10806. Free delivery to Brisbane, 12-month warranty. Email us today.",
     ],
     benefits: [
-      "Near-new Birdsville spec without a new-van wait or new-van ticket",
+      "Near-new Birdsville spec without a new motorhome wait or new motorhome ticket",
       "Island bed you walk around — not a nightly dinette conversion",
       "Washing machine, lithium and solar already fitted",
       "Car licence, 9-speed auto, 14,857 km",
@@ -169,11 +169,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10800", 30),
     summary:
-      "2025 Sunliner Navian N541G motorhome for sale. Rear garage, slide-out, island bed, Iveco 72-210. LR licence. Brisbane delivery.",
+      "Near-new 2025 Sunliner Navian motorhome for sale in Brisbane. Rear garage, 7,375 km. Free delivery.",
     description: [
-      "The June 2025 Sunliner Navian N541G is the flagship used motorhome here: 7,375 km, Iveco Daily 72-210, 210 hp, 8-speed automatic.",
+      "The June 2025 Sunliner Navian N541G is the flagship used motorhome on this list: 7,375 km, Iveco Daily 72-210, 210 hp and an 8-speed automatic.",
       "Rear garage for bikes and touring gear. Slide-out café dinette. Walk-around island bed with a hidden TV. Rear ensuite with washing machine. Lithium, solar, leather and Starlink Mini.",
-      "7,200 kg GVM, Light Rigid licence. Stock 10800. This is the van you buy when storage, finish and payload have to match a long lap of Australia — at a drive-away figure well under typical new Navian money. Enquire by email and SMS.",
+      "7,200 kg GVM — this motorhome needs a Light Rigid licence. Stock 10800, South Australia yard. Free delivery to Brisbane and a 12-month warranty. Email us today.",
     ],
     benefits: [
       "Garage-module Navian without waiting on a factory build",
@@ -222,16 +222,16 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10795", 24),
     summary:
-      "2025 Avan Ovation M11 motorhome for sale. Twin slide-outs, island bed, rear ensuite, 4,239 km. Car licence. Delivered to Brisbane.",
+      "2025 Avan Ovation motorhome for sale in Brisbane. Twin slide-outs, island bed, 4,239 km. Car licence.",
     description: [
-      "Current-model 2025 Avan Ovation M11, 4,239 km. Twin slide-outs give you a lounge that opens out and an east/west island bed you can walk around.",
-      "Fiat Ducato 8-speed automatic, 4,490 kg GVM, car licence. Private rear ensuite, solar, dual AGM batteries, bull bar and towbar. Couples get new-van comfort without the wait.",
-      "Stock 10795, NSW. Send email and mobile for a Brisbane delivery quote.",
+      "A current-model 2025 Avan Ovation M11 with only 4,239 km — as close to a new motorhome as used gets, without the wait.",
+      "Twin slide-outs open a lounge you can live in and an east/west island bed you walk around. Fiat Ducato 8-speed automatic, car licence, private ensuite, solar, bull bar and towbar.",
+      "Stock 10795. Free delivery to Brisbane and a 12-month warranty. Hold a car licence? Email us today and we will be in touch shortly.",
     ],
     benefits: [
       "2025 build and 4,239 km — as close to new as used gets",
       "Twin slide-outs: living space and a proper island bed",
-      "Car licence Fiat Ducato automatic — easy in town and on the highway",
+      "Car licence Fiat Ducato automatic — easy in Brisbane traffic and on the highway",
       "Drive-away price that leaves new Ovation M11 money on the table",
     ],
     features: [
@@ -275,11 +275,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10793", 28),
     summary:
-      "2018 Avida Esperance C7944 for sale. Spacious non-slide layout, rear ensuite, Iveco 50-170, car licence. Used motorhome delivered to Brisbane.",
+      "2018 Avida Esperance motorhome for sale in Brisbane. Spacious non-slide layout, 38,467 km. Car licence.",
     description: [
-      "The Esperance C7944 is the used Avida for buyers who want space without slide-out motors. Separate lounge and dining, wide walkways, sleeps four.",
-      "Iveco Daily 50-170 automatic, 4,495 kg GVM, car licence. Full-width rear ensuite with separate shower and toilet. Diesel heater, solar, two TVs, hydraulic stabilisers and a towbar.",
-      "38,467 km, stock 10793. A proven Australian touring layout at a drive-away figure that still leaves payload and comfort on the table. Enquire by email and SMS for Brisbane delivery.",
+      "Want a used motorhome for sale in Brisbane with apartment space and no slide-out motors? This Esperance C7944 has a separate lounge and dining, wide walkways and four berths.",
+      "Iveco Daily 50-170 automatic, car licence. Full-width rear ensuite with a separate shower and toilet, diesel heater, solar, two TVs and a towbar — touring kit already in.",
+      "38,467 km, stock 10793. Free delivery to Brisbane, 12-month warranty. Email us today.",
     ],
     benefits: [
       "Apartment-style living without slide-out complexity",
@@ -328,11 +328,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10717", 22),
     summary:
-      "One-owner 2023 Avida Birdsville C7454 SL for sale. Slide-out island bed, ensuite, lithium. Car licence motorhome, Brisbane delivery.",
+      "One-owner 2023 Avida Birdsville motorhome for sale in Brisbane. Slide-out, 22,354 km. Car licence.",
     description: [
-      "One-owner 2023 Avida Birdsville C7454 SL, originally supplied by Australian Motor Homes. Known history, 22,354 km, still a current layout.",
-      "Electric slide-out, east/west island bed, over-cab bed, rear ensuite with washing machine. Fiat Ducato 160 hp 9-speed automatic, car licence. Lithium and solar for independent touring.",
-      "Stock 10717. The Birdsville buyers search for — at a used drive-away price, with delivery quoted to Brisbane once we have your email and mobile.",
+      "One-owner 2023 Avida Birdsville C7454 SL, originally supplied by Australian Motor Homes. Known history, 22,354 km, still a current motorhome layout.",
+      "Electric slide-out, east/west island bed, over-cab bed, rear ensuite with washing machine. Fiat Ducato 160 hp 9-speed automatic and a car licence GVM. Lithium and solar for independent touring.",
+      "Stock 10717. Free delivery to Brisbane and a 12-month warranty. Email us today and we will be in touch shortly.",
     ],
     benefits: [
       "One owner from new, sold and known by our yard",
@@ -381,11 +381,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10773", 28),
     summary:
-      "2022 Avida Esperance C7834 SL for sale. Slide-out island bed, dry bathroom, washing machine, Iveco 50-180. LR motorhome, Brisbane delivery.",
+      "2022 Avida Esperance SL motorhome for sale in Brisbane. Island bed, washing machine, 20,551 km.",
     description: [
-      "November 2022 Avida Esperance C7834 SL: the luxury slide-out layout Avida is known for, with 20,551 km on the Iveco Daily 50-180.",
-      "Permanent island bed, café dinette in the slide-out, dry bathroom, front-load washing machine, leather, diesel heater, three-panel solar and an extra 200 L fresh tank. 2,800 kg towbar and UHF.",
-      "5,200 kg GVM, Light Rigid licence. Stock 10773. Premium touring spec at a used drive-away price. Email and SMS for Brisbane delivery.",
+      "November 2022 Avida Esperance C7834 SL: the luxury slide-out motorhome layout Avida is known for, with 20,551 km on the Iveco Daily 50-180.",
+      "Permanent island bed, café dinette in the slide-out, dry bathroom, front-load washing machine, leather, diesel heater, three-panel solar and an extra 200 L fresh tank.",
+      "5,200 kg GVM — Light Rigid licence. Stock 10773. Free delivery to Brisbane and a 12-month warranty. Email us today.",
     ],
     benefits: [
       "Full Esperance luxury list: island bed, dry bath, laundry",
@@ -434,11 +434,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10662", 27),
     summary:
-      "2016 Avida Esperance B7922 SL motorhome for sale. Slide-out island bed, full ensuite, Iveco 50-170, car licence. Delivered to Brisbane.",
+      "2016 Avida Esperance motorhome for sale in Brisbane. Island bed, ensuite, car licence. 100,830 km.",
     description: [
-      "Couples who want Esperance space without an LR licence: this 2016 B7922 SL is 4,495 kg GVM on the Iveco Daily 50-170 8-speed automatic.",
-      "Slide-out café lounge, walk-around island bed, full-width ensuite. Triple lithium, three-panel solar, diesel heater and a 2,800 kg towbar — touring kit that usually sits on dearer vans.",
-      "100,830 km, stock 10662. A lot of Australian C-class for the drive-away money. Enquire by email and SMS for Brisbane delivery.",
+      "Couples who want Esperance space on a car licence: this 2016 B7922 SL is 4,495 kg GVM on the Iveco Daily 50-170 8-speed automatic.",
+      "Slide-out café lounge, walk-around island bed, full-width ensuite. Triple lithium, three-panel solar, diesel heater and a 2,800 kg towbar — touring kit that usually sits on dearer motorhomes.",
+      "100,830 km, stock 10662. Free delivery to Brisbane, 12-month warranty. Email us today.",
     ],
     benefits: [
       "Esperance island-bed layout on a car licence",
@@ -487,11 +487,11 @@ export const motorhomes: Motorhome[] = [
     greyWaterL: 0,
     ...listingImages("10754", 30),
     summary:
-      "2023 Sunliner Switch S494G for sale. Rear garage, slide-out island bed, washing machine, Iveco 50-180. LR motorhome, Brisbane delivery.",
+      "2023 Sunliner Switch motorhome for sale in Brisbane. Rear garage, island bed, 12,421 km. Free delivery.",
     description: [
-      "June 2023 Sunliner Switch S494G with 12,421 km. Rear garage with dual-side access, electric platform and tray — bikes, tools and outdoor gear stay off the bed.",
-      "Slide-out island bed, café dinette with belted seats, ensuite with washing machine, 2,000 VA inverter, solar, leather, hydraulic stabilisers and a 2,800 kg towbar. Iveco Daily 50-180 8-speed automatic.",
-      "Light Rigid licence. Stock 10754. Garage-module touring at a used drive-away price. Email and SMS for delivery to Brisbane.",
+      "June 2023 Sunliner Switch S494G with 12,421 km. The rear garage has dual-side access, an electric platform and a tray — bikes, tools and outdoor gear stay off the bed.",
+      "Slide-out island bed, café dinette with belted seats, ensuite with washing machine, 2,000 VA inverter, solar, leather and a 2,800 kg towbar. Iveco Daily 50-180 8-speed automatic.",
+      "Light Rigid licence. Stock 10754. Free delivery to Brisbane and a 12-month warranty. Email us today.",
     ],
     benefits: [
       "Rear garage that actually takes touring gear",

@@ -1,32 +1,32 @@
 const pillars = [
   {
-    title: "NSW stock",
-    body: "Every motorhome listed here sits at our Bennetts Green, NSW yard. Same vans, ready for delivery when you are.",
-    icon: "inspect",
+    title: "Brisbane based",
+    body: "We sell used motorhomes for sale in Brisbane. Hold a car licence, email us today, and we will be in touch shortly.",
+    icon: "people" as const,
   },
   {
-    title: "Brisbane delivery",
-    body: "Send your email and mobile and we quote delivery into Brisbane and across Australia. No yard visit required to start.",
-    icon: "check",
+    title: "South Australia yard",
+    body: "Every motorhome listed sits at our South Australia yard. Same stock, ready for free delivery into Brisbane.",
+    icon: "inspect" as const,
   },
   {
-    title: "People",
-    body: "Australian Motor Homes Pty Ltd, covering Queensland buyers who want NSW range without the drive down first.",
-    icon: "people",
+    title: "Free Brisbane delivery",
+    body: "Delivery to Brisbane is included. No extra freight surprise on the drive-away price you see.",
+    icon: "check" as const,
   },
   {
-    title: "Five-star service",
-    body: "Clear kilometres, full spec lists, drive-away prices and a five-star handover — late-model vans without new-van money.",
-    icon: "stars",
+    title: "12-month warranty",
+    body: "Every used motorhome includes a 12-month warranty, clear kilometres and a five-star handover.",
+    icon: "stars" as const,
   },
-] as const;
+];
 
 function Icon({ name }: { name: (typeof pillars)[number]["icon"] }) {
   return (
     <span className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border-[2.5px] border-moss text-forest">
       {name === "inspect" ? (
         <span className="text-center leading-none">
-          <span className="display block text-2xl">NSW</span>
+          <span className="display block text-2xl">SA</span>
           <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
             Yard
           </span>
@@ -45,22 +45,19 @@ function Icon({ name }: { name: (typeof pillars)[number]["icon"] }) {
         </svg>
       ) : null}
       {name === "people" ? (
-        <svg viewBox="0 0 32 32" className="h-9 w-9" aria-hidden>
-          <circle cx="16" cy="10" r="3.2" fill="currentColor" />
-          <circle cx="8.5" cy="12" r="2.4" fill="currentColor" />
-          <circle cx="23.5" cy="12" r="2.4" fill="currentColor" />
-          <path
-            d="M7 24c.4-3.2 3.2-5 9-5s8.6 1.8 9 5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
+        <span className="text-center leading-none">
+          <span className="display block text-xl">BNE</span>
+          <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
+            Based
+          </span>
+        </span>
       ) : null}
       {name === "stars" ? (
-        <span className="text-lg tracking-tight text-copper" aria-hidden>
-          ★★★★★
+        <span className="text-center leading-none">
+          <span className="display block text-xl">12</span>
+          <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
+            Month
+          </span>
         </span>
       ) : null}
     </span>
@@ -72,7 +69,7 @@ export function WhyUs() {
     <section className="bg-white">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <h2 className="display text-center text-4xl text-forest sm:text-5xl">
-          Why buy a used motorhome here?
+          Why buy a used motorhome in Brisbane here?
         </h2>
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((item) => (

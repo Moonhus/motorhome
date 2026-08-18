@@ -77,10 +77,16 @@ export default async function ListingPage({
             ← Used motorhomes for sale
           </Link>
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand">
-            {van.stockNumber} · {van.year} · {van.brand} · {van.licence} licence
+            {van.stockNumber} · {van.year} · {van.brand} motorhome · {van.licence} licence
           </p>
           <h1 className="display mt-2 max-w-3xl text-4xl sm:text-6xl">{headline}</h1>
-          <p className="mt-3 display text-4xl text-sand">{formatPrice(van.price)} drive away</p>
+          <div className="mt-4 flex flex-wrap items-end gap-6">
+            <p className="display text-4xl text-sand">{formatPrice(van.price)}</p>
+            <p className="display text-3xl text-cream/90">{formatKilometres(van.kilometres)}</p>
+          </div>
+          <p className="mt-2 text-sm font-medium text-sand">
+            Drive away · Free Brisbane delivery · 12-month warranty
+          </p>
         </div>
       </div>
 
@@ -92,7 +98,9 @@ export default async function ListingPage({
             ))}
           </div>
 
-          <h2 className="display mt-12 text-3xl text-forest">Why this van is the better buy</h2>
+          <h2 className="display mt-12 text-3xl text-forest">
+            Why this motorhome is the better buy
+          </h2>
           <ul className="mt-4 grid gap-2">
             {van.benefits.map((benefit) => (
               <li
@@ -102,6 +110,12 @@ export default async function ListingPage({
                 {benefit}
               </li>
             ))}
+            <li className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest">
+              Free delivery to Brisbane
+            </li>
+            <li className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest">
+              12-month warranty included
+            </li>
           </ul>
 
           <dl className="mt-8 grid grid-cols-2 gap-4 rounded-2xl bg-white p-6 sm:grid-cols-4">
