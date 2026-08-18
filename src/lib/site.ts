@@ -4,7 +4,7 @@ export const site = {
   location: "Brisbane, Queensland",
   region: "Australia",
   email: "inquire.chrispaytn@gmail.com",
-  tagline: "Quality pre-owned motorhomes, inspected in Brisbane.",
+  tagline: "Inspected in Brisbane. Ready to tour.",
   description:
     "Commercial Portfolio Pty Ltd sells inspected, ready-to-tour second-hand motorhomes from our Brisbane, Queensland yard. Jayco, Avan, Sunliner and Auto-Trail in stock.",
 } as const;

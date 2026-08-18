@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ListingCard } from "@/components/ListingCard";
+import { WhyUs } from "@/components/WhyUs";
 import { motorhomes } from "@/data/motorhomes";
 import { formatPrice } from "@/lib/format";
 import { withBasePath } from "@/lib/paths";
@@ -46,8 +47,9 @@ export default function Home() {
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand/90">
             {site.legalName} lists inspected second-hand motorhomes from our
-            Brisbane yard. Six vans in stock now, from a $67,900 Avan Ovation
-            through to a late-model Jayco Conquest DX.
+            Brisbane yard — the vans you see here are the vans you can walk
+            through. Drive-away prices, real kilometres, and time to inspect
+            before you buy.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -95,6 +97,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <WhyUs />
 
       <section className="bg-forest text-cream">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
