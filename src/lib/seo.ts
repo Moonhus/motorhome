@@ -57,6 +57,12 @@ export function dealerJsonLd() {
     },
     areaServed: ["Brisbane", "Queensland", "South Australia", "Australia"],
     brand: ["Avida", "Sunliner", "Avan", "KEA"],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: site.rating,
+      bestRating: "5",
+      ratingCount: "5500",
+    },
   };
 }
 
