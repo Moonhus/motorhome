@@ -7,6 +7,7 @@ test("filters by brand", () => {
   const result = filterMotorhomes(motorhomes, {
     query: "",
     brand: "Avida",
+    licence: "",
     sort: "newest",
   });
   assert.equal(result.length, 5);
@@ -17,6 +18,7 @@ test("filters by search query across title and stock number", () => {
   const byModel = filterMotorhomes(motorhomes, {
     query: "ovation",
     brand: "",
+    licence: "",
     sort: "newest",
   });
   assert.equal(byModel.length, 1);
@@ -25,6 +27,7 @@ test("filters by search query across title and stock number", () => {
   const byStock = filterMotorhomes(motorhomes, {
     query: "10783",
     brand: "",
+    licence: "",
     sort: "newest",
   });
   assert.equal(byStock[0].slug, "2021-kea-river-m721");
@@ -34,6 +37,7 @@ test("sorts by price ascending", () => {
   const result = filterMotorhomes(motorhomes, {
     query: "",
     brand: "",
+    licence: "",
     sort: "price-asc",
   });
   const prices = result.map((item) => item.price);
@@ -42,6 +46,17 @@ test("sorts by price ascending", () => {
     [...prices].sort((a, b) => a - b),
   );
   assert.equal(result[0].slug, "2021-kea-river-m721");
+});
+
+test("filters car licence motorhomes", () => {
+  const result = filterMotorhomes(motorhomes, {
+    query: "",
+    brand: "",
+    licence: "Car",
+    sort: "newest",
+  });
+  assert.ok(result.length >= 5);
+  assert.ok(result.every((item) => item.licence === "Car"));
 });
 
 test("cuts every drive-away price by 30 percent", () => {

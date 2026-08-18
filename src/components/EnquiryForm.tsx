@@ -12,22 +12,25 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
     const name = String(data.get("name") ?? "").trim();
     const email = String(data.get("email") ?? "").trim();
     const sms = String(data.get("sms") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
 
     if (!name || !email || !sms) {
       return;
     }
 
     const subject = listingTitle
-      ? `Enquiry: ${listingTitle}`
-      : "Used motorhome enquiry";
+      ? `Motorhome enquiry: ${listingTitle}`
+      : "Used motorhome enquiry — Brisbane";
     const body = [
       `Name: ${name}`,
       `Email: ${email}`,
       `SMS / mobile: ${sms}`,
-      listingTitle ? `Listing: ${listingTitle}` : null,
-      "Please send the van details, drive-away price and delivery options through to Brisbane / my location.",
+      listingTitle ? `Motorhome: ${listingTitle}` : null,
+      message ? `Message:\n${message}` : "Message: (none)",
+      "",
+      "Please confirm this motorhome, kilometres, free Brisbane delivery and the 12-month warranty. I hold / can drive on a car licence unless noted on the listing.",
     ]
-      .filter(Boolean)
+      .filter((line) => line !== null)
       .join("\n");
 
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -37,14 +40,13 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
   if (sent) {
     return (
       <div className="rounded-2xl border border-moss/30 bg-white p-6 text-forest">
-        <p className="display text-2xl">Thanks — we have your details.</p>
+        <p className="display text-2xl">Thanks — we will be in touch shortly.</p>
         <p className="mt-2 text-sm text-muted">
-          Your mail app should have opened with your name, email and mobile. If
-          it did not, write to{" "}
+          Your mail app should have opened. If it did not, email{" "}
           <a className="underline" href={`mailto:${site.email}`}>
             {site.email}
           </a>{" "}
-          with the same three details.
+          today with your name, mobile and a short message. We reply soon.
         </p>
       </div>
     );
@@ -57,11 +59,15 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
     >
       <div>
         <h2 className="display text-2xl text-forest">
-          {listingTitle ? "Lock in this van" : "Enquire about a motorhome"}
+          {listingTitle
+            ? "Enquire about this motorhome"
+            : "Enquire about a motorhome"}
         </h2>
         <p className="mt-1 text-sm text-muted">
-          Name, email and mobile are required. We SMS and email you the
-          drive-away price plus delivery into Brisbane or your state.
+          Hold a car licence? Email us today. Name, email and mobile are
+          required — add a message with anything else you want us to know. We
+          will be in touch shortly about free Brisbane delivery and the
+          12-month warranty.
         </p>
       </div>
       <label className="text-sm">
@@ -97,11 +103,20 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
           className="mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
         />
       </label>
+      <label className="text-sm">
+        Message
+        <textarea
+          name="message"
+          rows={4}
+          placeholder="Questions, timing, extras you want on the motorhome…"
+          className="mt-1 w-full resize-y rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
+        />
+      </label>
       <button
         type="submit"
         className="rounded-full bg-copper px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-copper-dark"
       >
-        Send enquiry
+        Email us today
       </button>
     </form>
   );

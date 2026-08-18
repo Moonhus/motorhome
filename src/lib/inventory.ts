@@ -3,6 +3,7 @@ import type { Motorhome } from "@/data/motorhomes";
 export type InventoryFilters = {
   query: string;
   brand: string;
+  licence: "" | "Car" | "Light Rigid";
   sort: "newest" | "price-asc" | "price-desc" | "km";
 };
 
@@ -14,9 +15,10 @@ export function filterMotorhomes(
 
   const filtered = items.filter((item) => {
     const matchesBrand = !filters.brand || item.brand === filters.brand;
+    const matchesLicence = !filters.licence || item.licence === filters.licence;
     const haystack = `${item.title} ${item.brand} ${item.model} ${item.chassis} ${item.stockNumber}`.toLowerCase();
     const matchesQuery = !query || haystack.includes(query);
-    return matchesBrand && matchesQuery;
+    return matchesBrand && matchesLicence && matchesQuery;
   });
 
   const sorted = [...filtered];
