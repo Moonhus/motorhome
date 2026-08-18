@@ -5,7 +5,7 @@ import { getBrands, motorhomes } from "@/data/motorhomes";
 export const metadata: Metadata = {
   title: "Inventory",
   description:
-    "Current second-hand motorhome stock in NSW, with delivery to Brisbane: Jayco, Avan, Sunliner and Auto-Trail.",
+    "Current second-hand motorhome stock in NSW, with delivery to Brisbane: KEA, Avida, Avan and Sunliner.",
 };
 
 export default function InventoryPage() {

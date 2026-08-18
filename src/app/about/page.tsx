@@ -41,8 +41,8 @@ export default function AboutPage() {
               kilometres, and a delivery quote into Brisbane or your state.
             </p>
             <p>
-              Jayco, Avan, Sunliner and Auto-Trail coachbuilts, listed with
-              drive-away prices. Delivery is arranged from NSW.
+              KEA, Avida, Avan and Sunliner coachbuilts, listed with drive-away
+              prices. Delivery is arranged from NSW.
             </p>
           </div>
         </div>

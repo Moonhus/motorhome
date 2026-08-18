@@ -6,11 +6,11 @@ import { filterMotorhomes } from "./inventory.ts";
 test("filters by brand", () => {
   const result = filterMotorhomes(motorhomes, {
     query: "",
-    brand: "Jayco",
+    brand: "Avida",
     sort: "newest",
   });
-  assert.equal(result.length, 2);
-  assert.ok(result.every((item) => item.brand === "Jayco"));
+  assert.equal(result.length, 5);
+  assert.ok(result.every((item) => item.brand === "Avida"));
 });
 
 test("filters by search query across title and stock number", () => {
@@ -23,11 +23,11 @@ test("filters by search query across title and stock number", () => {
   assert.equal(byModel[0].brand, "Avan");
 
   const byStock = filterMotorhomes(motorhomes, {
-    query: "cp-1405",
+    query: "10783",
     brand: "",
     sort: "newest",
   });
-  assert.equal(byStock[0].slug, "2014-auto-trail-delaware");
+  assert.equal(byStock[0].slug, "2021-kea-river-m721");
 });
 
 test("sorts by price ascending", () => {
@@ -41,5 +41,5 @@ test("sorts by price ascending", () => {
     prices,
     [...prices].sort((a, b) => a - b),
   );
-  assert.equal(result[0].slug, "2014-sunliner-twist-le");
+  assert.equal(result[0].slug, "2021-kea-river-m721");
 });
