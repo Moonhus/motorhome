@@ -104,12 +104,13 @@ export default async function ListingPage({
             </tbody>
           </table>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {van.gallery.slice(1).map((src) => (
+          <h2 className="display mt-12 text-3xl text-forest">Photos</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {van.gallery.slice(1).map((src, index) => (
               <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
                   src={withBasePath(src)}
-                  alt={`${van.title} interior`}
+                  alt={`${van.title} photo ${index + 2}`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 640px) 40vw, 100vw"

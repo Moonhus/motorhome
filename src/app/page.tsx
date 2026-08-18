@@ -18,7 +18,7 @@ const highlights = [
   },
   {
     title: "Car-licence layouts",
-    body: "Alcove bunks, island beds, slide-outs and ensuites — Jayco, Avan, Sunliner and Auto-Trail.",
+    body: "Alcove bunks, island beds, slide-outs and ensuites — KEA, Avida, Avan and Sunliner.",
   },
 ];
 
