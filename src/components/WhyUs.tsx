@@ -6,7 +6,7 @@ const pillars = [
   },
   {
     title: "Brisbane delivery",
-    body: "Send your name and we will quote delivery into Brisbane and across Australia. No yard visit required to start.",
+    body: "Send your email and mobile and we quote delivery into Brisbane and across Australia. No yard visit required to start.",
     icon: "check",
   },
   {
@@ -16,7 +16,7 @@ const pillars = [
   },
   {
     title: "Five-star service",
-    body: "Clear kilometres, honest specs, drive-away prices and a handover we would be proud to put our name on.",
+    body: "Clear kilometres, full spec lists, drive-away prices and a five-star handover — late-model vans without new-van money.",
     icon: "stars",
   },
 ] as const;
@@ -72,7 +72,7 @@ export function WhyUs() {
     <section className="bg-white">
       <div className="mx-auto max-w-6xl px-5 py-20">
         <h2 className="display text-center text-4xl text-forest sm:text-5xl">
-          Why Commercial Motorhomes?
+          Why buy a used motorhome here?
         </h2>
         <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {pillars.map((item) => (

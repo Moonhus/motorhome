@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { motorhomes } from "../data/motorhomes.ts";
+import { driveAway, motorhomes } from "../data/motorhomes.ts";
 import { filterMotorhomes } from "./inventory.ts";
 
 test("filters by brand", () => {
@@ -42,4 +42,13 @@ test("sorts by price ascending", () => {
     [...prices].sort((a, b) => a - b),
   );
   assert.equal(result[0].slug, "2021-kea-river-m721");
+});
+
+test("cuts every drive-away price by 30 percent", () => {
+  const kea = motorhomes.find((item) => item.slug === "2021-kea-river-m721");
+  assert.equal(kea?.price, driveAway(134990));
+  assert.equal(kea?.price, 94490);
+
+  const navian = motorhomes.find((item) => item.slug === "2025-sunliner-navian-n541g");
+  assert.equal(navian?.price, driveAway(259990));
 });
