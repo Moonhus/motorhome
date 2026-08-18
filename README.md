@@ -11,6 +11,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+Cloud Agent environments run `npm ci` then `./scripts/dev-start.sh`, which starts the same dev server if it is not already listening on port 3000.
+
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Development server on port 3000 |
