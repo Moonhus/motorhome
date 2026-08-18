@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { BrandMark } from "@/components/BrandMark";
 import { site } from "@/lib/site";
 
 const links = [
-  { href: "/inventory", label: "Inventory" },
-  { href: "/about", label: "About" },
+  { href: "/inventory", label: "Used Motorhomes" },
+  { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -14,18 +15,25 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-forest/10 bg-cream/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4">
-        <Link href="/" className="group min-w-0" onClick={() => setOpen(false)}>
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-moss">
-            {site.legalName}
-          </p>
-          <p className="display text-xl leading-none text-forest sm:text-2xl">
-            Commercial Motorhomes
-          </p>
-        </Link>
+    <header className="sticky top-0 z-40 border-b border-forest/10 bg-cream/95 backdrop-blur-md">
+      <div className="mx-auto hidden max-w-6xl items-center justify-end gap-6 px-5 py-2 text-sm text-forest md:flex">
+        <span className="inline-flex items-center gap-1 text-copper" aria-label="Five-star service standard">
+          {"★★★★★"}
+          <span className="ml-1 text-muted">Five-star handover standard</span>
+        </span>
+        <a
+          href={`mailto:${site.email}`}
+          className="font-medium text-moss hover:text-copper"
+        >
+          Enquire now
+        </a>
+      </div>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-3">
+        <div onClick={() => setOpen(false)}>
+          <BrandMark compact />
+        </div>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium text-forest md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-medium text-ink md:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -36,10 +44,10 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/inventory"
+            href="/contact"
             className="rounded-full bg-forest px-4 py-2 text-cream transition-colors hover:bg-forest-deep"
           >
-            View stock
+            Book a viewing
           </Link>
         </nav>
 

@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/BrandMark";
 import Link from "next/link";
 import { site } from "@/lib/site";
 
@@ -6,8 +7,7 @@ export function Footer() {
     <footer className="mt-auto bg-forest-deep text-cream">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
-          <p className="display text-2xl">Commercial Motorhomes</p>
-          <p className="mt-2 text-sm text-sand/80">{site.legalName}</p>
+          <BrandMark compact onDark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand/80">
             Second-hand motorhome specialists based in Brisbane, Queensland.
             Inspected stock, honest descriptions, viewings by appointment.
@@ -20,7 +20,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             <li>
               <Link href="/inventory" className="hover:text-sand">
-                Current inventory
+                Used motorhomes
               </Link>
             </li>
             <li>
@@ -44,6 +44,7 @@ export function Footer() {
             <br />
             Viewings by appointment
           </p>
+          <p className="mt-3 text-sm text-sand">★★★★★ Five-star handover standard</p>
           <a
             href={`mailto:${site.email}`}
             className="mt-3 inline-block text-sm text-sand underline decoration-copper/70 underline-offset-4 hover:text-cream"
