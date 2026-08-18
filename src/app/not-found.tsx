@@ -6,9 +6,12 @@ export default function NotFound() {
       <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
         404
       </p>
-      <h1 className="display mt-3 text-5xl text-forest">That listing is gone.</h1>
+      <h1 className="display mt-3 text-5xl text-forest">
+        That used motorhome listing is gone.
+      </h1>
       <p className="mt-4 text-muted">
-        The van may have sold, or the link is out of date.
+        The van may have sold, or the link is out of date. Browse current stock
+        below.
       </p>
       <Link
         href="/inventory"

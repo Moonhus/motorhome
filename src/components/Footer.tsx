@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <BrandMark compact onDark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand/80">
-            Pre-owned motorhomes from Bennetts Green, NSW, with delivery into
-            Brisbane and across Australia. Send your name to enquire.
+            Used motorhomes for sale from Bennetts Green, NSW, with delivery
+            into Brisbane and across Australia. Enquire with email and SMS.
           </p>
         </div>
         <div>

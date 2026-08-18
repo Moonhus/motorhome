@@ -3,9 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { Faq } from "@/components/Faq";
+import { JsonLd } from "@/components/JsonLd";
 import { getMotorhome, motorhomes } from "@/data/motorhomes";
 import { formatKilometres, formatPrice } from "@/lib/format";
 import { withBasePath } from "@/lib/paths";
+import {
+  faqJsonLd,
+  listingFaqs,
+  listingHeadline,
+  vehicleJsonLd,
+} from "@/lib/seo";
 
 export function generateStaticParams() {
   return motorhomes.map((item) => ({ slug: item.slug }));
@@ -20,10 +28,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const van = getMotorhome(slug);
-  if (!van) return { title: "Listing" };
+  if (!van) return { title: "Used motorhome listing" };
+  const title = listingHeadline(van);
   return {
-    title: van.title,
+    title,
     description: van.summary,
+    openGraph: {
+      title,
+      description: van.summary,
+      type: "website",
+    },
+    alternates: {
+      canonical: `/inventory/${van.slug}/`,
+    },
   };
 }
 
@@ -35,13 +52,17 @@ export default async function ListingPage({
   const { slug } = await params;
   const van = getMotorhome(slug);
   if (!van) notFound();
+  const headline = listingHeadline(van);
+  const faqs = listingFaqs(van);
 
   return (
     <article className="pb-20">
+      <JsonLd data={vehicleJsonLd(van)} />
+      <JsonLd data={faqJsonLd(faqs)} />
       <div className="relative h-[52vh] min-h-[320px] w-full">
         <Image
           src={withBasePath(van.image)}
-          alt={van.title}
+          alt={headline}
           fill
           priority
           className="object-cover"
@@ -53,19 +74,35 @@ export default async function ListingPage({
             href="/inventory"
             className="text-xs font-semibold uppercase tracking-[0.2em] text-sand/80 hover:text-cream"
           >
-            ← Inventory
+            ← Used motorhomes for sale
           </Link>
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand">
-            {van.stockNumber} · {van.year} · {van.brand}
+            {van.stockNumber} · {van.year} · {van.brand} · {van.licence} licence
           </p>
-          <h1 className="display mt-2 max-w-3xl text-4xl sm:text-6xl">{van.model}</h1>
-          <p className="mt-3 display text-4xl text-sand">{formatPrice(van.price)}</p>
+          <h1 className="display mt-2 max-w-3xl text-4xl sm:text-6xl">{headline}</h1>
+          <p className="mt-3 display text-4xl text-sand">{formatPrice(van.price)} drive away</p>
         </div>
       </div>
 
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-12 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
-          <p className="text-lg leading-relaxed text-ink/90">{van.description}</p>
+          <div className="space-y-4 text-lg leading-relaxed text-ink/90">
+            {van.description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+
+          <h2 className="display mt-12 text-3xl text-forest">Why this van is the better buy</h2>
+          <ul className="mt-4 grid gap-2">
+            {van.benefits.map((benefit) => (
+              <li
+                key={benefit}
+                className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest"
+              >
+                {benefit}
+              </li>
+            ))}
+          </ul>
 
           <dl className="mt-8 grid grid-cols-2 gap-4 rounded-2xl bg-white p-6 sm:grid-cols-4">
             <Spec label="Kilometres" value={formatKilometres(van.kilometres)} />
@@ -104,13 +141,15 @@ export default async function ListingPage({
             </tbody>
           </table>
 
+          <Faq items={faqs} title="Buying this motorhome" />
+
           <h2 className="display mt-12 text-3xl text-forest">Photos</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {van.gallery.slice(1).map((src, index) => (
               <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
                   src={withBasePath(src)}
-                  alt={`${van.title} photo ${index + 2}`}
+                  alt={`${headline} photo ${index + 2}`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 640px) 40vw, 100vw"
