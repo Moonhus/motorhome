@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { withBasePath } from "@/lib/paths";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function AboutPage() {
       <div className="mt-10 grid items-start gap-10 lg:grid-cols-2">
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
-            src="/images/hero-brisbane.jpg"
+            src={withBasePath("/images/hero-brisbane.jpg")}
             alt="Queensland coastline near Brisbane"
             fill
             className="object-cover"

@@ -21,3 +21,9 @@ Cloud Agent environments run `npm ci` then `./scripts/dev-start.sh`, which start
 | `npm test` | Inventory filter tests |
 
 Inventory data lives in `src/data/motorhomes.ts`. Listing photos are in `public/images/`.
+
+## Live site
+
+Pushes to `main` publish a static export to GitHub Pages:
+
+https://moonhus.github.io/motorhome/

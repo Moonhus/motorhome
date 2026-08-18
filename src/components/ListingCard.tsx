@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Motorhome } from "@/data/motorhomes";
 import { formatKilometres, formatPrice } from "@/lib/format";
+import { withBasePath } from "@/lib/paths";
 
 export function ListingCard({
   motorhome,
@@ -15,7 +16,7 @@ export function ListingCard({
       <Link href={`/inventory/${motorhome.slug}`} className="relative block">
         <div className={`relative ${featured ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
           <Image
-            src={motorhome.image}
+            src={withBasePath(motorhome.image)}
             alt={motorhome.title}
             fill
             className="object-cover transition duration-500 group-hover:scale-[1.03]"

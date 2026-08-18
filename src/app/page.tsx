@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ListingCard } from "@/components/ListingCard";
 import { motorhomes } from "@/data/motorhomes";
 import { formatPrice } from "@/lib/format";
+import { withBasePath } from "@/lib/paths";
 import { site } from "@/lib/site";
 
 const highlights = [
@@ -28,7 +29,7 @@ export default function Home() {
     <>
       <section className="relative isolate min-h-[78vh] overflow-hidden">
         <Image
-          src="/images/hero-brisbane.jpg"
+          src={withBasePath("/images/hero-brisbane.jpg")}
           alt="Motorhome parked above Moreton Bay at golden hour"
           fill
           priority
@@ -126,7 +127,7 @@ export default function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 lg:grid-cols-2">
         <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
           <Image
-            src="/images/interior-living.jpg"
+            src={withBasePath("/images/interior-living.jpg")}
             alt="Motorhome living area with timber cabinetry and dinette"
             fill
             className="object-cover"

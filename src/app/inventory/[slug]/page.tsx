@@ -5,10 +5,13 @@ import { notFound } from "next/navigation";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { getMotorhome, motorhomes } from "@/data/motorhomes";
 import { formatKilometres, formatPrice } from "@/lib/format";
+import { withBasePath } from "@/lib/paths";
 
 export function generateStaticParams() {
   return motorhomes.map((item) => ({ slug: item.slug }));
 }
+
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -37,7 +40,7 @@ export default async function ListingPage({
     <article className="pb-20">
       <div className="relative h-[52vh] min-h-[320px] w-full">
         <Image
-          src={van.image}
+          src={withBasePath(van.image)}
           alt={van.title}
           fill
           priority
@@ -105,7 +108,7 @@ export default async function ListingPage({
             {van.gallery.slice(1).map((src) => (
               <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                 <Image
-                  src={src}
+                  src={withBasePath(src)}
                   alt={`${van.title} interior`}
                   fill
                   className="object-cover"
