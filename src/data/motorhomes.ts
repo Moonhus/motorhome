@@ -56,7 +56,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "A low-kilometre Iveco Conquest DX with air-bag suspension, alcove bunk and a full ensuite — serious touring, still on a car licence.",
     description:
-      "If you want a late-model Australian C-class that still feels composed at highway speed, this 2019 Jayco Conquest DX IV.25.5 is the one to walk through first. It sits on the Iveco Daily 50C with the 3.0-litre bi-turbo and eight-speed Hi-Matic, so the drive is quiet, tall-geared and easy. At 7.95 m you get a proper over-cab bunk, four seatbelts, four berths and Jayco’s fibreglass Tough Frame — plus electric awning, solar, dual house batteries, diesel heater and a separate shower and toilet. 41,300 km, inspected in Brisbane, ready for a lap or a long Queensland season.",
+      "If you want a late-model Australian C-class that still feels composed at highway speed, this 2019 Jayco Conquest DX IV.25.5 is the one to enquire on first. It sits on the Iveco Daily 50C with the 3.0-litre bi-turbo and eight-speed Hi-Matic, so the drive is quiet, tall-geared and easy. At 7.95 m you get a proper over-cab bunk, four seatbelts, four berths and Jayco’s fibreglass Tough Frame — plus electric awning, solar, dual house batteries, diesel heater and a separate shower and toilet. 41,300 km, in NSW stock, ready to deliver to Brisbane.",
     features: [
       "Iveco Daily rear-wheel drive with air-bag suspension",
       "Over-cab alcove double plus dinette conversion",
@@ -104,7 +104,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "Jayco’s most useful 25-foot layout: slide-out island bed, luton for guests, wet ensuite, Fiat Ducato, car licence.",
     description:
-      "The 2018 Jayco Conquest 25-1 is the layout people come back for. A slide-out queen island bed you can actually walk around, a luton peak when family stays, and a separate shower and toilet so camp mornings are civilised. Underneath is the Fiat Ducato with AL-KO motorhome chassis, 3.0-litre turbo-diesel and Comfort-Matic — all under 4.5 t, so it is a standard car licence. Silver bull bar, wind-out awning, three-way fridge. 62,400 km. In Brisbane stock now.",
+      "The 2018 Jayco Conquest 25-1 is the layout people come back for. A slide-out queen island bed you can actually walk around, a luton peak when family stays, and a separate shower and toilet so camp mornings are civilised. Underneath is the Fiat Ducato with AL-KO motorhome chassis, 3.0-litre turbo-diesel and Comfort-Matic — all under 4.5 t, so it is a standard car licence. Silver bull bar, wind-out awning, three-way fridge. 62,400 km. NSW stock, delivery to Brisbane.",
     features: [
       "Slide-out queen island bed with under-bed storage",
       "Luton peak over-cab double",
@@ -152,7 +152,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "Titanium-pack Ovation M7 alcove on a Fiat Ducato Maxi — 7.92 m, car licence, and the sharpest price on the yard at $67,900.",
     description:
-      "This is the Ovation people mean when they ask for an Australian C-class that still feels special. The 2018 Avan Ovation M7 Alcove wears the Titanium graphics pack, with insulated composite walls, double-glazed hoppers, roof air-conditioning and a full-width rear ensuite. The Fiat Ducato Maxi 3.0-litre and six-speed AMT make Brisbane traffic and the highway equally undramatic. Sleeps four between the alcove and dinette, wind-out awning fitted, 54,120 km. Drive away $67,900 from our Brisbane yard.",
+      "This is the Ovation people mean when they ask for an Australian C-class that still feels special. The 2018 Avan Ovation M7 Alcove wears the Titanium graphics pack, with insulated composite walls, double-glazed hoppers, roof air-conditioning and a full-width rear ensuite. The Fiat Ducato Maxi 3.0-litre and six-speed AMT make Brisbane traffic and the highway equally undramatic. Sleeps four between the alcove and dinette, wind-out awning fitted, 54,120 km. Drive away $67,900, delivered from NSW.",
     features: [
       "Titanium exterior graphics pack",
       "C-class alcove sleeping over the cab",
@@ -200,7 +200,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "Australian-built Sunliner Holiday on Iveco Daily: Premium pack, silver bull bar, electric step, four berths.",
     description:
-      "Sunliner still builds in Australia, and this 2015 Holiday 601 Iveco Premium is the sort of no-drama tourer that lasts. High-profile alcove body, Iveco Daily automatic, silver bull bar and an electric side step. Inside, the Premium pack lifts the furnishings; you get four berths with the over-cab double, a practical mid kitchen and a rear bathroom. Ideal for a couple who still want a bunk for grandkids. 98,600 km, inspected in Brisbane.",
+      "Sunliner still builds in Australia, and this 2015 Holiday 601 Iveco Premium is the sort of no-drama tourer that lasts. High-profile alcove body, Iveco Daily automatic, silver bull bar and an electric side step. Inside, the Premium pack lifts the furnishings; you get four berths with the over-cab double, a practical mid kitchen and a rear bathroom. Ideal for a couple who still want a bunk for grandkids. 98,600 km, in NSW, delivery to Brisbane available.",
     features: [
       "Iveco Daily chassis with automatic transmission",
       "Premium interior pack",
@@ -248,7 +248,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "British luxury coachbuilt: fixed rear island bed, 7.9 m Fiat Ducato, low-line profile, car-licence GVM.",
     description:
-      "If you are tired of making up a dinette every night, the 2014 Auto-Trail Delaware is the antidote. A proper rear island bed, a compact lounge up front, and a low-line British coachbuilt body that sits quietly on the road. 7.9 m long, 4,250 kg GVM, Fiat Ducato turbo-diesel automatic, charcoal cladding and a silver bull bar. Truma heating and hot water, roll-out awning, external shower. 89,200 km. Waiting at the Brisbane yard.",
+      "If you are tired of making up a dinette every night, the 2014 Auto-Trail Delaware is the antidote. A proper rear island bed, a compact lounge up front, and a low-line British coachbuilt body that sits quietly on the road. 7.9 m long, 4,250 kg GVM, Fiat Ducato turbo-diesel automatic, charcoal cladding and a silver bull bar. Truma heating and hot water, roll-out awning, external shower. 89,200 km. NSW stock, we can deliver to Brisbane.",
     features: [
       "Fixed rear island bed",
       "Front lounge converts to a second double",
@@ -296,7 +296,7 @@ export const motorhomes: Motorhome[] = [
     summary:
       "Australian-built Twist LE: slide-out living, east-west bed, dry ensuite — 25 feet that parks like a van.",
     description:
-      "The Sunliner Twist is how you get a slide-out lounge, a fixed east-west bed and a dry ensuite without committing to an eight-metre island-bed coachbuilt. This LE wears the lime and black graphics and a silver bull bar on the Fiat Ducato 3.0-litre automatic. Diesel heater, roof air-con, roll-out awning and a BBQ point outside. Easy to place in a carpark, easy on a car licence. 71,850 km. View in Brisbane.",
+      "The Sunliner Twist is how you get a slide-out lounge, a fixed east-west bed and a dry ensuite without committing to an eight-metre island-bed coachbuilt. This LE wears the lime and black graphics and a silver bull bar on the Fiat Ducato 3.0-litre automatic. Diesel heater, roof air-con, roll-out awning and a BBQ point outside. Easy to place in a carpark, easy on a car licence. 71,850 km. Enquire for Brisbane delivery.",
     features: [
       "Slide-out living and dining area",
       "Fixed east-west bed",

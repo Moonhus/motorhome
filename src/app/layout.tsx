@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.legalName }],
   openGraph: {
-    title: `${site.name} · Pre-owned motorhomes in Brisbane`,
+    title: `${site.name} · Pre-owned motorhomes for Brisbane`,
     description: site.description,
     locale: "en_AU",
     type: "website",

@@ -9,15 +9,15 @@ import { site } from "@/lib/site";
 
 const highlights = [
   {
-    title: "Inspected in Brisbane",
-    body: "Every van is checked at our Queensland yard before it goes on the list. What you read is what we saw.",
+    title: "Stock in NSW",
+    body: "Vans sit at our Bennetts Green yard. What you see listed is what we can deliver.",
   },
   {
-    title: "Car-licence stock",
-    body: "Current inventory is under 4.5 t GVM, so you can collect on a standard Australian car licence.",
+    title: "Brisbane and beyond",
+    body: "Send your name and we will quote delivery into Queensland and the rest of Australia.",
   },
   {
-    title: "Real touring layouts",
+    title: "Car-licence layouts",
     body: "Alcove bunks, island beds, slide-outs and ensuites — Jayco, Avan, Sunliner and Auto-Trail.",
   },
 ];
@@ -40,16 +40,15 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/70 to-forest/25" />
         <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand">
-            {site.location}
+            {site.market}
           </p>
           <h1 className="display mt-3 max-w-3xl text-5xl leading-[1.05] text-cream sm:text-7xl">
-            Pre-owned motorhomes, ready for the next lap.
+            NSW motorhomes, delivered to Brisbane.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand/90">
-            {site.legalName} lists inspected second-hand motorhomes from our
-            Brisbane yard — the vans you see here are the vans you can walk
-            through. Drive-away prices, real kilometres, and time to inspect
-            before you buy.
+            {site.legalName} keeps the fleet at Bennetts Green, NSW. This site
+            is for Queensland and national buyers — send your name and we will
+            come back with the van and a delivery quote.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
@@ -62,7 +61,7 @@ export default function Home() {
               href="/contact"
               className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold text-cream hover:bg-white/10"
             >
-              Book a viewing
+              Enquire
             </Link>
           </div>
         </div>
@@ -70,9 +69,9 @@ export default function Home() {
 
       <section className="border-y border-forest/10 bg-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:grid-cols-3">
-          <Stat value={`${motorhomes.length}`} label="Vans on the yard" />
+          <Stat value={`${motorhomes.length}`} label="Vans in NSW stock" />
           <Stat value={formatPrice(lowest.price)} label="From (drive away)" />
-          <Stat value="QLD" label="Inspected in Brisbane" />
+          <Stat value="QLD" label="Delivery to Brisbane" />
         </div>
       </section>
 
@@ -82,7 +81,7 @@ export default function Home() {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
               Current stock
             </p>
-            <h2 className="display mt-2 text-4xl text-forest">On the yard this week</h2>
+            <h2 className="display mt-2 text-4xl text-forest">Ready to deliver</h2>
           </div>
           <Link
             href="/inventory"
@@ -107,12 +106,12 @@ export default function Home() {
               Why buy here
             </p>
             <h2 className="display mt-3 text-4xl">
-              A Brisbane yard, not a classifieds page.
+              A Brisbane-facing site, NSW range behind it.
             </h2>
             <p className="mt-4 max-w-lg text-sand/85 leading-relaxed">
-              We buy and resell late-model Australian and imported coachbuilts.
-              Come and walk through them, take them for a run, and leave with
-              paperwork that makes sense.
+              We sell late-model Australian and imported coachbuilts from
+              Bennetts Green. Queensland buyers enquire by name; we handle
+              delivery from there.
             </p>
           </div>
           <div className="grid gap-6">
@@ -143,28 +142,29 @@ export default function Home() {
             How it works
           </p>
           <h2 className="display mt-3 text-4xl text-forest">
-            Email us, pick a time, walk through the van.
+            Pick a van, send your name.
           </h2>
           <ol className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
             <li>
               <span className="font-semibold text-forest">1. Choose a listing.</span>{" "}
-              Every van has year, chassis, berths, kilometres and a drive-away
-              price.
+              Year, chassis, berths, kilometres and a drive-away price are on
+              every card.
             </li>
             <li>
-              <span className="font-semibold text-forest">2. Book a viewing.</span>{" "}
-              We will confirm a Brisbane appointment and send the yard address.
+              <span className="font-semibold text-forest">2. Enquire with your name.</span>{" "}
+              That is all we need to start. We reply with the van and delivery
+              into Brisbane or your state.
             </li>
             <li>
-              <span className="font-semibold text-forest">3. Inspect and take it.</span>{" "}
-              Roadworthy, gas and handover are sorted before it leaves the yard.
+              <span className="font-semibold text-forest">3. We deliver.</span>{" "}
+              Stock leaves Bennetts Green, NSW. Paperwork travels with the van.
             </li>
           </ol>
           <Link
             href="/contact"
             className="mt-8 inline-flex rounded-full bg-forest px-6 py-3 text-sm font-semibold text-cream hover:bg-forest-deep"
           >
-            Make an enquiry
+            Send an enquiry
           </Link>
         </div>
       </section>

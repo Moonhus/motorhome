@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Book a Brisbane yard viewing with ${site.legalName}.`,
+  description: `Enquire with ${site.legalName} about NSW stock delivered to Brisbane.`,
 };
 
 export default function ContactPage() {
@@ -12,13 +12,15 @@ export default function ContactPage() {
     <div className="mx-auto grid max-w-6xl gap-12 px-5 py-14 lg:grid-cols-2">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
-          Brisbane yard
+          Enquire
         </p>
-        <h1 className="display mt-2 text-5xl text-forest">Come and see the vans.</h1>
+        <h1 className="display mt-2 text-5xl text-forest">
+          Send your name. We will take it from there.
+        </h1>
         <p className="mt-4 max-w-lg text-muted leading-relaxed">
-          Viewings are by appointment. Send an enquiry with the listing you
-          want to walk through and we will reply with a time and the yard
-          address.
+          Stock is at Bennetts Green, NSW. We deliver into Brisbane and
+          nationwide. Leave your name and the van you like — no yard visit
+          needed to start.
         </p>
         <dl className="mt-8 space-y-4 text-sm">
           <div>
@@ -26,8 +28,12 @@ export default function ContactPage() {
             <dd className="text-muted">{site.legalName}</dd>
           </div>
           <div>
-            <dt className="font-semibold text-forest">Location</dt>
-            <dd className="text-muted">{site.location}, {site.region}</dd>
+            <dt className="font-semibold text-forest">Yard</dt>
+            <dd className="text-muted">{site.address}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-forest">Delivery</dt>
+            <dd className="text-muted">{site.market}</dd>
           </div>
           <div>
             <dt className="font-semibold text-forest">Email</dt>
@@ -37,18 +43,12 @@ export default function ContactPage() {
               </a>
             </dd>
           </div>
-          <div>
-            <dt className="font-semibold text-forest">Hours</dt>
-            <dd className="text-muted">
-              Tuesday–Saturday, 9am–4pm AEST, by appointment
-            </dd>
-          </div>
         </dl>
         <div className="mt-8 overflow-hidden rounded-3xl border border-forest/10">
           <iframe
-            title="Map of Brisbane, Queensland"
+            title="Map of Bennetts Green, NSW"
             className="h-64 w-full grayscale"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=152.85%2C-27.62%2C153.18%2C-27.35&layer=mapnik"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=151.64%2C-33.04%2C151.75%2C-32.96&layer=mapnik"
           />
         </div>
       </div>
