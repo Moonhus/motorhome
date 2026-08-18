@@ -14,12 +14,14 @@ export function ListingCard({
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-forest/10 bg-white shadow-[0_18px_40px_-28px_rgba(22,54,44,0.55)]">
       <Link href={`/inventory/${motorhome.slug}`} className="relative block">
-        <div className={`relative ${featured ? "aspect-[16/10]" : "aspect-[16/11]"}`}>
+        <div
+          className={`photo-sheen relative ${featured ? "aspect-[16/10]" : "aspect-[16/11]"}`}
+        >
           <Image
             src={withBasePath(motorhome.image)}
             alt={motorhome.title}
             fill
-            className="object-cover transition duration-500 group-hover:scale-[1.03]"
+            className="filmic-photo object-cover transition duration-500 group-hover:scale-[1.03]"
             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           />
         </div>

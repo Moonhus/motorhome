@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { ListingGallery } from "@/components/ListingGallery";
 import { getMotorhome, motorhomes } from "@/data/motorhomes";
+import { listingShots } from "@/lib/gallery";
 import { formatKilometres, formatPrice } from "@/lib/format";
-import { withBasePath } from "@/lib/paths";
 
 export function generateStaticParams() {
   return motorhomes.map((item) => ({ slug: item.slug }));
@@ -36,36 +36,35 @@ export default async function ListingPage({
   const van = getMotorhome(slug);
   if (!van) notFound();
 
+  const shots = listingShots(van);
+
   return (
     <article className="pb-20">
-      <div className="relative h-[52vh] min-h-[320px] w-full">
-        <Image
-          src={withBasePath(van.image)}
-          alt={van.title}
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-black/20" />
-        <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-6xl px-5 pb-8 text-cream">
-          <Link
-            href="/inventory"
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-sand/80 hover:text-cream"
-          >
-            ← Inventory
-          </Link>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand">
-            {van.stockNumber} · {van.year} · {van.brand}
-          </p>
-          <h1 className="display mt-2 max-w-3xl text-4xl sm:text-6xl">{van.model}</h1>
-          <p className="mt-3 display text-4xl text-sand">{formatPrice(van.price)}</p>
-        </div>
-      </div>
+      <ListingGallery shots={shots} title={van.title}>
+        <Link
+          href="/inventory"
+          className="text-xs font-semibold uppercase tracking-[0.2em] text-sand/80 hover:text-cream"
+        >
+          ← Inventory
+        </Link>
+        <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand">
+          {van.stockNumber} · {van.year} · {van.brand}
+        </p>
+        <h1 className="display mt-2 max-w-3xl text-4xl text-cream [text-shadow:0_10px_28px_rgba(0,0,0,0.55)] sm:text-6xl">
+          {van.model}
+        </h1>
+        <p className="mt-3 display text-4xl text-sand [text-shadow:0_10px_28px_rgba(0,0,0,0.55)]">
+          {formatPrice(van.price)}
+        </p>
+      </ListingGallery>
 
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-12 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
           <p className="text-lg leading-relaxed text-ink/90">{van.description}</p>
+          <p className="mt-4 text-sm text-muted">
+            Open inspect for a driveway-close look — fullscreen, scroll to zoom,
+            drag to pan. Keyboard: F, arrows, Esc.
+          </p>
 
           <dl className="mt-8 grid grid-cols-2 gap-4 rounded-2xl bg-white p-6 sm:grid-cols-4">
             <Spec label="Kilometres" value={formatKilometres(van.kilometres)} />
@@ -103,20 +102,6 @@ export default async function ListingPage({
               ))}
             </tbody>
           </table>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            {van.gallery.slice(1).map((src) => (
-              <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
-                <Image
-                  src={withBasePath(src)}
-                  alt={`${van.title} interior`}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 640px) 40vw, 100vw"
-                />
-              </div>
-            ))}
-          </div>
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">

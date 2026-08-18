@@ -45,3 +45,171 @@ body {
   font-family: var(--font-fraunces), ui-serif, Georgia, serif;
   font-optical-sizing: auto;
 }
+
+.filmic-photo {
+  filter: saturate(1.08) contrast(1.07) brightness(1.03);
+}
+
+.hyper-stage {
+  background: #07110e;
+  perspective: 1600px;
+}
+
+.hyper-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 108%, rgba(196, 92, 45, 0.42), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 78% 18%, rgba(255, 196, 120, 0.16), transparent 60%),
+    linear-gradient(180deg, #0a1c22 0%, #12352c 46%, #1a140f 78%, #070605 100%);
+}
+
+.hyper-haze {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 70%, rgba(231, 220, 200, 0.08), transparent 55%);
+  pointer-events: none;
+}
+
+.hyper-rays {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: repeating-conic-gradient(
+    from 18deg at 18% 8%,
+    rgba(255, 214, 150, 0.07) 0deg 1.2deg,
+    transparent 1.2deg 12deg
+  );
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  transform: translate3d(0, 0, 0);
+}
+
+.hyper-dust {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.45) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(255, 236, 200, 0.35) 0 1px, transparent 1.4px);
+  background-size: 180px 220px, 260px 300px;
+  background-position: 10% 20%, 70% 40%;
+  opacity: 0.18;
+  animation: dust-drift 28s linear infinite;
+}
+
+.hyper-ground {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 38%;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent, rgba(7, 6, 5, 0.55) 28%, #070605 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(231, 220, 200, 0.045) 0 1px,
+      transparent 1px 72px
+    );
+  mask-image: linear-gradient(180deg, transparent, #000 35%);
+}
+
+.hyper-rig {
+  transform-style: preserve-3d;
+  transition: transform 160ms ease-out;
+  will-change: transform;
+}
+
+.hyper-plate {
+  box-shadow:
+    0 40px 80px -28px rgba(0, 0, 0, 0.72),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.hyper-specular,
+.hyper-glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hyper-glass {
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.16) 0%,
+    transparent 28%,
+    transparent 62%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  mix-blend-mode: screen;
+}
+
+.hyper-reflection {
+  position: relative;
+  height: 7.5rem;
+  margin-top: 0.35rem;
+  overflow: hidden;
+  opacity: 0.38;
+  transform: scaleY(-1);
+  filter: blur(1.2px) brightness(0.55);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent 78%);
+}
+
+.hyper-grain,
+.hyper-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hyper-grain {
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hyper-vignette {
+  background: radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.46) 100%);
+}
+
+.photo-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 62%
+  );
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+  pointer-events: none;
+}
+
+.group:hover .photo-sheen::after,
+.photo-sheen:hover::after {
+  transform: translateX(120%);
+}
+
+@keyframes dust-drift {
+  from {
+    background-position: 10% 20%, 70% 40%;
+  }
+  to {
+    background-position: 18% 8%, 62% 70%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hyper-dust,
+  .hyper-rays,
+  .hyper-rig {
+    animation: none;
+    transition: none;
+  }
+}
