@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HyperRealHero } from "@/components/HyperRealHero";
 import { ListingCard } from "@/components/ListingCard";
 import { motorhomes } from "@/data/motorhomes";
 import { formatPrice } from "@/lib/format";
@@ -27,17 +28,11 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative isolate min-h-[78vh] overflow-hidden">
-        <Image
-          src={withBasePath("/images/hero-brisbane.jpg")}
-          alt="Motorhome parked above Moreton Bay at golden hour"
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/70 to-forest/25" />
-        <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28">
+      <HyperRealHero
+        src="/images/hero-brisbane.jpg"
+        alt="Motorhome parked above Moreton Bay at golden hour"
+      >
+        <div className="mx-auto flex min-h-[82vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand">
             {site.location}
           </p>
@@ -64,7 +59,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </HyperRealHero>
 
       <section className="border-y border-forest/10 bg-white">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:grid-cols-3">
@@ -130,7 +125,7 @@ export default function Home() {
             src={withBasePath("/images/interior-living.jpg")}
             alt="Motorhome living area with timber cabinetry and dinette"
             fill
-            className="object-cover"
+            className="filmic-photo object-cover"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
         </div>

@@ -23,7 +23,7 @@ export default function AboutPage() {
             src={withBasePath("/images/hero-brisbane.jpg")}
             alt="Queensland coastline near Brisbane"
             fill
-            className="object-cover"
+            className="filmic-photo object-cover"
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
         </div>
