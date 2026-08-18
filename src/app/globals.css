@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f4efe6;
+  --sand: #e7dcc8;
+  --forest: #16362c;
+  --forest-deep: #0d231c;
+  --moss: #3f6a52;
+  --copper: #c45c2d;
+  --copper-dark: #9d4520;
+  --ink: #1c1712;
+  --muted: #6d645a;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-moss: var(--moss);
+  --color-copper: var(--copper);
+  --color-copper-dark: var(--copper-dark);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-fraunces);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.display {
+  font-family: var(--font-fraunces), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
