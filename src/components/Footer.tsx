@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <BrandMark compact onDark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand/80">
-            Second-hand motorhome specialists based in Brisbane, Queensland.
-            Inspected stock, honest descriptions, viewings by appointment.
+            Pre-owned motorhomes from Bennetts Green, NSW, with delivery into
+            Brisbane and across Australia. Send your name to enquire.
           </p>
         </div>
         <div>
@@ -25,24 +25,24 @@ export function Footer() {
             </li>
             <li>
               <Link href="/about" className="hover:text-sand">
-                About the yard
+                About
               </Link>
             </li>
             <li>
               <Link href="/contact" className="hover:text-sand">
-                Book a viewing
+                Enquire
               </Link>
             </li>
           </ul>
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-sand/60">
-            Brisbane yard
+            Yard & delivery
           </p>
           <p className="mt-3 text-sm leading-relaxed text-sand/80">
-            {site.location}
+            {site.address}
             <br />
-            Viewings by appointment
+            Delivery to {site.market}
           </p>
           <p className="mt-3 text-sm text-sand">★★★★★ Five-star handover standard</p>
           <a
@@ -55,7 +55,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10 px-5 py-4 text-center text-xs text-sand/50">
         © {new Date().getFullYear()} {site.legalName}. All prices in AUD, drive
-        away unless stated. Specifications are as presented at inspection.
+        away unless stated. Specifications as listed.
       </div>
     </footer>
   );

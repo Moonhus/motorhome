@@ -1,22 +1,22 @@
 const pillars = [
   {
-    title: "Experience",
-    body: "Every motorhome on this site is inspected at our Brisbane yard before it is listed. What you read is what is on the ground.",
+    title: "NSW stock",
+    body: "Every motorhome listed here sits at our Bennetts Green, NSW yard. Same vans, ready for delivery when you are.",
     icon: "inspect",
   },
   {
-    title: "Personalised viewing",
-    body: "We work around your timetable. Book a private walkthrough, take the van for a run, and ask the awkward questions with the keys in your hand.",
+    title: "Brisbane delivery",
+    body: "Send your name and we will quote delivery into Brisbane and across Australia. No yard visit required to start.",
     icon: "check",
   },
   {
     title: "People",
-    body: "Based in Brisbane, Queensland, we look after buyers across South East Queensland and northern NSW who want a real handover, not a classifieds ad.",
+    body: "Australian Motor Homes Pty Ltd, covering Queensland buyers who want NSW range without the drive down first.",
     icon: "people",
   },
   {
     title: "Five-star service",
-    body: "Clear kilometres, honest specs, drive-away prices and a handover we would be proud to put our name on. That is the standard we hold ourselves to.",
+    body: "Clear kilometres, honest specs, drive-away prices and a handover we would be proud to put our name on.",
     icon: "stars",
   },
 ] as const;
@@ -26,7 +26,7 @@ function Icon({ name }: { name: (typeof pillars)[number]["icon"] }) {
     <span className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border-[2.5px] border-moss text-forest">
       {name === "inspect" ? (
         <span className="text-center leading-none">
-          <span className="display block text-2xl">QLD</span>
+          <span className="display block text-2xl">NSW</span>
           <span className="text-[0.65rem] font-semibold uppercase tracking-wider">
             Yard
           </span>

@@ -88,7 +88,7 @@ export function InventoryBrowser({
       </form>
 
       <p className="mb-5 text-sm text-muted">
-        {results.length} motorhome{results.length === 1 ? "" : "s"} in Brisbane
+        {results.length} motorhome{results.length === 1 ? "" : "s"} in NSW
         stock
       </p>
 

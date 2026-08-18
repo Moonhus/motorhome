@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${site.legalName} is a Brisbane motorhome resale yard listing inspected second-hand stock.`,
+  description: `${site.legalName} lists NSW motorhome stock with delivery to Brisbane and nationwide.`,
 };
 
 export default function AboutPage() {
@@ -17,7 +17,7 @@ export default function AboutPage() {
           {site.legalName}
         </p>
         <h1 className="display mt-2 max-w-3xl text-5xl text-forest">
-          A Queensland yard for people who actually want to go touring.
+          A Brisbane-facing site for a NSW yard.
         </h1>
         <div className="mt-10 grid items-start gap-10 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
@@ -31,21 +31,18 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 text-base leading-relaxed text-muted">
             <p>
-              Commercial Motorhomes is the trading face of {site.legalName}. We
-              buy, inspect and resell late-model motorhomes from our Brisbane
-              yard — Jayco and Avan from the Australian factories, Sunliner
-              coachbuilts, and the occasional imported Auto-Trail.
+              Commercial Motorhomes is the Queensland-facing site of{" "}
+              {site.legalName}. The fleet lives at {site.address}. We built this
+              site so Brisbane and interstate buyers can browse the same stock
+              without starting on a yard visit.
             </p>
             <p>
-              The stock on this site is the stock on the ground. Kilometres,
-              chassis, berths and drive-away prices are listed up front so you
-              can decide whether a trip to the yard is worth it. Viewings are by
-              appointment so you get time in the van, not a crowded lot.
+              Send your name against a listing. We come back with the van,
+              kilometres, and a delivery quote into Brisbane or your state.
             </p>
             <p>
-              We are based in Brisbane, Queensland, with easy access for buyers
-              across South East Queensland and northern New South Wales. If you
-              are flying in, tell us your window and we will have the van ready.
+              Jayco, Avan, Sunliner and Auto-Trail coachbuilts, listed with
+              drive-away prices. Delivery is arranged from NSW.
             </p>
           </div>
         </div>

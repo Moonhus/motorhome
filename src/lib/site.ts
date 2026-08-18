@@ -1,10 +1,12 @@
 export const site = {
   name: "Commercial Motorhomes",
-  legalName: "Commercial Portfolio Pty Ltd",
-  location: "Brisbane, Queensland",
+  legalName: "Australian Motor Homes Pty Ltd",
+  location: "Bennetts Green, NSW",
   region: "Australia",
+  address: "31 Pacific Hwy, Bennetts Green NSW 2290",
+  market: "Brisbane and nationwide",
   email: "inquire.chrispaytn@gmail.com",
-  tagline: "Inspected in Brisbane. Ready to tour.",
+  tagline: "NSW stock. Delivered to Brisbane.",
   description:
-    "Commercial Portfolio Pty Ltd sells inspected, ready-to-tour second-hand motorhomes from our Brisbane, Queensland yard. Jayco, Avan, Sunliner and Auto-Trail in stock.",
+    "Australian Motor Homes Pty Ltd lists pre-owned motorhomes from our Bennetts Green, NSW yard, with delivery to Brisbane and across Australia.",
 } as const;

@@ -1,6 +1,6 @@
 # Commercial Motorhomes
 
-Listing site for **Commercial Portfolio Pty Ltd**, a second-hand motorhome yard in Brisbane, Queensland.
+Brisbane-facing listing site for **Australian Motor Homes Pty Ltd**. Stock is at Bennetts Green, NSW, with delivery into Brisbane and nationwide.
 
 ## Local development
 

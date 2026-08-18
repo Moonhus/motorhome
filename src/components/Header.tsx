@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
-import { site } from "@/lib/site";
 
 const links = [
   { href: "/inventory", label: "Used Motorhomes" },
@@ -21,12 +20,12 @@ export function Header() {
           {"★★★★★"}
           <span className="ml-1 text-muted">Five-star handover standard</span>
         </span>
-        <a
-          href={`mailto:${site.email}`}
+        <Link
+          href="/contact"
           className="font-medium text-moss hover:text-copper"
         >
           Enquire now
-        </a>
+        </Link>
       </div>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-3">
         <div onClick={() => setOpen(false)}>
@@ -47,7 +46,7 @@ export function Header() {
             href="/contact"
             className="rounded-full bg-forest px-4 py-2 text-cream transition-colors hover:bg-forest-deep"
           >
-            Book a viewing
+            Enquire
           </Link>
         </nav>
 
@@ -82,6 +81,13 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className="rounded-lg px-2 py-2 font-medium text-forest"
+            onClick={() => setOpen(false)}
+          >
+            Enquire
+          </Link>
         </nav>
       ) : null}
     </header>
