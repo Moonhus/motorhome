@@ -110,22 +110,4 @@ export function vehicleJsonLd(motorhome: Motorhome) {
   };
 }
 
-export function listingFaqs(motorhome: Motorhome) {
-  return [
-    {
-      question: `What licence do I need for the ${motorhome.year} ${motorhome.brand} ${motorhome.model}?`,
-      answer:
-        motorhome.licence === "Car"
-          ? `A standard Australian car licence is enough. This used motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM. Email us today and we will be in touch shortly.`
-          : `This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM, so it needs a Light Rigid (LR) licence. Prefer car licence? Browse our other used motorhomes for sale in Brisbane or email us today.`,
-    },
-    {
-      question: `Is delivery to Brisbane free for this ${motorhome.brand} motorhome?`,
-      answer: `Yes. Stock ${motorhome.stockNumber} is at our South Australia yard with free delivery to Brisbane and a 12-month warranty. Email us today.`,
-    },
-    {
-      question: `How many kilometres has the ${motorhome.model} done?`,
-      answer: `It has travelled ${motorhome.kilometres.toLocaleString("en-AU")} km and sleeps ${motorhome.berths}. Price, kilometres and photos are on this page.`,
-    },
-  ];
-}
+export { listingFaqs } from "./listing-faqs";

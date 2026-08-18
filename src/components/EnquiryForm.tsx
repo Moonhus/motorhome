@@ -3,8 +3,15 @@
 import { FormEvent, useState } from "react";
 import { site } from "@/lib/site";
 
-export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
+export function EnquiryForm({
+  listingTitle,
+  variant = "default",
+}: {
+  listingTitle?: string;
+  variant?: "default" | "compact";
+}) {
   const [sent, setSent] = useState(false);
+  const compact = variant === "compact";
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,8 +34,6 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
       `SMS / mobile: ${sms}`,
       listingTitle ? `Motorhome: ${listingTitle}` : null,
       message ? `Message:\n${message}` : "Message: (none)",
-      "",
-      "Please confirm this motorhome, kilometres, free Brisbane delivery and the 12-month warranty. I hold / can drive on a car licence unless noted on the listing.",
     ]
       .filter((line) => line !== null)
       .join("\n");
@@ -39,35 +44,39 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-moss/30 bg-white p-6 text-forest">
+      <div className={compact ? "pt-2 text-forest" : "rounded-2xl border border-moss/30 bg-white p-6 text-forest"}>
         <p className="display text-2xl">Thanks — we will be in touch shortly.</p>
         <p className="mt-2 text-sm text-muted">
           Your mail app should have opened. If it did not, email{" "}
           <a className="underline" href={`mailto:${site.email}`}>
             {site.email}
           </a>{" "}
-          today with your name, mobile and a short message. We reply soon.
+          with your name and mobile.
         </p>
       </div>
     );
   }
 
+  const fieldClass = compact
+    ? "mt-1 w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 outline-none ring-0 focus:border-copper"
+    : "mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2";
+
   return (
     <form
+      id="enquire"
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"
+      className={compact ? "grid gap-4" : "grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"}
     >
       <div>
-        <h2 className="display text-2xl text-forest">
+        <h2 className={`display text-forest ${compact ? "text-xl" : "text-2xl"}`}>
           {listingTitle
             ? "Enquire about this motorhome"
             : "Enquire about a motorhome"}
         </h2>
         <p className="mt-1 text-sm text-muted">
-          Hold a car licence? Email us today. Name, email and mobile are
-          required — add a message with anything else you want us to know. We
-          will be in touch shortly about free Brisbane delivery and the
-          12-month warranty.
+          {compact
+            ? "Interested? Send us your details and we’ll be in touch shortly."
+            : "Hold a car licence? Email us today. Name, email and mobile are required — add a message with anything else you want us to know."}
         </p>
       </div>
       <label className="text-sm">
@@ -76,7 +85,7 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
           required
           name="name"
           autoComplete="name"
-          className="mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
+          className={fieldClass}
         />
       </label>
       <label className="text-sm">
@@ -87,11 +96,11 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
           name="email"
           autoComplete="email"
           inputMode="email"
-          className="mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
+          className={fieldClass}
         />
       </label>
       <label className="text-sm">
-        Mobile (SMS)
+        Mobile
         <input
           required
           type="tel"
@@ -100,23 +109,24 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
           inputMode="tel"
           minLength={8}
           placeholder="04xx xxx xxx"
-          className="mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
+          className={fieldClass}
         />
       </label>
       <label className="text-sm">
-        Message
+        Message <span className="text-muted">(optional)</span>
         <textarea
           name="message"
-          rows={4}
-          placeholder="Questions, timing, extras you want on the motorhome…"
-          className="mt-1 w-full resize-y rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2"
+          rows={compact ? 3 : 4}
+          className={fieldClass}
         />
       </label>
       <button
         type="submit"
-        className="rounded-full bg-copper px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-copper-dark"
+        className={`rounded-full bg-copper px-5 text-sm font-semibold text-white transition-colors hover:bg-copper-dark ${
+          compact ? "mt-1 py-3.5" : "py-3"
+        }`}
       >
-        Email us today
+        {compact ? "Enquire Now" : "Email us today"}
       </button>
     </form>
   );
