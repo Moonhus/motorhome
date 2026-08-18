@@ -1,0 +1,27 @@
+import type { Metadata } from "next";
+import { InventoryBrowser } from "@/components/InventoryBrowser";
+import { getBrands, motorhomes } from "@/data/motorhomes";
+
+export const metadata: Metadata = {
+  title: "Inventory",
+  description:
+    "Current second-hand motorhome stock in Brisbane: Jayco, Avan, Sunliner and Auto-Trail.",
+};
+
+export default function InventoryPage() {
+  return (
+    <div className="mx-auto max-w-6xl px-5 py-14">
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
+        Brisbane stock
+      </p>
+      <h1 className="display mt-2 text-5xl text-forest">Inventory</h1>
+      <p className="mt-4 max-w-2xl text-muted">
+        Six inspected motorhomes on the yard. Filter by brand or search a model.
+        Prices are in AUD, drive away.
+      </p>
+      <div className="mt-10">
+        <InventoryBrowser motorhomes={motorhomes} brands={getBrands()} />
+      </div>
+    </div>
+  );
+}

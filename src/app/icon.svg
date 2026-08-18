@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Commercial Motorhomes">
+  <rect width="32" height="32" rx="8" fill="#16362c"/>
+  <path fill="#e7dcc8" d="M6 20.5h20v2.2H6z"/>
+  <path fill="#f4efe6" d="M8 14.2h9.5c.4 0 .8.2 1 .5l2.2 3.3H8v-3.8z"/>
+  <path fill="#c45c2d" d="M8 12.2h7.2c.9 0 1.6.4 2.1 1.1l.4.6H8v-1.7z"/>
+  <circle cx="11.2" cy="22.2" r="1.6" fill="#1c1712"/>
+  <circle cx="21.4" cy="22.2" r="1.6" fill="#1c1712"/>
+</svg>
