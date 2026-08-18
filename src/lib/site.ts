@@ -8,6 +8,8 @@ export const site = {
   market: "Brisbane",
   delivery: "Free delivery to Brisbane",
   warranty: "12-month warranty",
+  sold: "5,500+",
+  rating: "4.9",
   email: "inquire.chrispaytn@gmail.com",
   url: "https://moonhus.github.io/motorhome",
   tagline: "Used motorhomes for sale in Brisbane. Free delivery. 12-month warranty.",

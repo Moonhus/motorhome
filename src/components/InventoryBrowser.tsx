@@ -30,11 +30,11 @@ export function InventoryBrowser({
   return (
     <div>
       <form
-        className="mb-8 grid gap-3 rounded-2xl border border-forest/10 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4"
+        className="mb-6 grid gap-4 rounded-[1.6rem] bg-white p-5 sm:grid-cols-2 lg:grid-cols-4"
         onSubmit={(event) => event.preventDefault()}
       >
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Search
           </span>
           <input
@@ -48,7 +48,7 @@ export function InventoryBrowser({
           />
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Brand
           </span>
           <select
@@ -67,7 +67,7 @@ export function InventoryBrowser({
           </select>
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Licence
           </span>
           <select
@@ -86,7 +86,7 @@ export function InventoryBrowser({
           </select>
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-muted">
             Sort
           </span>
           <select

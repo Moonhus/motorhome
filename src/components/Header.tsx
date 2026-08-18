@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 
 const links = [
-  { href: "/inventory", label: "Used Motorhomes" },
+  { href: "/#browse", label: "Used Motorhomes" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
@@ -16,17 +16,17 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-forest/10 bg-cream/95 backdrop-blur-md">
       <div className="mx-auto hidden max-w-6xl items-center justify-end gap-6 px-5 py-2 text-sm text-forest md:flex">
-        <span className="inline-flex items-center gap-1 text-copper" aria-label="Free delivery and warranty">
+        <span className="inline-flex items-center gap-1 text-copper" aria-label="Google rating">
           {"★★★★★"}
           <span className="ml-1 text-muted">
-            Free Brisbane delivery · 12-month warranty
+            4.9 Google · 5,500+ sold · Free Brisbane delivery
           </span>
         </span>
         <Link
           href="/contact"
           className="font-medium text-moss hover:text-copper"
         >
-          Email us today
+          Make Enquiry
         </Link>
       </div>
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-3">
@@ -48,7 +48,7 @@ export function Header() {
             href="/contact"
             className="rounded-full bg-forest px-4 py-2 text-cream transition-colors hover:bg-forest-deep"
           >
-            Enquire
+            Make Enquiry
           </Link>
         </nav>
 
@@ -88,7 +88,7 @@ export function Header() {
             className="rounded-lg px-2 py-2 font-medium text-forest"
             onClick={() => setOpen(false)}
           >
-            Enquire
+            Make Enquiry
           </Link>
         </nav>
       ) : null}

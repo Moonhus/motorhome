@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
+import { SpecList } from "@/components/SpecList";
+import { TrustBar } from "@/components/TrustBar";
 import { getMotorhome, motorhomes } from "@/data/motorhomes";
 import { formatKilometres, formatPrice } from "@/lib/format";
 import { withBasePath } from "@/lib/paths";
@@ -14,6 +16,7 @@ import {
   listingHeadline,
   vehicleJsonLd,
 } from "@/lib/seo";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return motorhomes.map((item) => ({ slug: item.slug }));
@@ -27,19 +30,19 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const van = getMotorhome(slug);
-  if (!van) return { title: "Used motorhome listing" };
-  const title = listingHeadline(van);
+  const motorhome = getMotorhome(slug);
+  if (!motorhome) return { title: "Used motorhome listing" };
+  const title = listingHeadline(motorhome);
   return {
     title,
-    description: van.summary,
+    description: motorhome.summary,
     openGraph: {
       title,
-      description: van.summary,
+      description: motorhome.summary,
       type: "website",
     },
     alternates: {
-      canonical: `/inventory/${van.slug}/`,
+      canonical: `/inventory/${motorhome.slug}/`,
     },
   };
 }
@@ -50,101 +53,102 @@ export default async function ListingPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const van = getMotorhome(slug);
-  if (!van) notFound();
-  const headline = listingHeadline(van);
-  const faqs = listingFaqs(van);
+  const motorhome = getMotorhome(slug);
+  if (!motorhome) notFound();
+  const headline = listingHeadline(motorhome);
+  const faqs = listingFaqs(motorhome);
 
   return (
     <article className="pb-20">
-      <JsonLd data={vehicleJsonLd(van)} />
+      <JsonLd data={vehicleJsonLd(motorhome)} />
       <JsonLd data={faqJsonLd(faqs)} />
-      <div className="relative h-[52vh] min-h-[320px] w-full">
+
+      <div className="relative h-[48vh] min-h-[280px] w-full">
         <Image
-          src={withBasePath(van.image)}
+          src={withBasePath(motorhome.image)}
           alt={headline}
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/80 via-transparent to-black/20" />
-        <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-6xl px-5 pb-8 text-cream">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+        <div className="absolute bottom-0 left-0 right-0 mx-auto max-w-6xl px-5 pb-7 text-cream">
           <Link
-            href="/inventory"
-            className="text-xs font-semibold uppercase tracking-[0.2em] text-sand/80 hover:text-cream"
+            href="/#browse"
+            className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80 hover:text-white"
           >
-            ← Used motorhomes for sale
+            ← Browse motorhomes
           </Link>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.22em] text-sand">
-            {van.stockNumber} · {van.year} · {van.brand} motorhome · {van.licence} licence
-          </p>
-          <h1 className="display mt-2 max-w-3xl text-4xl sm:text-6xl">{headline}</h1>
-          <div className="mt-4 flex flex-wrap items-end gap-6">
-            <p className="display text-4xl text-sand">{formatPrice(van.price)}</p>
-            <p className="display text-3xl text-cream/90">{formatKilometres(van.kilometres)}</p>
-          </div>
-          <p className="mt-2 text-sm font-medium text-sand">
-            Drive away · Free Brisbane delivery · 12-month warranty
-          </p>
+          <h1 className="mt-3 max-w-3xl text-3xl font-semibold sm:text-5xl">
+            {headline}
+          </h1>
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-12 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-10 lg:grid-cols-[1.15fr_0.85fr]">
         <div>
-          <div className="space-y-4 text-lg leading-relaxed text-ink/90">
-            {van.description.map((paragraph) => (
+          <div className="space-y-4 text-base leading-relaxed text-ink/90">
+            {motorhome.description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
-          <h2 className="display mt-12 text-3xl text-forest">
-            Why this motorhome is the better buy
+          <h2 className="mt-12 text-2xl font-bold text-forest">
+            Benefits and features
           </h2>
-          <ul className="mt-4 grid gap-2">
-            {van.benefits.map((benefit) => (
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {motorhome.benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest"
+                className="rounded-lg border border-forest/10 bg-white px-4 py-3 text-sm text-forest"
               >
                 {benefit}
               </li>
             ))}
-            <li className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest">
-              Free delivery to Brisbane
-            </li>
-            <li className="rounded-xl border border-copper/20 bg-white px-4 py-3 text-sm font-medium text-forest">
-              12-month warranty included
-            </li>
-          </ul>
-
-          <dl className="mt-8 grid grid-cols-2 gap-4 rounded-2xl bg-white p-6 sm:grid-cols-4">
-            <Spec label="Kilometres" value={formatKilometres(van.kilometres)} />
-            <Spec label="Berths" value={`${van.berths}`} />
-            <Spec label="Length" value={`${van.lengthMetres} m`} />
-            <Spec label="Licence" value={van.licence} />
-            <Spec label="Chassis" value={van.chassis} />
-            <Spec label="Engine" value={van.engine} />
-            <Spec label="Transmission" value={van.transmission} />
-            <Spec label="GVM" value={`${van.gvmKg.toLocaleString("en-AU")} kg`} />
-          </dl>
-
-          <h2 className="display mt-12 text-3xl text-forest">Features</h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-            {van.features.map((feature) => (
+            {motorhome.features.map((feature) => (
               <li
                 key={feature}
-                className="rounded-xl border border-forest/10 bg-white px-4 py-3 text-sm text-forest"
+                className="rounded-lg border border-forest/10 bg-white px-4 py-3 text-sm text-forest"
               >
                 {feature}
               </li>
             ))}
           </ul>
 
-          <h2 className="display mt-12 text-3xl text-forest">Specifications</h2>
+          <section className="mt-12 rounded-2xl bg-white p-6">
+            <h2 className="text-2xl font-bold text-forest">Why enquire today</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted">
+              This {motorhome.year} {motorhome.brand} {motorhome.model} motorhome
+              is in stock at our South Australia yard with free delivery to
+              Brisbane and a 12-month warranty. Price is{" "}
+              {formatPrice(motorhome.price)} drive away, with{" "}
+              {formatKilometres(motorhome.kilometres)} on the clock.
+            </p>
+            <ul className="mt-4 grid gap-2 text-sm text-forest">
+              <li>Free delivery to Brisbane</li>
+              <li>12-month warranty included</li>
+              <li>
+                {site.sold} motorhomes sold · {site.rating} Google rating · mostly
+                five-star reviews
+              </li>
+              <li>Email us today and we will be in touch shortly</li>
+            </ul>
+            <div className="mt-5">
+              <TrustBar />
+            </div>
+            <a
+              href="#enquire"
+              className="mt-5 inline-flex rounded-md bg-copper px-5 py-2.5 text-sm font-semibold text-white hover:bg-copper-dark"
+            >
+              Make Enquiry
+            </a>
+          </section>
+
+          <h2 className="mt-12 text-2xl font-bold text-forest">Specifications</h2>
           <table className="mt-4 w-full overflow-hidden rounded-2xl bg-white text-sm">
             <tbody>
-              {van.specs.map((row) => (
+              {motorhome.specs.map((row) => (
                 <tr key={row.label} className="border-b border-sand last:border-0">
                   <th className="px-4 py-3 text-left font-medium text-muted">
                     {row.label}
@@ -155,15 +159,15 @@ export default async function ListingPage({
             </tbody>
           </table>
 
-          <Faq items={faqs} title="Buying this motorhome" />
+          <Faq items={faqs} />
 
-          <h2 className="display mt-12 text-3xl text-forest">Photos</h2>
+          <h2 className="mt-12 text-2xl font-bold text-forest">Photos</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {van.gallery.slice(1).map((src, index) => (
-              <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+            {motorhome.gallery.map((src, index) => (
+              <div key={src} className="relative aspect-[4/3] overflow-hidden rounded-xl">
                 <Image
                   src={withBasePath(src)}
-                  alt={`${headline} photo ${index + 2}`}
+                  alt={`${headline} photo ${index + 1}`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 640px) 40vw, 100vw"
@@ -173,19 +177,28 @@ export default async function ListingPage({
           </div>
         </div>
 
-        <aside className="lg:sticky lg:top-24 lg:self-start">
-          <EnquiryForm listingTitle={van.title} />
+        <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+          <div className="rounded-2xl bg-[#eceff3] px-6 py-6 text-center">
+            <p className="text-3xl font-semibold tracking-tight text-forest">
+              {formatPrice(motorhome.price)}
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              {formatKilometres(motorhome.kilometres)} · drive away
+            </p>
+            <a
+              href="#enquire"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md bg-copper px-5 py-3 text-sm font-semibold text-white hover:bg-copper-dark"
+            >
+              Make Enquiry
+              <span aria-hidden>▾</span>
+            </a>
+          </div>
+          <SpecList motorhome={motorhome} />
+          <div id="enquire">
+            <EnquiryForm listingTitle={motorhome.title} />
+          </div>
         </aside>
       </div>
     </article>
-  );
-}
-
-function Spec({ label, value }: { label: string; value: string }) {
-  return (
-    <div>
-      <dt className="text-xs uppercase tracking-wider text-muted">{label}</dt>
-      <dd className="mt-1 font-semibold text-forest">{value}</dd>
-    </div>
   );
 }

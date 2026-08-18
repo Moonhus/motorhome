@@ -55,14 +55,10 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"
+      className="grid gap-4 rounded-2xl bg-white p-6 shadow-[0_10px_30px_-24px_rgba(22,54,44,0.5)]"
     >
       <div>
-        <h2 className="display text-2xl text-forest">
-          {listingTitle
-            ? "Enquire about this motorhome"
-            : "Enquire about a motorhome"}
-        </h2>
+        <h2 className="text-2xl font-semibold text-forest">Make enquiry</h2>
         <p className="mt-1 text-sm text-muted">
           Hold a car licence? Email us today. Name, email and mobile are
           required — add a message with anything else you want us to know. We
@@ -114,9 +110,9 @@ export function EnquiryForm({ listingTitle }: { listingTitle?: string }) {
       </label>
       <button
         type="submit"
-        className="rounded-full bg-copper px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-copper-dark"
+        className="rounded-md bg-copper px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-copper-dark"
       >
-        Email us today
+        Make Enquiry
       </button>
     </form>
   );
