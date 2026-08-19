@@ -5,22 +5,37 @@ import { site } from "@/lib/site";
 
 export function BrandMark({
   compact = false,
+  onDark = false,
 }: {
   compact?: boolean;
   onDark?: boolean;
 }) {
-  const size = compact ? 56 : 64;
-
   return (
-    <Link href="/" className="inline-flex shrink-0 items-center" aria-label={site.name}>
+    <Link
+      href="/"
+      className="inline-flex min-w-0 items-center gap-3 sm:gap-4"
+      aria-label={site.name}
+    >
       <Image
         src={withBasePath("/images/logo-australia.png")}
-        alt={site.name}
-        width={size}
-        height={size}
-        className={`rounded-xl object-contain ${compact ? "h-14 w-14" : "h-16 w-16"}`}
+        alt=""
+        width={512}
+        height={471}
+        className={`w-auto shrink-0 object-contain ${
+          compact ? "h-14 sm:h-16" : "h-[4.5rem] sm:h-24 md:h-28"
+        } ${onDark ? "brightness-0 invert" : ""}`}
         priority
       />
+      <span
+        className={`display min-w-0 font-semibold leading-[0.92] tracking-[-0.02em] ${
+          compact
+            ? "text-xl sm:text-2xl"
+            : "text-[1.65rem] sm:text-4xl md:text-5xl"
+        } ${onDark ? "text-cream" : "text-forest"}`}
+      >
+        <span className="block">Commercial</span>
+        <span className="block">Motorhomes</span>
+      </span>
     </Link>
   );
 }
