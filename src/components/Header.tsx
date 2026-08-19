@@ -15,8 +15,8 @@ export function Header() {
 
   return (
     <header className="relative border-b border-forest/10 bg-cream">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:py-5">
-        <div onClick={() => setOpen(false)}>
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-5 sm:py-5">
+        <div className="min-w-0" onClick={() => setOpen(false)}>
           <BrandMark />
         </div>
 
@@ -40,7 +40,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-forest/20 text-forest md:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-forest/20 text-forest md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((value) => !value)}
