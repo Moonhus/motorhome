@@ -9,8 +9,8 @@ export function Footer() {
         <div>
           <BrandMark compact onDark />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand/80">
-            Used motorhomes for sale in Brisbane. South Australia yard, free
-            delivery, 12-month warranty. Email us today.
+            Used motorhomes for sale in Brisbane. South Australia yard and free
+            delivery.
           </p>
         </div>
         <div>
@@ -46,13 +46,6 @@ export function Footer() {
             <br />
             {site.delivery}
           </p>
-          <p className="mt-3 text-sm text-sand">{site.warranty} on every motorhome</p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-3 inline-block text-sm text-sand underline decoration-copper/70 underline-offset-4 hover:text-cream"
-          >
-            {site.email}
-          </a>
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-3 text-center">

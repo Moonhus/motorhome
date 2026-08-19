@@ -18,41 +18,10 @@ export default function ContactPage() {
           Email us today. We will be in touch shortly.
         </h1>
         <p className="mt-4 max-w-lg text-muted leading-relaxed">
-          Brisbane based, South Australia yard. Free delivery to Brisbane and a
-          12-month warranty on every used motorhome. Hold a car licence? Send
-          your name, email, mobile and a message — that is all we need to start.
+          Brisbane based, South Australia yard. Hold a car licence? Send your
+          name, email, mobile and a message — that is all we need to start.
         </p>
-        <dl className="mt-8 space-y-4 text-sm">
-          <div>
-            <dt className="font-semibold text-forest">Business</dt>
-            <dd className="text-muted">{site.legalName}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-forest">Based</dt>
-            <dd className="text-muted">{site.location}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-forest">Yard</dt>
-            <dd className="text-muted">{site.yard}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-forest">Delivery</dt>
-            <dd className="text-muted">{site.delivery}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-forest">Warranty</dt>
-            <dd className="text-muted">{site.warranty} on every motorhome</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-forest">Email</dt>
-            <dd>
-              <a className="text-copper underline" href={`mailto:${site.email}`}>
-                {site.email}
-              </a>
-            </dd>
-          </div>
-        </dl>
-        <div className="mt-8 overflow-hidden rounded-3xl border border-forest/10">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-forest/10">
           <iframe
             title="Map of South Australia motorhome yard region"
             className="h-64 w-full grayscale"
