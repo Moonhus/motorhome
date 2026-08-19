@@ -5,6 +5,7 @@ import { CustomerStories, TrustFacts } from "@/components/CustomerStories";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { ListingCard } from "@/components/ListingCard";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { motorhomes } from "@/data/motorhomes";
 import { withBasePath } from "@/lib/paths";
 import { faqJsonLd, siteFaqs } from "@/lib/seo";
@@ -62,6 +63,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <WhyChooseUs />
 
       <div className="bg-white">
         <CustomerStories />
