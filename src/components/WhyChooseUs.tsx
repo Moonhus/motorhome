@@ -10,9 +10,9 @@ export function WhyChooseUs() {
       <div className="absolute inset-0">
         <Image
           src={withBasePath("/images/why-choose-us.jpg")}
-          alt="Showroom advisor with a motorhome"
+          alt="Avida Birdsville motorhome in the yard"
           fill
-          className="object-cover object-[center_22%]"
+          className="object-cover object-[center_45%]"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/92 via-forest/80 to-forest/40" />

@@ -1,13 +1,8 @@
-export const reviewPhotos = [
-  "/images/reviews/01.jpg",
-  "/images/reviews/02.jpg",
-  "/images/reviews/03.jpg",
-] as const;
-
 export type CustomerReview = {
   quote: string;
   name: string;
   place: string;
+  photo: string;
   stars: 5;
 };
 
@@ -18,310 +13,163 @@ export const customerReviews = {
   quotes: [
     {
       quote:
-        "Straightforward from the first email through to handover. The photos matched the motorhome.",
+        "Couldn’t be happier with the whole experience. The motorhome was beautifully presented, extremely clean and exactly as described. The team made everything simple from our first inspection through to pickup.",
       name: "James & Mia",
       place: "Brisbane",
+      photo: "/images/reviews/04.jpg",
       stars: 5,
     },
     {
       quote:
-        "We asked about kilometres and the layout before we travelled. No surprises when we arrived.",
+        "We purchased our first motorhome through the team and they made what could have been a stressful process incredibly easy. No pressure, plenty of time to look everything over and all our questions were answered.",
       name: "Priya & Arjun",
       place: "Sunshine Coast",
+      photo: "/images/reviews/11.jpg",
       stars: 5,
     },
     {
       quote:
-        "Helped us work out the licence before we looked at anything. We stayed with a car-licence motorhome.",
-      name: "Mark & Helen",
+        "Picked up our motorhome a few months ago and have already done several trips in it. It has been absolutely fantastic. Very happy with the condition of the vehicle and the service we received.",
+      name: "Mark & Elise",
       place: "Gold Coast",
+      photo: "/images/reviews/18.jpg",
       stars: 5,
     },
     {
-      quote: "Clear answers on GVM. We knew it was car licence before we booked the visit.",
-      name: "Tom & Elise",
-      place: "Ipswich",
+      quote:
+        "Great people to deal with. Straightforward, knowledgeable and very helpful throughout the entire purchase. The motorhome was spotless when we collected it and ready to hit the road.",
+      name: "Helen & Tom",
+      place: "Toowoomba",
+      photo: "/images/reviews/01.jpg",
       stars: 5,
     },
     {
-      quote: "The listing photos were honest. Walked in and it was the same motorhome.",
+      quote:
+        "After looking at quite a few motorhomes we finally found the right one here. The quality and presentation stood out immediately. Everything was explained properly and there were no surprises.",
       name: "Daniel & Sophie",
       place: "Logan",
+      photo: "/images/reviews/09.jpg",
       stars: 5,
     },
     {
-      quote: "Short emails, quick replies. We inspected at the South Australia yard then organised delivery.",
-      name: "Chris & Lauren",
-      place: "Toowoomba",
-      stars: 5,
-    },
-    {
-      quote: "Explained Light Rigid vs car licence without the sales talk. We picked the right layout.",
-      name: "Nathan & Amy",
+      quote:
+        "We travelled interstate to purchase our motorhome and the team made the process extremely easy. They were happy to answer questions, send extra photos and provide everything we needed before making the trip.",
+      name: "Lauren & Chris",
       place: "Cairns",
+      photo: "/images/reviews/15.jpg",
       stars: 5,
     },
     {
-      quote: "Handover was calm. Walked us through the motorhome and sent us on our way.",
-      name: "Ben & Claire",
+      quote:
+        "Our motorhome was presented beautifully and you could tell it had been properly looked after. The handover was thorough and we left feeling confident with everything. Would happily recommend them.",
+      name: "Nathan & Amy",
       place: "Townsville",
+      photo: "/images/reviews/06.jpg",
       stars: 5,
     },
     {
-      quote: "Asked for extra photos of the bathroom and the bed. They sent them the same day.",
-      name: "Luke & Jess",
+      quote:
+        "Excellent experience from start to finish. Friendly team, no pushy sales tactics and very good knowledge of the motorhomes they sell. We are extremely happy with our purchase.",
+      name: "Claire & Ben",
       place: "Bundaberg",
+      photo: "/images/reviews/20.jpg",
       stars: 5,
     },
     {
-      quote: "We live in Brisbane and the motorhome came to us. Simple from our side.",
+      quote:
+        "We upgraded from our previous motorhome and the entire process was smooth and professional. The new one was immaculate inside and out when we picked it up.",
       name: "Matt & Olivia",
-      place: "Brisbane",
+      place: "Paddington",
+      photo: "/images/reviews/03.jpg",
       stars: 5,
     },
     {
-      quote: "Kilometres on the listing matched the odometer. That mattered to us.",
-      name: "Ryan & Kate",
+      quote:
+        "Really impressed with the level of service. Nothing felt rushed and they took the time to show us how everything worked before we left. That was especially helpful as first-time motorhome owners.",
+      name: "Kate & Ryan",
       place: "Redcliffe",
+      photo: "/images/reviews/13.jpg",
       stars: 5,
     },
     {
-      quote: "First motorhome. They kept it to layouts we could actually drive.",
+      quote:
+        "We have now travelled thousands of kilometres in our motorhome and absolutely love it. Buying it was one of the best decisions we have made. Thank you to the team for making the whole process so easy.",
       name: "Sam & Emily",
-      place: "Springwood",
+      place: "Springfield",
+      photo: "/images/reviews/08.jpg",
       stars: 5,
     },
     {
-      quote: "The enquire form was enough. No phone-tag. They emailed back with times.",
-      name: "Adam & Rebecca",
+      quote:
+        "Very professional company to deal with. Good communication, honest description of the vehicle and an easy handover. The motorhome looked even better in person than it did in the photos.",
+      name: "Rebecca & Adam",
       place: "Adelaide",
+      photo: "/images/reviews/17.jpg",
       stars: 5,
     },
     {
-      quote: "Twin singles, as described. We wanted that layout and they had it.",
+      quote:
+        "The motorhome was incredibly clean and well presented. You could tell a lot of care had gone into preparing it for sale. Very happy with both the vehicle and the customer service.",
       name: "Peter & Dianne",
       place: "Hervey Bay",
+      photo: "/images/reviews/02.jpg",
       stars: 5,
     },
     {
-      quote: "Looked at two motorhomes on the site, then inspected one. Easy to compare.",
-      name: "Josh & Hannah",
+      quote:
+        "We had been searching for the right motorhome for months. From the moment we walked in we felt comfortable. The team knew their products and answered everything without putting pressure on us.",
+      name: "Hannah & Josh",
       place: "Mackay",
+      photo: "/images/reviews/14.jpg",
       stars: 5,
     },
     {
-      quote: "Delivery to Brisbane was organised after we said yes. No extra runaround.",
+      quote:
+        "Fantastic experience. We had a couple of questions after taking delivery and the team were still happy to help us. Good old-fashioned service that is becoming harder to find.",
       name: "Andrew & Sarah",
-      place: "Paddington",
-      stars: 5,
-    },
-    {
-      quote: "Slide-out worked on the day. They showed us how it operates before we left.",
-      name: "Will & Natalie",
       place: "Noosa",
+      photo: "/images/reviews/19.jpg",
       stars: 5,
     },
     {
-      quote: "We asked about payload and water. Straight answers, not a brochure dump.",
+      quote:
+        "Purchased our motorhome recently and couldn’t fault the process. Communication was excellent, paperwork was straightforward and the vehicle was ready exactly when promised.",
+      name: "Natalie & Will",
+      place: "Caboolture",
+      photo: "/images/reviews/05.jpg",
+      stars: 5,
+    },
+    {
+      quote:
+        "As newcomers to motorhoming we had plenty of questions. Everyone was patient and explained things in simple terms. We drove away feeling confident and have loved every trip since.",
       name: "Greg & Linda",
       place: "Rockhampton",
+      photo: "/images/reviews/12.jpg",
       stars: 5,
     },
     {
-      quote: "The motorhome was clean and ready. We drove it the next morning.",
-      name: "Jake & Chloe",
+      quote:
+        "Very happy customers. The vehicle was mechanically sound, beautifully detailed and presented exactly as advertised. Would definitely buy through them again.",
+      name: "Chloe & Jake",
       place: "Capalaba",
+      photo: "/images/reviews/07.jpg",
       stars: 5,
     },
     {
-      quote: "Four of us needed belts and berths. They pointed us at the 6-berth KEA.",
+      quote:
+        "We recently downsized into a motorhome for travelling around Australia and the team were fantastic to deal with. Friendly, helpful and genuinely knowledgeable. A very positive experience.",
       name: "Michael & Anna",
-      place: "Springfield",
-      stars: 5,
-    },
-    {
-      quote: "Price on the page was the price we paid. Drive-away, as listed.",
-      name: "Steve & Rachel",
-      place: "Caboolture",
-      stars: 5,
-    },
-    {
-      quote: "Came down from North Queensland. Yard visit was by appointment and on time.",
-      name: "Brett & Megan",
-      place: "Airlie Beach",
-      stars: 5,
-    },
-    {
-      quote: "Island bed layout was what we wanted. They said so on the listing and it was.",
-      name: "David & Karen",
       place: "Maroochydore",
+      photo: "/images/reviews/16.jpg",
       stars: 5,
     },
     {
-      quote: "We were unsure about automatic vs the chassis. They explained it in one email.",
-      name: "Nick & Tara",
-      place: "Wynnum",
-      stars: 5,
-    },
-    {
-      quote: "Bathroom, solar and awning all as per the feature list. Checked them off.",
-      name: "Paul & Michelle",
-      place: "Gladstone",
-      stars: 5,
-    },
-    {
-      quote: "Quiet process. Enquire, inspect, paperwork, done.",
-      name: "Harry & Zoe",
-      place: "Indooroopilly",
-      stars: 5,
-    },
-    {
-      quote: "The Monte Carlo needs Medium Rigid — they said that clearly. We already hold MR.",
-      name: "Ian & Fiona",
-      place: "Melbourne",
-      stars: 5,
-    },
-    {
-      quote: "Couples layout, car licence, not too long. That’s what we asked for.",
-      name: "Alex & Brooke",
-      place: "Southport",
-      stars: 5,
-    },
-    {
-      quote: "Sent a message on a Sunday. Had a reply Monday morning with inspection times.",
-      name: "Connor & Paige",
-      place: "Beenleigh",
-      stars: 5,
-    },
-    {
-      quote: "We compared kilometres across three listings. The numbers lined up on arrival.",
-      name: "Tim & Georgia",
-      place: "Caloundra",
-      stars: 5,
-    },
-    {
-      quote: "First time buying used. They didn’t rush us through the walkaround.",
-      name: "Owen & Lily",
-      place: "Nambour",
-      stars: 5,
-    },
-    {
-      quote: "Rear garage on the Sunliner was the reason we enquired. It takes the bikes.",
-      name: "Jason & Emma",
-      place: "Brisbane",
-      stars: 5,
-    },
-    {
-      quote: "Stock number on the site matched the motorhome. Simple thing, still good to see.",
-      name: "Rob & Cathy",
-      place: "Warwick",
-      stars: 5,
-    },
-    {
-      quote: "Asked whether it was Light Rigid. Listing said so. They confirmed before we travelled.",
-      name: "Dean & Simone",
-      place: "Newcastle",
-      stars: 5,
-    },
-    {
-      quote: "Drop-down bed demonstration took two minutes. That’s all we needed.",
-      name: "Kyle & Amber",
-      place: "Cleveland",
-      stars: 5,
-    },
-    {
-      quote: "We wanted something under seven metres. They filtered to the compact layouts.",
-      name: "Sean & Brittany",
-      place: "Tweed Heads",
-      stars: 5,
-    },
-    {
-      quote: "Handover folder had the keys, manuals and what was on the motorhome. No scavenger hunt.",
-      name: "Phil & Jo",
-      place: "Dalby",
-      stars: 5,
-    },
-    {
-      quote: "Brisbane based, stock in SA — they said that up front. We planned the trip around it.",
-      name: "Marcus & Tessa",
-      place: "Fortitude Valley",
-      stars: 5,
-    },
-    {
-      quote: "Fridge, air-conditioning and awning all worked when we tested them.",
-      name: "Cameron & Holly",
-      place: "Yeppoon",
-      stars: 5,
-    },
-    {
-      quote: "Not a hard sell. We enquired on one motorhome and they stuck to that.",
-      name: "Aaron & Stephanie",
-      place: "Chermside",
-      stars: 5,
-    },
-    {
-      quote: "The Avida had the washing machine listed. It was there, plumbed, ready.",
-      name: "Graham & Sue",
-      place: "Ballina",
-      stars: 5,
-    },
-    {
-      quote: "Kids needed six belts. The KEA River was the one that fitted.",
-      name: "Justin & Melissa",
-      place: "Forest Lake",
-      stars: 5,
-    },
-    {
-      quote: "We asked for a reversing-camera check. They ran it before we signed.",
-      name: "Craig & Nicole",
-      place: "Gympie",
-      stars: 5,
-    },
-    {
-      quote: "Layout photos helped more than the brochure copy. The gallery was enough.",
-      name: "Elliot & Grace",
-      place: "Kenmore",
-      stars: 5,
-    },
-    {
-      quote: "Fiat automatic, car licence, two of us. They didn’t push a bigger motorhome.",
-      name: "Hugh & Belinda",
-      place: "Port Macquarie",
-      stars: 5,
-    },
-    {
-      quote: "Paperwork was emailed, we read it, then finished it at handover.",
-      name: "Troy & Shannon",
-      place: "Morayfield",
-      stars: 5,
-    },
-    {
-      quote: "Diesel heater was already fitted. We didn’t have to add it later.",
-      name: "Neil & Patricia",
-      place: "Mount Isa",
-      stars: 5,
-    },
-    {
-      quote: "Enquired about two listings. They said which was still available that week.",
-      name: "Blake & Caitlin",
-      place: "Robina",
-      stars: 5,
-    },
-    {
-      quote: "We wanted a Mercedes chassis. They had two. We took the Discovery.",
-      name: "Simon & Laura",
+      quote:
+        "From our first phone call to collecting the keys, everything was handled professionally. The motorhome was immaculate and the handover was excellent. We would have no hesitation recommending them to family and friends.",
+      name: "Rachel & Steve",
       place: "Ashgrove",
-      stars: 5,
-    },
-    {
-      quote: "Five stars from us. Quiet, clear, and the motorhome was as listed.",
-      name: "Patrick & Ingrid",
-      place: "Brisbane",
+      photo: "/images/reviews/10.jpg",
       stars: 5,
     },
   ] satisfies CustomerReview[],
 } as const;
-
-export function reviewPhoto(index: number) {
-  return reviewPhotos[index % reviewPhotos.length];
-}
