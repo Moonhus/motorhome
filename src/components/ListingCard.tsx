@@ -6,7 +6,7 @@ import { withBasePath } from "@/lib/paths";
 
 export function ListingCard({ motorhome }: { motorhome: Motorhome }) {
   return (
-    <article>
+    <article className="min-w-0">
       <Link href={`/inventory/${motorhome.slug}`} className="group block">
         <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
           <Image

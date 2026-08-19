@@ -60,7 +60,7 @@ export function InventoryBrowser({
             onChange={(event) =>
               setSort(event.target.value as InventoryFilters["sort"])
             }
-            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-base text-forest outline-none focus:border-copper"
           >
             <option value="newest">Newest first</option>
             <option value="price-asc">Price: low to high</option>
@@ -90,7 +90,7 @@ export function InventoryBrowser({
           Nothing matches those filters.
         </p>
       ) : (
-        <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid min-w-0 gap-10 sm:grid-cols-2 xl:grid-cols-3">
           {results.map((motorhome) => (
             <ListingCard key={motorhome.slug} motorhome={motorhome} />
           ))}

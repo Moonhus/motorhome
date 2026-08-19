@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function InventoryPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14">
-      <h1 className="display text-5xl text-forest">Available stock</h1>
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-5 sm:py-14">
+      <h1 className="display text-4xl text-forest sm:text-5xl">Available stock</h1>
       <p className="mt-3 max-w-xl text-muted">
         Current motorhomes, ready to view.
       </p>

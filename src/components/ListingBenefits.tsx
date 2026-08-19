@@ -9,13 +9,13 @@ export function ListingBenefits({ motorhome }: { motorhome: Motorhome }) {
   const notes = listingFeatureNotes(motorhome);
 
   return (
-    <section className="mt-14">
+    <section className="mt-10 sm:mt-14">
       <h2 className="display text-2xl text-forest sm:text-3xl">Key benefits</h2>
-      <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      <ul className="mt-5 flex flex-wrap gap-2">
         {chips.map((chip) => (
           <li
             key={chip.id}
-            className="flex items-center gap-3 rounded-xl bg-white px-4 py-3"
+            className="inline-flex max-w-full items-center gap-2 rounded-full bg-white px-3.5 py-2"
           >
             <BenefitIcon id={chip.id} />
             <span className="text-sm font-medium text-forest">{chip.label}</span>
@@ -26,9 +26,9 @@ export function ListingBenefits({ motorhome }: { motorhome: Motorhome }) {
       {notes.length > 0 ? (
         <div className="mt-10">
           <h3 className="display text-2xl text-forest">Features</h3>
-          <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+          <ul className="mt-5 grid gap-2.5 sm:grid-cols-2 sm:gap-x-8">
             {notes.map((note) => (
-              <li key={note} className="text-sm leading-relaxed text-muted">
+              <li key={note} className="min-w-0 text-sm leading-relaxed break-words text-muted">
                 {note}
               </li>
             ))}

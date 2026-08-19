@@ -13,7 +13,8 @@ export function ListingGallery({
 }) {
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
-  const touchStartX = useRef<number | null>(null);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+  const swiped = useRef(false);
   const count = images.length;
   const current = images[index] ?? images[0];
 
@@ -23,11 +24,6 @@ export function ListingGallery({
     },
     [count],
   );
-
-  const openAt = useCallback((nextIndex: number) => {
-    setIndex(nextIndex);
-    setOpen(true);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -47,16 +43,20 @@ export function ListingGallery({
     };
   }, [open, go]);
 
-  function onTouchStart(clientX: number) {
-    touchStartX.current = clientX;
+  function onTouchStart(clientX: number, clientY: number) {
+    touchStart.current = { x: clientX, y: clientY };
+    swiped.current = false;
   }
 
-  function onTouchEnd(clientX: number) {
-    if (touchStartX.current === null) return;
-    const delta = clientX - touchStartX.current;
-    touchStartX.current = null;
-    if (delta > 40) go(-1);
-    if (delta < -40) go(1);
+  function onTouchEnd(clientX: number, clientY: number) {
+    if (touchStart.current === null) return;
+    const deltaX = clientX - touchStart.current.x;
+    const deltaY = clientY - touchStart.current.y;
+    touchStart.current = null;
+    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+    swiped.current = true;
+    if (deltaX > 0) go(-1);
+    else go(1);
   }
 
   if (!current) return null;
@@ -71,12 +71,22 @@ export function ListingGallery({
             aria-modal="true"
             aria-label={`${alt} photo gallery`}
             className="fixed inset-0 z-50 flex flex-col bg-forest-deep"
-            onClick={() => setOpen(false)}
-            onTouchStart={(event) => onTouchStart(event.touches[0].clientX)}
-            onTouchEnd={(event) => onTouchEnd(event.changedTouches[0].clientX)}
+            onClick={() => {
+              if (!swiped.current) setOpen(false);
+              swiped.current = false;
+            }}
+            onTouchStart={(event) =>
+              onTouchStart(event.touches[0].clientX, event.touches[0].clientY)
+            }
+            onTouchEnd={(event) =>
+              onTouchEnd(
+                event.changedTouches[0].clientX,
+                event.changedTouches[0].clientY,
+              )
+            }
           >
             <div
-              className="flex items-center justify-between px-4 py-3 text-cream sm:px-6"
+              className="flex items-center justify-between px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 text-cream"
               onClick={(event) => event.stopPropagation()}
             >
               <p className="text-sm font-medium">
@@ -85,13 +95,13 @@ export function ListingGallery({
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-1 text-sm text-cream/80 hover:bg-white/10 hover:text-cream"
+                className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full text-sm text-cream/80"
               >
                 Close
               </button>
             </div>
             <div
-              className="relative flex min-h-0 flex-1 items-center justify-center px-14 py-4"
+              className="relative flex min-h-0 min-w-0 flex-1 items-center justify-center px-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-16"
               onClick={(event) => event.stopPropagation()}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -123,22 +133,39 @@ export function ListingGallery({
       : null;
 
   return (
-    <div>
+    <div className="min-w-0">
       <div
-        className="relative overflow-hidden rounded-xl bg-white"
-        onTouchStart={(event) => onTouchStart(event.touches[0].clientX)}
-        onTouchEnd={(event) => onTouchEnd(event.changedTouches[0].clientX)}
+        className="relative overflow-hidden bg-forest-deep/5 lg:rounded-xl"
+        onTouchStart={(event) =>
+          onTouchStart(event.touches[0].clientX, event.touches[0].clientY)
+        }
+        onTouchEnd={(event) =>
+          onTouchEnd(
+            event.changedTouches[0].clientX,
+            event.changedTouches[0].clientY,
+          )
+        }
       >
         <button
           type="button"
-          onClick={() => openAt(index)}
-          className="block aspect-[4/3] w-full cursor-zoom-in overflow-hidden"
+          onClick={() => {
+            if (swiped.current) {
+              swiped.current = false;
+              return;
+            }
+            setOpen(true);
+          }}
+          className="block aspect-[4/3] w-full overflow-hidden"
           aria-label={`Open photo ${index + 1} of ${count} full screen`}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} className="h-full w-full object-cover" />
+          <img
+            src={src}
+            alt={alt}
+            className="h-full w-full max-w-full object-cover"
+          />
         </button>
-        <p className="pointer-events-none absolute bottom-3 right-3 z-[2] rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest">
+        <p className="pointer-events-none absolute bottom-3 left-1/2 z-[2] -translate-x-1/2 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest">
           {index + 1} of {count}
         </p>
         {count > 1 ? (
@@ -157,19 +184,19 @@ export function ListingGallery({
         ) : null}
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-3">
-        <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1">
+      <div className="mt-3 min-w-0 px-4 sm:px-5 lg:px-0">
+        <div className="flex gap-2 overflow-x-auto overscroll-x-contain pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {images.map((image, photoIndex) => {
             const selected = photoIndex === index;
             return (
               <button
                 key={image}
                 type="button"
-                onClick={() => openAt(photoIndex)}
-                className={`h-16 w-[4.5rem] shrink-0 overflow-hidden rounded-md bg-white sm:h-20 sm:w-24 ${
+                onClick={() => setIndex(photoIndex)}
+                className={`h-14 w-16 shrink-0 overflow-hidden rounded-md bg-white ${
                   selected ? "ring-2 ring-forest" : "ring-1 ring-forest/10"
                 }`}
-                aria-label={`Open photo ${photoIndex + 1} of ${count}`}
+                aria-label={`Show photo ${photoIndex + 1} of ${count}`}
                 aria-current={selected}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -208,11 +235,11 @@ function NavButton({
         event.stopPropagation();
         onClick();
       }}
-      className={`absolute top-1/2 z-10 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-xl ${
+      className={`absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full text-xl ${
         inverted
-          ? "bg-white/15 text-cream hover:bg-white/25"
-          : "bg-white/90 text-forest hover:bg-white"
-      } ${side === "left" ? "left-3" : "right-3"}`}
+          ? "flex bg-white/15 text-cream"
+          : "hidden bg-white/90 text-forest sm:flex"
+      } ${side === "left" ? "left-2 sm:left-3" : "right-2 sm:right-3"}`}
     >
       {side === "left" ? "‹" : "›"}
     </button>

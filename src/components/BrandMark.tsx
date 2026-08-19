@@ -22,15 +22,15 @@ export function BrandMark({
         width={512}
         height={471}
         className={`w-auto shrink-0 object-contain ${
-          compact ? "h-14 sm:h-16" : "h-[4.5rem] sm:h-24 md:h-28"
+          compact ? "h-12 sm:h-16" : "h-12 sm:h-[4.5rem] md:h-24 lg:h-28"
         } ${onDark ? "brightness-0 invert" : ""}`}
         priority
       />
       <span
         className={`display min-w-0 font-semibold leading-[0.92] tracking-[-0.02em] ${
           compact
-            ? "text-xl sm:text-2xl"
-            : "text-[1.65rem] sm:text-4xl md:text-5xl"
+            ? "text-lg sm:text-2xl"
+            : "text-[1.35rem] sm:text-[1.65rem] md:text-4xl lg:text-5xl"
         } ${onDark ? "text-cream" : "text-forest"}`}
       >
         <span className="block">Commercial</span>

@@ -28,12 +28,16 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--cream);
   color: var(--ink);
   font-family: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: clip;
 }
 
 ::selection {
