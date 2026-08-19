@@ -31,7 +31,7 @@ export function WhyChooseUs() {
       <div className="relative min-h-[20rem] overflow-hidden sm:min-h-[28rem]">
         <Image
           src={withBasePath("/images/why-choose-advisor.jpg")}
-          alt="Advisor in the motorhome showroom"
+          alt="Advisor with an Avida Birdsville in the yard"
           fill
           className="object-cover object-[center_20%]"
           sizes="(min-width: 1024px) 50vw, 100vw"

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BrandStrip } from "@/components/BrandStrip";
 import { CustomerStories, TrustFacts } from "@/components/CustomerStories";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
@@ -45,7 +44,6 @@ export default function Home() {
       </section>
 
       <TrustFacts />
-      <BrandStrip />
 
       <section className="mx-auto max-w-6xl px-5 py-16">
         <div className="flex flex-wrap items-end justify-between gap-4">
