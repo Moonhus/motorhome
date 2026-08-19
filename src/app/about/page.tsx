@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandStrip } from "@/components/BrandStrip";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { withBasePath } from "@/lib/paths";
 import { site } from "@/lib/site";
 
@@ -53,6 +54,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
+      <WhyChooseUs />
       <BrandStrip />
     </>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { EnquiryMarks } from "@/components/EnquiryMarks";
 import { site } from "@/lib/site";
 
 export function EnquiryForm({
@@ -78,6 +79,9 @@ export function EnquiryForm({
             ? "Interested? Send us your details and we’ll be in touch shortly."
             : "Hold a car licence? Email us today. Name, email and mobile are required — add a message with anything else you want us to know."}
         </p>
+        <div className={compact ? "mt-3" : "mt-5"}>
+          <EnquiryMarks compact={compact} />
+        </div>
       </div>
       <label className="text-sm">
         Name
