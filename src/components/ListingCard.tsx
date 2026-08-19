@@ -24,9 +24,9 @@ export function ListingCard({ motorhome }: { motorhome: Motorhome }) {
           <h3 className="display mt-0.5 text-xl leading-tight text-forest group-hover:text-copper">
             {motorhome.model}
           </h3>
-          <p className="mt-1 text-sm text-muted">
+          <p className="display mt-1.5 text-base leading-snug text-forest">
             {formatPrice(motorhome.price)}
-            <span className="mx-1.5 text-forest/20">·</span>
+            <span className="mx-1.5 font-sans text-forest/25">·</span>
             {formatKilometres(motorhome.kilometres)}
           </p>
         </div>
