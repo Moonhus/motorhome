@@ -6,6 +6,7 @@ export const site = {
   yard: "South Australia",
   address: "817 North East Road, Valley View SA 5093",
   abn: "96 938 138 282",
+  established: 2005,
   market: "Brisbane",
   delivery: "Free delivery to Brisbane",
   warranty: "12-month warranty",
