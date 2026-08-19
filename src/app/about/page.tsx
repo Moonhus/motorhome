@@ -2,13 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { BrandStrip } from "@/components/BrandStrip";
-import { CustomerStories, TrustFacts } from "@/components/CustomerStories";
 import { withBasePath } from "@/lib/paths";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About us",
-  description: `${site.name} has helped Australian travellers since ${site.established}. Used Avida, Sunliner, Avan and KEA motorhomes, with thousands of happy customers.`,
+  description: `${site.name} has been helping people into Avida, Sunliner, Avan and KEA motorhomes since ${site.established}.`,
 };
 
 export default function AboutPage() {
@@ -19,7 +18,7 @@ export default function AboutPage() {
           Est. {site.established}
         </p>
         <h1 className="display mt-3 max-w-3xl text-5xl text-forest">
-          Thousands of happy customers since {site.established}.
+          About Commercial Motorhomes
         </h1>
         <div className="mt-10 grid items-start gap-12 lg:grid-cols-2">
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
@@ -54,9 +53,7 @@ export default function AboutPage() {
           </div>
         </div>
       </div>
-      <TrustFacts />
       <BrandStrip />
-      <CustomerStories />
     </>
   );
 }
