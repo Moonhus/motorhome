@@ -9,10 +9,7 @@ export function BrandStrip() {
   return (
     <section className="border-y border-forest/10 bg-white">
       <div className="mx-auto max-w-6xl px-5 py-12">
-        <p className="text-center text-xs text-muted">
-          Avida, Sunliner, Avan and KEA
-        </p>
-        <ul className="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <ul className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {makers.map((maker) => (
             <li key={maker.name} className="text-center">
               <p className="display text-2xl text-forest sm:text-3xl">{maker.name}</p>

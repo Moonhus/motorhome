@@ -22,10 +22,8 @@ function isRange(value: string | null): value is InventoryRange {
 
 export function InventoryBrowser({
   motorhomes,
-  brands,
 }: {
   motorhomes: Motorhome[];
-  brands: string[];
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -33,88 +31,34 @@ export function InventoryBrowser({
   const rangeFromUrl = searchParams.get("range");
   const range = isRange(rangeFromUrl) ? rangeFromUrl : "";
 
-  const [filters, setFilters] = useState<Omit<InventoryFilters, "range">>({
-    query: "",
-    brand: "",
-    licence: "",
-    sort: "newest",
-  });
+  const [sort, setSort] = useState<InventoryFilters["sort"]>("newest");
 
   const results = useMemo(
-    () => filterMotorhomes(motorhomes, { ...filters, range }),
-    [motorhomes, filters, range],
+    () =>
+      filterMotorhomes(motorhomes, {
+        query: "",
+        brand: "",
+        licence: "",
+        range,
+        sort,
+      }),
+    [motorhomes, range, sort],
   );
 
   return (
     <div>
       <form
-        className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
+        className="mb-8 max-w-xs"
         onSubmit={(event) => event.preventDefault()}
       >
-        <label className="block text-sm">
-          <span className="mb-1 block text-xs tracking-wide text-muted">
-            Search
-          </span>
-          <input
-            type="search"
-            value={filters.query}
-            onChange={(event) =>
-              setFilters((current) => ({ ...current, query: event.target.value }))
-            }
-            placeholder="Model or stock no."
-            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
-          />
-        </label>
-        <label className="block text-sm">
-          <span className="mb-1 block text-xs tracking-wide text-muted">
-            Brand
-          </span>
-          <select
-            value={filters.brand}
-            onChange={(event) =>
-              setFilters((current) => ({ ...current, brand: event.target.value }))
-            }
-            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
-          >
-            <option value="">All brands</option>
-            {brands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="block text-sm">
-          <span className="mb-1 block text-xs tracking-wide text-muted">
-            Licence
-          </span>
-          <select
-            value={filters.licence}
-            onChange={(event) =>
-              setFilters((current) => ({
-                ...current,
-                licence: event.target.value as InventoryFilters["licence"],
-              }))
-            }
-            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
-          >
-            <option value="">All licences</option>
-            <option value="Car">Car licence</option>
-            <option value="Light Rigid">Light Rigid</option>
-            <option value="Medium Rigid">Medium Rigid</option>
-          </select>
-        </label>
         <label className="block text-sm">
           <span className="mb-1 block text-xs tracking-wide text-muted">
             Sort
           </span>
           <select
-            value={filters.sort}
+            value={sort}
             onChange={(event) =>
-              setFilters((current) => ({
-                ...current,
-                sort: event.target.value as InventoryFilters["sort"],
-              }))
+              setSort(event.target.value as InventoryFilters["sort"])
             }
             className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
           >

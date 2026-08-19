@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { InventoryBrowser } from "@/components/InventoryBrowser";
-import { getBrands, motorhomes } from "@/data/motorhomes";
+import { motorhomes } from "@/data/motorhomes";
 
 export const metadata: Metadata = {
   title: "Available motorhomes",
@@ -18,7 +18,7 @@ export default function InventoryPage() {
       </p>
       <div className="mt-10">
         <Suspense>
-          <InventoryBrowser motorhomes={motorhomes} brands={getBrands()} />
+          <InventoryBrowser motorhomes={motorhomes} />
         </Suspense>
       </div>
     </div>
