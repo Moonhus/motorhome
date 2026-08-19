@@ -6,27 +6,36 @@ const copy =
 
 export function WhyChooseUs() {
   return (
-    <section className="relative isolate overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="grid overflow-hidden lg:grid-cols-2">
+      <div className="relative isolate min-h-[22rem] overflow-hidden sm:min-h-[28rem]">
         <Image
           src={withBasePath("/images/why-choose-us.jpg")}
           alt="Avida Birdsville motorhome in the yard"
           fill
           className="object-cover object-[center_45%]"
-          sizes="100vw"
+          sizes="(min-width: 1024px) 50vw, 100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/92 via-forest/80 to-forest/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/92 via-forest/82 to-forest/55" />
+        <div className="relative flex h-full flex-col justify-center px-5 py-16 sm:px-10 lg:px-14">
+          <p className="text-xs font-semibold tracking-[0.22em] text-sand/70 uppercase">
+            Prepared for handover
+          </p>
+          <h2 className="display mt-3 max-w-xl text-4xl leading-tight text-cream sm:text-5xl">
+            Why Choose Us?
+          </h2>
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-sand/90">
+            {copy}
+          </p>
+        </div>
       </div>
-      <div className="relative mx-auto max-w-6xl px-5 py-20 sm:py-24">
-        <p className="text-xs font-semibold tracking-[0.22em] text-sand/70 uppercase">
-          Prepared for handover
-        </p>
-        <h2 className="display mt-3 max-w-xl text-4xl leading-tight text-cream sm:text-5xl">
-          Why Choose Us?
-        </h2>
-        <p className="mt-5 max-w-xl text-base leading-relaxed text-sand/90">
-          {copy}
-        </p>
+      <div className="relative min-h-[20rem] overflow-hidden sm:min-h-[28rem]">
+        <Image
+          src={withBasePath("/images/why-choose-advisor.jpg")}
+          alt="Advisor in the motorhome showroom"
+          fill
+          className="object-cover object-[center_20%]"
+          sizes="(min-width: 1024px) 50vw, 100vw"
+        />
       </div>
     </section>
   );
