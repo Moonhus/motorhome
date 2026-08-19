@@ -45,6 +45,21 @@ test("marks Light Rigid and garage storage on the Navian", () => {
   assert.equal(labels.includes("Car licence"), false);
 });
 
+test("marks Medium Rigid on the Monte Carlo", () => {
+  const van = getMotorhome("2022-sunliner-monte-carlo-mc73");
+  assert.ok(van);
+  const labels = listingBenefits(van).map((chip) => chip.label);
+  assert.ok(labels.includes("Medium Rigid"));
+  assert.ok(labels.includes("Slide-out"));
+  assert.equal(labels.includes("Car licence"), false);
+  assert.equal(labels.includes("Light Rigid"), false);
+
+  const licenceFaq = listingFaqs(van).find(
+    (item) => item.question === "What licence do I need?",
+  );
+  assert.ok(licenceFaq?.answer.includes("Medium Rigid"));
+});
+
 test("feature notes omit GVM and licence lines", () => {
   const van = getMotorhome("2021-kea-river-m721");
   assert.ok(van);

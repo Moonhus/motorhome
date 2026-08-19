@@ -113,7 +113,12 @@ export function listingBenefits(motorhome: Motorhome): BenefitChip[] {
 
   chips.push({
     id: "licence",
-    label: motorhome.licence === "Car" ? "Car licence" : "Light Rigid",
+    label:
+      motorhome.licence === "Car"
+        ? "Car licence"
+        : motorhome.licence === "Medium Rigid"
+          ? "Medium Rigid"
+          : "Light Rigid",
   });
 
   return chips;

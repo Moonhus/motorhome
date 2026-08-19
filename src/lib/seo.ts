@@ -31,7 +31,7 @@ export const siteFaqs = [
   {
     question: "Do I need more than a car licence?",
     answer:
-      "Most motorhomes we list are car licence (under 4.5 t GVM). If a motorhome needs Light Rigid, the listing says so clearly. If you hold a standard car licence, email us today and we will point you to the right motorhome.",
+      "Most motorhomes we list are car licence (under 4.5 t GVM). If a motorhome needs Light Rigid or Medium Rigid, the listing says so clearly. If you hold a standard car licence, email us today and we will point you to the right motorhome.",
   },
   {
     question: "What is included when I enquire?",
