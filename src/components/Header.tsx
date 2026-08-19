@@ -14,22 +14,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-forest/10 bg-cream/95 backdrop-blur-md">
-      <div className="mx-auto hidden max-w-6xl items-center justify-end gap-6 px-5 py-2 text-sm text-forest md:flex">
-        <span className="inline-flex items-center gap-1 text-copper" aria-label="Free delivery and warranty">
-          {"★★★★★"}
-          <span className="ml-1 text-muted">
-            Free Brisbane delivery · 12-month warranty
-          </span>
-        </span>
-        <Link
-          href="/contact"
-          className="font-medium text-moss hover:text-copper"
-        >
-          Email us today
-        </Link>
-      </div>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-4 sm:py-5">
+    <header className="relative border-b border-forest/10 bg-cream">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:py-5">
         <div onClick={() => setOpen(false)}>
           <BrandMark />
         </div>
