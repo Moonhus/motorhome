@@ -51,10 +51,13 @@ export function dealerJsonLd() {
     description: site.description,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Brisbane",
-      addressRegion: "QLD",
+      streetAddress: "817 North East Road",
+      addressLocality: "Valley View",
+      addressRegion: "SA",
+      postalCode: "5093",
       addressCountry: "AU",
     },
+    taxID: site.abn,
     areaServed: ["Brisbane", "Queensland", "South Australia", "Australia"],
     brand: ["Avida", "Sunliner", "Avan", "KEA"],
   };

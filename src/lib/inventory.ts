@@ -1,11 +1,27 @@
 import type { Motorhome } from "@/data/motorhomes";
 
+export type InventoryRange = "compact" | "family" | "luxury";
+
 export type InventoryFilters = {
   query: string;
   brand: string;
   licence: "" | "Car" | "Light Rigid";
+  range: "" | InventoryRange;
   sort: "newest" | "price-asc" | "price-desc" | "km";
 };
+
+export function motorhomeRange(item: Motorhome): InventoryRange {
+  if (item.licence === "Light Rigid" || item.price >= 145000) {
+    return "luxury";
+  }
+  if (
+    item.berths <= 2 ||
+    (item.lengthMetres <= 7.5 && item.berths <= 4 && item.price < 130000)
+  ) {
+    return "compact";
+  }
+  return "family";
+}
 
 export function filterMotorhomes(
   items: Motorhome[],
@@ -16,9 +32,10 @@ export function filterMotorhomes(
   const filtered = items.filter((item) => {
     const matchesBrand = !filters.brand || item.brand === filters.brand;
     const matchesLicence = !filters.licence || item.licence === filters.licence;
+    const matchesRange = !filters.range || motorhomeRange(item) === filters.range;
     const haystack = `${item.title} ${item.brand} ${item.model} ${item.chassis} ${item.stockNumber}`.toLowerCase();
     const matchesQuery = !query || haystack.includes(query);
-    return matchesBrand && matchesLicence && matchesQuery;
+    return matchesBrand && matchesLicence && matchesRange && matchesQuery;
   });
 
   const sorted = [...filtered];

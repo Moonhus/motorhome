@@ -1,12 +1,24 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import type { Motorhome } from "@/data/motorhomes";
 import { ListingCard } from "@/components/ListingCard";
 import {
   filterMotorhomes,
   type InventoryFilters,
+  type InventoryRange,
 } from "@/lib/inventory";
+
+const rangeLabels: Record<InventoryRange, string> = {
+  compact: "Compact",
+  family: "Family Class C",
+  luxury: "Luxury touring",
+};
+
+function isRange(value: string | null): value is InventoryRange {
+  return value === "compact" || value === "family" || value === "luxury";
+}
 
 export function InventoryBrowser({
   motorhomes,
@@ -15,7 +27,13 @@ export function InventoryBrowser({
   motorhomes: Motorhome[];
   brands: string[];
 }) {
-  const [filters, setFilters] = useState<InventoryFilters>({
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const rangeFromUrl = searchParams.get("range");
+  const range = isRange(rangeFromUrl) ? rangeFromUrl : "";
+
+  const [filters, setFilters] = useState<Omit<InventoryFilters, "range">>({
     query: "",
     brand: "",
     licence: "",
@@ -23,18 +41,18 @@ export function InventoryBrowser({
   });
 
   const results = useMemo(
-    () => filterMotorhomes(motorhomes, filters),
-    [motorhomes, filters],
+    () => filterMotorhomes(motorhomes, { ...filters, range }),
+    [motorhomes, filters, range],
   );
 
   return (
     <div>
       <form
-        className="mb-8 grid gap-3 rounded-2xl border border-forest/10 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4"
+        className="mb-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4"
         onSubmit={(event) => event.preventDefault()}
       >
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-xs tracking-wide text-muted">
             Search
           </span>
           <input
@@ -43,12 +61,12 @@ export function InventoryBrowser({
             onChange={(event) =>
               setFilters((current) => ({ ...current, query: event.target.value }))
             }
-            placeholder="Motorhome, chassis, stock no."
-            className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
+            placeholder="Model or stock no."
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
           />
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-xs tracking-wide text-muted">
             Brand
           </span>
           <select
@@ -56,7 +74,7 @@ export function InventoryBrowser({
             onChange={(event) =>
               setFilters((current) => ({ ...current, brand: event.target.value }))
             }
-            className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
           >
             <option value="">All brands</option>
             {brands.map((brand) => (
@@ -67,7 +85,7 @@ export function InventoryBrowser({
           </select>
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-xs tracking-wide text-muted">
             Licence
           </span>
           <select
@@ -78,7 +96,7 @@ export function InventoryBrowser({
                 licence: event.target.value as InventoryFilters["licence"],
               }))
             }
-            className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
           >
             <option value="">All licences</option>
             <option value="Car">Car licence</option>
@@ -86,7 +104,7 @@ export function InventoryBrowser({
           </select>
         </label>
         <label className="block text-sm">
-          <span className="mb-1 block text-xs font-semibold uppercase tracking-wider text-muted">
+          <span className="mb-1 block text-xs tracking-wide text-muted">
             Sort
           </span>
           <select
@@ -97,7 +115,7 @@ export function InventoryBrowser({
                 sort: event.target.value as InventoryFilters["sort"],
               }))
             }
-            className="w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 text-forest outline-none ring-copper/40 focus:ring-2"
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-forest outline-none focus:border-copper"
           >
             <option value="newest">Newest first</option>
             <option value="price-asc">Price: low to high</option>
@@ -107,17 +125,27 @@ export function InventoryBrowser({
         </label>
       </form>
 
-      <p className="mb-5 text-sm text-muted">
-        {results.length} motorhome{results.length === 1 ? "" : "s"} at our South
-        Australia yard
-      </p>
+      <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-muted">
+        <p>
+          {results.length} motorhome{results.length === 1 ? "" : "s"}
+        </p>
+        {range ? (
+          <button
+            type="button"
+            onClick={() => router.replace(pathname)}
+            className="rounded-full border border-forest/15 px-3 py-1 text-forest"
+          >
+            {rangeLabels[range]} ×
+          </button>
+        ) : null}
+      </div>
 
       {results.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-forest/20 bg-white p-10 text-center text-muted">
-          Nothing matches those filters. Try another brand or clear the search.
+        <p className="py-12 text-center text-muted">
+          Nothing matches those filters.
         </p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 xl:grid-cols-3">
           {results.map((motorhome) => (
             <ListingCard key={motorhome.slug} motorhome={motorhome} />
           ))}

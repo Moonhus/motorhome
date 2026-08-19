@@ -55,10 +55,16 @@ export function Footer() {
           </a>
         </div>
       </div>
-      <div className="border-t border-white/10 px-5 py-4 text-center text-xs text-sand/50">
-        © {new Date().getFullYear()} {site.legalName}. Prices in AUD, drive
-        away. Free delivery to Brisbane. 12-month warranty. Specifications as
-        listed.
+      <div className="border-t border-white/10 px-5 py-3 text-center">
+        <p className="text-[11px] text-sand/45">
+          © {new Date().getFullYear()} {site.legalName}. Prices in AUD, drive
+          away.
+        </p>
+        <p className="mt-1 text-[10px] leading-relaxed tracking-wide text-sand/35">
+          {site.address}
+          <span className="mx-1.5">·</span>
+          ABN {site.abn}
+        </p>
       </div>
     </footer>
   );
