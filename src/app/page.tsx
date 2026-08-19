@@ -3,193 +3,166 @@ import Link from "next/link";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
 import { ListingCard } from "@/components/ListingCard";
-import { WhyUs } from "@/components/WhyUs";
+import { customerReviews } from "@/data/reviews";
 import { motorhomes } from "@/data/motorhomes";
-import { formatPrice } from "@/lib/format";
 import { withBasePath } from "@/lib/paths";
 import { faqJsonLd, siteFaqs } from "@/lib/seo";
-import { site } from "@/lib/site";
 
-const highlights = [
+const values = [
   {
-    title: "Car licence motorhomes",
-    body: "Most layouts here drive on a standard car licence. Price and kilometres sit up front on every motorhome card.",
+    title: "Unmatched Comfort",
+    body: "Luxury living spaces engineered for long-term travel.",
   },
   {
-    title: "Free delivery to Brisbane",
-    body: "We are Brisbane based. Stock leaves our South Australia yard with free delivery to Brisbane included.",
+    title: "Road-Tested Quality",
+    body: "Rigorously inspected new and pre-owned motorhomes.",
   },
   {
-    title: "12-month warranty",
-    body: "Every used motorhome for sale includes a 12-month warranty. Email us today — we will be in touch shortly.",
+    title: "Expert Support",
+    body: "Dedicated guidance from your first walkthrough to lifelong maintenance.",
+  },
+];
+
+const categories = [
+  {
+    title: "Compact motorhomes",
+    body: "Perfect for agile weekend getaways.",
+    href: "/inventory?range=compact",
+    image: "/images/listings/10662/01.jpg",
+  },
+  {
+    title: "Family Class C",
+    body: "Spacious layouts built for group travel.",
+    href: "/inventory?range=family",
+    image: "/images/listings/10783/01.jpg",
+  },
+  {
+    title: "Luxury touring",
+    body: "High-end finishes for full-time living.",
+    href: "/inventory?range=luxury",
+    image: "/images/listings/10800/01.jpg",
   },
 ];
 
 export default function Home() {
   const featured = motorhomes.slice(0, 3);
-  const lowest = [...motorhomes].sort((a, b) => a.price - b.price)[0];
 
   return (
     <>
       <JsonLd data={faqJsonLd(siteFaqs)} />
+
       <section className="relative isolate min-h-[78vh] overflow-hidden">
         <Image
           src={withBasePath("/images/hero-brisbane.jpg")}
-          alt="Used motorhomes for sale in Brisbane with free delivery"
+          alt="Motorhome on the open road"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/70 to-forest/25" />
-        <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand">
-            Used motorhomes for sale Brisbane · {site.delivery}
-          </p>
-          <h1 className="display mt-3 max-w-3xl text-5xl leading-[1.05] text-cream sm:text-7xl">
-            Used motorhomes for sale in Brisbane.
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/65 to-forest/20" />
+        <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-5 pb-20 pt-28">
+          <h1 className="display max-w-3xl text-5xl leading-[1.05] text-cream sm:text-7xl">
+            Your Home on the Open Road
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-sand/90">
-            Avida, Sunliner, Avan and KEA from our South Australia yard. Free
-            delivery to Brisbane. 12-month warranty. Hold a car licence? Email
-            us today — we will be in touch shortly. From{" "}
-            {formatPrice(lowest.price)} drive away.
+            Discover premium used motorhomes built for ultimate comfort,
+            freedom, and unforgettable adventures.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/inventory"
               className="rounded-full bg-copper px-6 py-3 text-sm font-semibold text-white hover:bg-copper-dark"
             >
-              Browse motorhomes
+              Browse Available Stock
             </Link>
             <Link
               href="/contact"
               className="rounded-full border border-cream/40 px-6 py-3 text-sm font-semibold text-cream hover:bg-white/10"
             >
-              Email us today
+              Book a Showroom Visit
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-forest/10 bg-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-8 sm:grid-cols-4">
-          <Stat value={`${motorhomes.length}`} label="Motorhomes in stock" />
-          <Stat value={formatPrice(lowest.price)} label="From (drive away)" />
-          <Stat value="Free" label="Delivery to Brisbane" />
-          <Stat value="12 mo" label="Warranty included" />
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
-              Easy browsing · price and kilometres first
-            </p>
-            <h2 className="display mt-2 text-4xl text-forest">
-              Used motorhomes ready for Brisbane
-            </h2>
-          </div>
-          <Link
-            href="/inventory"
-            className="text-sm font-medium text-forest underline decoration-copper/70 underline-offset-4"
-          >
-            See all {motorhomes.length} motorhomes
-          </Link>
-        </div>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {featured.map((motorhome) => (
-            <ListingCard key={motorhome.slug} motorhome={motorhome} featured />
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:grid-cols-3">
+          {values.map((item) => (
+            <div key={item.title}>
+              <h2 className="display text-2xl text-forest">{item.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      <WhyUs />
-
-      <section className="bg-forest text-cream">
-        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand/70">
-              Car licence · free delivery · 12-month warranty
-            </p>
-            <h2 className="display mt-3 text-4xl">
-              Brisbane buyers. South Australia stock. Email us today.
-            </h2>
-            <p className="mt-4 max-w-lg text-sand/85 leading-relaxed">
-              Island beds, slide-outs, ensuites, lithium and solar — late-model
-              Australian motorhomes at used drive-away prices. If you hold a
-              car licence, email us today and we will be in touch shortly.
-            </p>
-          </div>
-          <div className="grid gap-6">
-            {highlights.map((item) => (
-              <div key={item.title} className="border-l-2 border-copper pl-5">
-                <h3 className="font-semibold">{item.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-sand/75">
-                  {item.body}
-                </p>
+      <section className="mx-auto max-w-6xl px-5 pb-8 pt-4">
+        <h2 className="display text-4xl text-forest">Find your layout</h2>
+        <div className="mt-10 grid gap-8 md:grid-cols-3">
+          {categories.map((item) => (
+            <Link key={item.title} href={item.href} className="group block">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+                <Image
+                  src={withBasePath(item.image)}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-[1.02]"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                />
               </div>
-            ))}
-          </div>
+              <h3 className="display mt-4 text-2xl text-forest group-hover:text-copper">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-sm text-muted">{item.body}</p>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 lg:grid-cols-2">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
-          <Image
-            src={withBasePath("/images/interior-living.jpg")}
-            alt="Used motorhome for sale Brisbane — living area and dinette"
-            fill
-            className="object-cover"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="display text-4xl text-forest">Available stock</h2>
+          <Link
+            href="/inventory"
+            className="text-sm text-muted transition-colors hover:text-forest"
+          >
+            View all
+          </Link>
         </div>
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-moss">
-            How it works
+        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((motorhome) => (
+            <ListingCard key={motorhome.slug} motorhome={motorhome} />
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <p className="text-sm text-muted">
+            <span className="text-copper" aria-hidden="true">
+              ★★★★★
+            </span>{" "}
+            <span className="font-medium text-forest">{customerReviews.rating}</span>{" "}
+            on {customerReviews.source}
+            <span className="mx-2 text-forest/20">·</span>
+            {customerReviews.sold} motorhomes sold
           </p>
-          <h2 className="display mt-3 text-4xl text-forest">
-            Pick a motorhome. Email us today.
-          </h2>
-          <ol className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
-            <li>
-              <span className="font-semibold text-forest">1. Browse price and kilometres.</span>{" "}
-              Every motorhome card leads with drive-away price and km so it is
-              easy to compare.
-            </li>
-            <li>
-              <span className="font-semibold text-forest">2. Email us today.</span>{" "}
-              Name, email, mobile and a message. If you hold a car licence, we
-              will be in touch shortly.
-            </li>
-            <li>
-              <span className="font-semibold text-forest">3. Free delivery to Brisbane.</span>{" "}
-              The motorhome leaves our South Australia yard with a 12-month
-              warranty and paperwork.
-            </li>
-          </ol>
+          <p className="display mt-6 max-w-2xl text-3xl text-forest">
+            Flexible finance options available to make your dream ride a reality.
+          </p>
           <Link
             href="/contact"
             className="mt-8 inline-flex rounded-full bg-forest px-6 py-3 text-sm font-semibold text-cream hover:bg-forest-deep"
           >
-            Email us today
+            Speak with an RV expert today
           </Link>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-20">
-        <Faq items={siteFaqs} title="Used motorhomes for sale Brisbane — FAQs" />
+      <section className="mx-auto max-w-6xl px-5 py-16">
+        <Faq items={siteFaqs} title="Questions" />
       </section>
     </>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <p className="display text-3xl text-forest">{value}</p>
-      <p className="mt-1 text-sm text-muted">{label}</p>
-    </div>
   );
 }
