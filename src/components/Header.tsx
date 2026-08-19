@@ -29,9 +29,9 @@ export function Header() {
           Email us today
         </Link>
       </div>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 border-t border-forest/5 px-5 py-4 sm:py-5">
         <div onClick={() => setOpen(false)}>
-          <BrandMark compact />
+          <BrandMark />
         </div>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-ink md:flex">
