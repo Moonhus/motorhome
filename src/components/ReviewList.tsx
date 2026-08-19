@@ -24,8 +24,8 @@ export function ReviewList({ compact = false }: { compact?: boolean }) {
     <div
       className={
         compact
-          ? "mt-8 max-h-[28rem] overflow-y-auto pr-1"
-          : "mt-8 max-h-[36rem] overflow-y-auto pr-1"
+          ? "mt-6 max-h-[22rem] overflow-y-auto overscroll-contain pr-1 sm:mt-8 sm:max-h-[28rem]"
+          : "mt-8 max-h-[36rem] overflow-y-auto overscroll-contain pr-1"
       }
     >
       <ul className="space-y-6">
