@@ -1,6 +1,6 @@
 function PeopleMark() {
   return (
-    <svg viewBox="0 0 72 72" className="h-12 w-12" aria-hidden>
+    <svg viewBox="0 0 72 72" className="h-10 w-10 sm:h-12 sm:w-12" aria-hidden>
       <rect width="72" height="72" rx="14" fill="#16362c" />
       <g fill="#f4efe6">
         <circle cx="36" cy="22" r="6" />
@@ -24,7 +24,7 @@ function PeopleMark() {
 
 function TruckMark() {
   return (
-    <svg viewBox="0 0 72 72" className="h-12 w-12" aria-hidden>
+    <svg viewBox="0 0 72 72" className="h-10 w-10 sm:h-12 sm:w-12" aria-hidden>
       <rect width="72" height="72" rx="14" fill="#16362c" />
       <g fill="none" stroke="#f4efe6" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
         <path d="M10 42V26h30v16" />
@@ -41,7 +41,7 @@ function TruckMark() {
 
 function WarrantyMark() {
   return (
-    <svg viewBox="0 0 72 72" className="h-12 w-12" aria-hidden>
+    <svg viewBox="0 0 72 72" className="h-10 w-10 sm:h-12 sm:w-12" aria-hidden>
       <polygon
         fill="#16362c"
         points="36,2 40,10 49,6 50,16 60,16 56,24 66,30 58,36 66,42 56,48 60,56 50,56 49,66 40,62 36,70 32,62 23,66 22,56 12,56 16,48 6,42 14,36 6,30 16,24 12,16 22,16 23,6 32,10"

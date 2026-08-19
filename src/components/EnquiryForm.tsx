@@ -7,9 +7,11 @@ import { site } from "@/lib/site";
 export function EnquiryForm({
   listingTitle,
   variant = "default",
+  formId = "enquire",
 }: {
   listingTitle?: string;
   variant?: "default" | "compact";
+  formId?: string;
 }) {
   const [sent, setSent] = useState(false);
   const compact = variant === "compact";
@@ -59,14 +61,14 @@ export function EnquiryForm({
   }
 
   const fieldClass = compact
-    ? "mt-1 w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 outline-none ring-0 focus:border-copper"
-    : "mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2 outline-none ring-copper/40 focus:ring-2";
+    ? "mt-1 w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2.5 text-base outline-none ring-0 focus:border-copper"
+    : "mt-1 w-full rounded-lg border border-forest/15 bg-cream px-3 py-2.5 text-base outline-none ring-copper/40 focus:ring-2";
 
   return (
     <form
-      id="enquire"
+      id={formId}
       onSubmit={handleSubmit}
-      className={compact ? "grid gap-3" : "grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"}
+      className={compact ? "grid scroll-mt-6 gap-3" : "grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"}
     >
       <div>
         <h2 className={`display text-forest ${compact ? "text-xl" : "text-2xl"}`}>
