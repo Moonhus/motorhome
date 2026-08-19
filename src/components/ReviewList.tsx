@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { customerReviews, reviewPhoto } from "@/data/reviews";
+import { customerReviews } from "@/data/reviews";
 import { withBasePath } from "@/lib/paths";
 
 function Stars() {
@@ -28,18 +28,18 @@ export function ReviewList({ compact = false }: { compact?: boolean }) {
           : "mt-8 max-h-[36rem] overflow-y-auto pr-1"
       }
     >
-      <ul className="space-y-6">
-        {customerReviews.quotes.map((review, index) => (
+      <ul className="space-y-7">
+        {customerReviews.quotes.map((review) => (
           <li
             key={`${review.name}-${review.place}`}
-            className="flex gap-3 border-b border-forest/8 pb-6 last:border-b-0 last:pb-0"
+            className="flex gap-4 border-b border-forest/8 pb-7 last:border-b-0 last:pb-0"
           >
             <Image
-              src={withBasePath(reviewPhoto(index))}
+              src={withBasePath(review.photo)}
               alt=""
-              width={48}
-              height={48}
-              className="h-12 w-12 shrink-0 rounded-full object-cover"
+              width={56}
+              height={56}
+              className="h-14 w-14 shrink-0 rounded-full object-cover"
             />
             <div className="min-w-0">
               <Stars />
