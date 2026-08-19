@@ -70,7 +70,7 @@ export function ListingGallery({
             role="dialog"
             aria-modal="true"
             aria-label={`${alt} photo gallery`}
-            className="fixed inset-0 z-[80] flex flex-col bg-forest-deep/96"
+            className="fixed inset-0 z-50 flex flex-col bg-forest-deep"
             onClick={() => setOpen(false)}
             onTouchStart={(event) => onTouchStart(event.touches[0].clientX)}
             onTouchEnd={(event) => onTouchEnd(event.changedTouches[0].clientX)}

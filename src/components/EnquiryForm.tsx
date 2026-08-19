@@ -65,7 +65,7 @@ export function EnquiryForm({
     <form
       id="enquire"
       onSubmit={handleSubmit}
-      className={compact ? "grid gap-4" : "grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"}
+      className={compact ? "grid gap-3" : "grid gap-4 rounded-2xl border border-forest/10 bg-white p-6"}
     >
       <div>
         <h2 className={`display text-forest ${compact ? "text-xl" : "text-2xl"}`}>
@@ -116,7 +116,7 @@ export function EnquiryForm({
         Message <span className="text-muted">(optional)</span>
         <textarea
           name="message"
-          rows={compact ? 3 : 4}
+          rows={compact ? 2 : 4}
           className={fieldClass}
         />
       </label>
