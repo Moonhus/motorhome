@@ -101,6 +101,7 @@ export function InventoryBrowser({
             <option value="">All licences</option>
             <option value="Car">Car licence</option>
             <option value="Light Rigid">Light Rigid</option>
+            <option value="Medium Rigid">Medium Rigid</option>
           </select>
         </label>
         <label className="block text-sm">

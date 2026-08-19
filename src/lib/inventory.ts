@@ -5,13 +5,13 @@ export type InventoryRange = "compact" | "family" | "luxury";
 export type InventoryFilters = {
   query: string;
   brand: string;
-  licence: "" | "Car" | "Light Rigid";
+  licence: "" | "Car" | "Light Rigid" | "Medium Rigid";
   range: "" | InventoryRange;
   sort: "newest" | "price-asc" | "price-desc" | "km";
 };
 
 export function motorhomeRange(item: Motorhome): InventoryRange {
-  if (item.licence === "Light Rigid" || item.price >= 145000) {
+  if (item.licence !== "Car" || item.price >= 145000) {
     return "luxury";
   }
   if (

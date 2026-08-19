@@ -22,7 +22,9 @@ export function listingFaqs(motorhome: Motorhome) {
       answer:
         motorhome.licence === "Car"
           ? `A standard Australian car licence is enough. This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM.`
-          : `This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM, so it needs a Light Rigid (LR) licence.`,
+          : motorhome.licence === "Medium Rigid"
+            ? `This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM, so it needs a Medium Rigid (MR) licence.`
+            : `This motorhome is ${motorhome.gvmKg.toLocaleString("en-AU")} kg GVM, so it needs a Light Rigid (LR) licence.`,
     },
     {
       question: "Can you help with finance?",
