@@ -14,7 +14,6 @@ export function ListingGallery({
   const [index, setIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
-  const didSwipe = useRef(false);
   const count = images.length;
   const current = images[index] ?? images[0];
 
@@ -43,26 +42,24 @@ export function ListingGallery({
     };
   }, [open, go]);
 
-  function onTouchStart(clientX: number, clientY: number) {
+  function onPointerDown(clientX: number, clientY: number) {
     touchStart.current = { x: clientX, y: clientY };
-    didSwipe.current = false;
   }
 
-  function onTouchEnd(clientX: number, clientY: number) {
-    if (touchStart.current === null) return;
+  function finishPointer(clientX: number, clientY: number, onTap?: () => void) {
+    if (touchStart.current === null) {
+      onTap?.();
+      return;
+    }
     const deltaX = clientX - touchStart.current.x;
     const deltaY = clientY - touchStart.current.y;
     touchStart.current = null;
-    if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) return;
-    didSwipe.current = true;
-    if (deltaX > 0) go(-1);
-    else go(1);
-  }
-
-  function consumeSwipe() {
-    if (!didSwipe.current) return false;
-    didSwipe.current = false;
-    return true;
+    if (Math.abs(deltaX) >= 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) go(-1);
+      else go(1);
+      return;
+    }
+    onTap?.();
   }
 
   if (!current) return null;
@@ -77,23 +74,11 @@ export function ListingGallery({
             aria-modal="true"
             aria-label={`${alt} photo gallery`}
             className="fixed inset-0 z-50 flex flex-col bg-forest-deep"
-            onClick={() => {
-              if (!consumeSwipe()) setOpen(false);
+            onPointerUp={(event) => {
+              if (event.target === event.currentTarget) setOpen(false);
             }}
-            onTouchStart={(event) =>
-              onTouchStart(event.touches[0].clientX, event.touches[0].clientY)
-            }
-            onTouchEnd={(event) =>
-              onTouchEnd(
-                event.changedTouches[0].clientX,
-                event.changedTouches[0].clientY,
-              )
-            }
           >
-            <div
-              className="flex items-center justify-between px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 text-cream sm:px-6"
-              onClick={(event) => event.stopPropagation()}
-            >
+            <div className="flex items-center justify-between px-4 pt-[max(0.75rem,env(safe-area-inset-top))] pb-3 text-cream sm:px-6">
               <p className="text-sm font-medium">
                 {index + 1} of {count}
               </p>
@@ -107,7 +92,12 @@ export function ListingGallery({
             </div>
             <div
               className="relative flex min-h-0 flex-1 items-center justify-center px-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:px-16 sm:pb-6"
-              onClick={(event) => event.stopPropagation()}
+              onPointerDown={(event) =>
+                onPointerDown(event.clientX, event.clientY)
+              }
+              onPointerUp={(event) =>
+                finishPointer(event.clientX, event.clientY)
+              }
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -141,30 +131,35 @@ export function ListingGallery({
     <div>
       <div
         className="relative overflow-hidden bg-forest-deep/5 lg:rounded-xl"
-        onTouchStart={(event) =>
-          onTouchStart(event.touches[0].clientX, event.touches[0].clientY)
-        }
-        onTouchEnd={(event) =>
-          onTouchEnd(
-            event.changedTouches[0].clientX,
-            event.changedTouches[0].clientY,
-          )
+        onPointerDown={(event) => onPointerDown(event.clientX, event.clientY)}
+        onPointerUp={(event) =>
+          finishPointer(event.clientX, event.clientY, () => setOpen(true))
         }
       >
-        <button
-          type="button"
-          onClick={() => {
-            if (!consumeSwipe()) setOpen(true);
-          }}
-          className="block aspect-[4/3] w-full cursor-zoom-in overflow-hidden"
+        <div
+          className="block aspect-[4/3] w-full cursor-zoom-in touch-manipulation overflow-hidden"
+          role="button"
+          tabIndex={0}
           aria-label={`Open photo ${index + 1} of ${count} full screen`}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              setOpen(true);
+            }
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={alt} className="h-full w-full object-cover" />
-        </button>
-        <p className="pointer-events-none absolute bottom-3 left-1/2 z-[2] -translate-x-1/2 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest">
+        </div>
+        <button
+          type="button"
+          onPointerDown={(event) => event.stopPropagation()}
+          onPointerUp={(event) => event.stopPropagation()}
+          onClick={() => setOpen(true)}
+          className="absolute bottom-3 left-1/2 z-[2] -translate-x-1/2 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest touch-manipulation"
+        >
           {index + 1} of {count}
-        </p>
+        </button>
         {count > 1 ? (
           <>
             <NavButton
@@ -227,15 +222,17 @@ function NavButton({
     <button
       type="button"
       aria-label={label}
+      onPointerDown={(event) => event.stopPropagation()}
+      onPointerUp={(event) => event.stopPropagation()}
       onClick={(event) => {
         event.preventDefault();
         event.stopPropagation();
         onClick();
       }}
-      className={`absolute top-1/2 z-10 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-xl sm:flex ${
+      className={`absolute top-1/2 z-10 h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full text-xl ${
         inverted
-          ? "bg-white/15 text-cream hover:bg-white/25"
-          : "bg-white/90 text-forest hover:bg-white"
+          ? "flex bg-white/15 text-cream hover:bg-white/25"
+          : "hidden bg-white/90 text-forest hover:bg-white sm:flex"
       } ${side === "left" ? "left-3" : "right-3"}`}
     >
       {side === "left" ? "‹" : "›"}

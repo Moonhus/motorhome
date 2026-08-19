@@ -93,7 +93,7 @@ export default async function ListingPage({
   const faqs = listingFaqs(van);
 
   return (
-    <article className="overflow-x-hidden bg-cream pb-28 lg:pb-20">
+    <article className="bg-cream pb-28 lg:pb-20">
       <JsonLd data={vehicleJsonLd(van)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
@@ -123,7 +123,10 @@ export default async function ListingPage({
 
       <div className="mx-auto max-w-6xl px-5">
         <ListingBenefits motorhome={van} />
-        <div className="mt-12 border-t border-forest/10 pt-10 lg:hidden">
+        <div
+          id="listing-enquire"
+          className="mt-12 border-t border-forest/10 pt-10 lg:hidden"
+        >
           <EnquiryForm listingTitle={van.title} variant="compact" />
         </div>
         <ListingReviews />
