@@ -17,10 +17,7 @@ export function WhyChooseUs() {
       <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/80 via-forest/50 to-copper/20" />
       <div className="absolute inset-0 bg-gradient-to-tr from-copper/15 via-transparent to-forest/25" />
       <div className="relative mx-auto flex min-h-[28rem] max-w-6xl flex-col justify-end px-5 py-16 sm:min-h-[34rem] sm:px-10 lg:justify-center">
-        <p className="text-xs font-semibold tracking-[0.22em] text-sand/70 uppercase">
-          Prepared for handover
-        </p>
-        <h2 className="display mt-3 max-w-xl text-4xl leading-tight text-cream sm:text-5xl">
+        <h2 className="display max-w-xl text-4xl leading-tight text-cream sm:text-5xl">
           Why Choose Us?
         </h2>
         <p className="mt-5 max-w-xl text-base leading-relaxed text-sand/90">
