@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { withBasePath } from "@/lib/paths";
@@ -62,6 +61,8 @@ export function ListingGallery({
 
   if (!current) return null;
 
+  const src = withBasePath(current);
+
   const lightbox =
     open && typeof document !== "undefined"
       ? createPortal(
@@ -74,7 +75,10 @@ export function ListingGallery({
             onTouchStart={(event) => onTouchStart(event.touches[0].clientX)}
             onTouchEnd={(event) => onTouchEnd(event.changedTouches[0].clientX)}
           >
-            <div className="flex items-center justify-between px-4 py-3 text-cream sm:px-6">
+            <div
+              className="flex items-center justify-between px-4 py-3 text-cream sm:px-6"
+              onClick={(event) => event.stopPropagation()}
+            >
               <p className="text-sm font-medium">
                 {index + 1} of {count}
               </p>
@@ -87,15 +91,14 @@ export function ListingGallery({
               </button>
             </div>
             <div
-              className="relative min-h-0 flex-1"
+              className="relative flex min-h-0 flex-1 items-center justify-center px-14 py-4"
               onClick={(event) => event.stopPropagation()}
             >
-              <Image
-                src={withBasePath(current)}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
                 alt={`${alt} — photo ${index + 1} of ${count}`}
-                fill
-                className="object-contain"
-                sizes="100vw"
+                className="max-h-full max-w-full object-contain"
               />
               {count > 1 ? (
                 <>
@@ -126,22 +129,15 @@ export function ListingGallery({
         onTouchStart={(event) => onTouchStart(event.touches[0].clientX)}
         onTouchEnd={(event) => onTouchEnd(event.changedTouches[0].clientX)}
       >
-        <div className="relative aspect-[4/3] w-full">
-          <Image
-            src={withBasePath(current)}
-            alt={alt}
-            fill
-            priority
-            className="object-cover"
-            sizes="(min-width: 1024px) 62vw, 100vw"
-          />
-          <button
-            type="button"
-            onClick={() => openAt(index)}
-            className="absolute inset-0 z-[1] cursor-zoom-in"
-            aria-label={`Open photo ${index + 1} of ${count} full screen`}
-          />
-        </div>
+        <button
+          type="button"
+          onClick={() => openAt(index)}
+          className="block aspect-[4/3] w-full cursor-zoom-in overflow-hidden"
+          aria-label={`Open photo ${index + 1} of ${count} full screen`}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} className="h-full w-full object-cover" />
+        </button>
         <p className="pointer-events-none absolute bottom-3 right-3 z-[2] rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-forest">
           {index + 1} of {count}
         </p>
@@ -161,30 +157,31 @@ export function ListingGallery({
         ) : null}
       </div>
 
-      <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-        {images.map((src, photoIndex) => {
-          const selected = photoIndex === index;
-          return (
-            <button
-              key={src}
-              type="button"
-              onClick={() => openAt(photoIndex)}
-              className={`relative h-16 w-[4.5rem] shrink-0 overflow-hidden rounded-md bg-white sm:h-20 sm:w-24 ${
-                selected ? "ring-2 ring-forest" : "ring-1 ring-forest/10"
-              }`}
-              aria-label={`Open photo ${photoIndex + 1} of ${count}`}
-              aria-current={selected}
-            >
-              <Image
-                src={withBasePath(src)}
-                alt=""
-                fill
-                className="object-cover"
-                sizes="96px"
-              />
-            </button>
-          );
-        })}
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1">
+          {images.map((image, photoIndex) => {
+            const selected = photoIndex === index;
+            return (
+              <button
+                key={image}
+                type="button"
+                onClick={() => openAt(photoIndex)}
+                className={`h-16 w-[4.5rem] shrink-0 overflow-hidden rounded-md bg-white sm:h-20 sm:w-24 ${
+                  selected ? "ring-2 ring-forest" : "ring-1 ring-forest/10"
+                }`}
+                aria-label={`Open photo ${photoIndex + 1} of ${count}`}
+                aria-current={selected}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={withBasePath(image)}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
       {lightbox}
     </div>
@@ -207,6 +204,7 @@ function NavButton({
       type="button"
       aria-label={label}
       onClick={(event) => {
+        event.preventDefault();
         event.stopPropagation();
         onClick();
       }}
