@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function TrustFacts() {
   return (
-    <section className="bg-white">
+    <section className="border-b border-forest/10 bg-white">
       <p className="mx-auto max-w-6xl px-5 py-8 text-sm text-muted">
         Est. {site.established}
         <span className="mx-2 text-forest/15">·</span>
