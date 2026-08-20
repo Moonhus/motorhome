@@ -14,7 +14,7 @@ export default function NotFound() {
         used motorhomes for sale in Brisbane.
       </p>
       <Link
-        href="/inventory"
+        href="/#catalogue"
         className="mt-8 inline-flex rounded-full bg-forest px-6 py-3 text-sm font-semibold text-cream"
       >
         Back to inventory

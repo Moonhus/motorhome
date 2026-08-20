@@ -19,7 +19,7 @@ export function Footer() {
           </p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <Link href="/inventory" className="hover:text-sand">
+              <Link href="/#catalogue" className="hover:text-sand">
                 Used motorhomes
               </Link>
             </li>

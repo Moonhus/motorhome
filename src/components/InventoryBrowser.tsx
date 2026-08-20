@@ -31,34 +31,54 @@ export function InventoryBrowser({
   const rangeFromUrl = searchParams.get("range");
   const range = isRange(rangeFromUrl) ? rangeFromUrl : "";
 
-  const [sort, setSort] = useState<InventoryFilters["sort"]>("newest");
+  const [filters, setFilters] = useState<Pick<InventoryFilters, "query" | "sort">>({
+    query: "",
+    sort: "newest",
+  });
 
   const results = useMemo(
     () =>
       filterMotorhomes(motorhomes, {
-        query: "",
+        query: filters.query,
         brand: "",
         licence: "",
         range,
-        sort,
+        sort: filters.sort,
       }),
-    [motorhomes, range, sort],
+    [motorhomes, filters, range],
   );
 
   return (
     <div>
       <form
-        className="mb-8 max-w-xs"
+        className="mb-8 grid gap-4 sm:max-w-xl sm:grid-cols-2"
         onSubmit={(event) => event.preventDefault()}
       >
+        <label className="block text-sm">
+          <span className="mb-1 block text-xs tracking-wide text-muted">
+            Search
+          </span>
+          <input
+            type="search"
+            value={filters.query}
+            onChange={(event) =>
+              setFilters((current) => ({ ...current, query: event.target.value }))
+            }
+            placeholder="Model or stock no."
+            className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-base text-forest outline-none focus:border-copper"
+          />
+        </label>
         <label className="block text-sm">
           <span className="mb-1 block text-xs tracking-wide text-muted">
             Sort
           </span>
           <select
-            value={sort}
+            value={filters.sort}
             onChange={(event) =>
-              setSort(event.target.value as InventoryFilters["sort"])
+              setFilters((current) => ({
+                ...current,
+                sort: event.target.value as InventoryFilters["sort"],
+              }))
             }
             className="w-full border-0 border-b border-forest/15 bg-transparent px-0 py-2 text-base text-forest outline-none focus:border-copper"
           >
