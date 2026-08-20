@@ -4,15 +4,11 @@ import { BrandStrip } from "@/components/BrandStrip";
 import { CustomerStories, TrustFacts } from "@/components/CustomerStories";
 import { Faq } from "@/components/Faq";
 import { JsonLd } from "@/components/JsonLd";
-import { ListingCard } from "@/components/ListingCard";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { motorhomes } from "@/data/motorhomes";
 import { withBasePath } from "@/lib/paths";
 import { faqJsonLd, siteFaqs } from "@/lib/seo";
 
 export default function Home() {
-  const featured = motorhomes.slice(0, 3);
-
   return (
     <>
       <JsonLd data={faqJsonLd(siteFaqs)} />
@@ -47,15 +43,6 @@ export default function Home() {
       <TrustFacts />
       <BrandStrip />
 
-      <section className="mx-auto max-w-6xl px-5 py-16">
-        <h2 className="display text-4xl text-forest">Available stock</h2>
-        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((motorhome) => (
-            <ListingCard key={motorhome.slug} motorhome={motorhome} />
-          ))}
-        </div>
-      </section>
-
       <section className="relative isolate min-h-[24rem] overflow-hidden sm:min-h-[32rem]">
         <Image
           src={withBasePath("/images/catalogue-landscape.jpg")}
@@ -81,6 +68,10 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
+      <div className="bg-cream py-10 sm:py-14">
+        <hr className="mx-auto max-w-6xl border-forest/15" />
+      </div>
 
       <WhyChooseUs />
 
