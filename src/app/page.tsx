@@ -37,7 +37,7 @@ export default function Home() {
           </p>
           <Link
             href="/inventory"
-            className="mt-8 inline-flex w-fit rounded-full bg-copper px-6 py-3 text-sm font-semibold text-white hover:bg-copper-dark"
+            className="mt-8 inline-flex w-full max-w-sm items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white hover:bg-copper-dark sm:w-fit sm:px-10 sm:py-5 sm:text-lg"
           >
             Browse Available Stock
           </Link>
@@ -48,19 +48,37 @@ export default function Home() {
       <BrandStrip />
 
       <section className="mx-auto max-w-6xl px-5 py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="display text-4xl text-forest">Available stock</h2>
-          <Link
-            href="/inventory"
-            className="text-sm text-muted transition-colors hover:text-forest"
-          >
-            View all
-          </Link>
-        </div>
+        <h2 className="display text-4xl text-forest">Available stock</h2>
         <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((motorhome) => (
             <ListingCard key={motorhome.slug} motorhome={motorhome} />
           ))}
+        </div>
+      </section>
+
+      <section className="relative isolate min-h-[22rem] overflow-hidden sm:min-h-[28rem]">
+        <Image
+          src={withBasePath("/images/hero-brisbane.jpg")}
+          alt="Motorhome on the open road"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/65 to-forest/25" />
+        <div className="relative mx-auto flex min-h-[22rem] max-w-6xl flex-col justify-end px-5 py-16 sm:min-h-[28rem] sm:justify-center">
+          <h2 className="display max-w-2xl text-4xl leading-tight text-cream sm:text-5xl">
+            Browse the full catalogue
+          </h2>
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-sand/90 sm:text-lg">
+            Every motorhome currently available, with photos, price and
+            kilometres.
+          </p>
+          <Link
+            href="/inventory"
+            className="mt-8 inline-flex w-full max-w-sm items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white hover:bg-copper-dark sm:w-fit sm:px-10 sm:py-5 sm:text-lg"
+          >
+            Browse available stock
+          </Link>
         </div>
       </section>
 
