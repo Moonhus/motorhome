@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { BrandStrip } from "@/components/BrandStrip";
 import { CustomerStories, TrustFacts } from "@/components/CustomerStories";
 import { Faq } from "@/components/Faq";
+import { InventoryBrowser } from "@/components/InventoryBrowser";
 import { JsonLd } from "@/components/JsonLd";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { motorhomes } from "@/data/motorhomes";
 import { withBasePath } from "@/lib/paths";
 import { faqJsonLd, siteFaqs } from "@/lib/seo";
 
@@ -32,7 +34,7 @@ export default function Home() {
             ahead.
           </p>
           <Link
-            href="/inventory"
+            href="#catalogue"
             className="mt-8 inline-flex w-full max-w-sm items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white hover:bg-copper-dark sm:w-fit sm:px-10 sm:py-5 sm:text-lg"
           >
             Browse Available Stock
@@ -43,37 +45,22 @@ export default function Home() {
       <TrustFacts />
       <BrandStrip />
 
-      <section className="relative isolate min-h-[24rem] overflow-hidden sm:min-h-[32rem]">
-        <Image
-          src={withBasePath("/images/catalogue-landscape.jpg")}
-          alt="Sunrise over an Australian mountain valley"
-          fill
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/70 via-forest-deep/25 to-transparent" />
-        <div className="relative mx-auto flex min-h-[24rem] max-w-6xl flex-col justify-end px-5 py-16 sm:min-h-[32rem] sm:justify-center">
-          <h2 className="display max-w-2xl text-4xl leading-tight text-cream sm:text-5xl">
-            Browse the full catalogue
-          </h2>
-          <p className="mt-4 max-w-lg text-base leading-relaxed text-sand/90 sm:text-lg">
-            Every motorhome currently available, with photos, price and
-            kilometres.
-          </p>
-          <Link
-            href="/inventory"
-            className="mt-8 inline-flex w-full max-w-sm items-center justify-center rounded-full bg-copper px-8 py-4 text-base font-semibold text-white hover:bg-copper-dark sm:w-fit sm:px-10 sm:py-5 sm:text-lg"
-          >
-            Browse available stock
-          </Link>
+      <section
+        id="catalogue"
+        className="scroll-mt-6 mx-auto max-w-6xl px-4 py-14 sm:px-5 sm:py-16"
+      >
+        <h2 className="display text-4xl text-forest sm:text-5xl">
+          Browse the full catalogue
+        </h2>
+        <p className="mt-3 max-w-xl text-muted">
+          Search current motorhomes by model or stock number.
+        </p>
+        <div className="mt-10">
+          <Suspense>
+            <InventoryBrowser motorhomes={motorhomes} />
+          </Suspense>
         </div>
       </section>
-
-      <div className="bg-cream py-10 sm:py-14">
-        <hr className="mx-auto max-w-6xl border-forest/15" />
-      </div>
-
-      <WhyChooseUs />
 
       <div className="bg-white">
         <CustomerStories />

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BrandMark } from "@/components/BrandMark";
 
 const links = [
-  { href: "/inventory", label: "Used Motorhomes" },
+  { href: "/#catalogue", label: "Used Motorhomes" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];

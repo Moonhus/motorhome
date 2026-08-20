@@ -99,7 +99,7 @@ export default async function ListingPage({
 
       <div className="mx-auto max-w-6xl px-4 pt-4 sm:px-5 sm:pt-6">
         <Link
-          href="/inventory"
+          href="/#catalogue"
           className="text-sm text-muted transition-colors hover:text-forest"
         >
           ← Used motorhomes
