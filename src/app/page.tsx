@@ -56,16 +56,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative isolate min-h-[22rem] overflow-hidden sm:min-h-[28rem]">
+      <section className="relative isolate min-h-[24rem] overflow-hidden sm:min-h-[32rem]">
         <Image
-          src={withBasePath("/images/hero-brisbane.jpg")}
-          alt="Motorhome on the open road"
+          src={withBasePath("/images/catalogue-landscape.jpg")}
+          alt="Sunrise over an Australian mountain valley"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/88 via-forest/65 to-forest/25" />
-        <div className="relative mx-auto flex min-h-[22rem] max-w-6xl flex-col justify-end px-5 py-16 sm:min-h-[28rem] sm:justify-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep/70 via-forest-deep/25 to-transparent" />
+        <div className="relative mx-auto flex min-h-[24rem] max-w-6xl flex-col justify-end px-5 py-16 sm:min-h-[32rem] sm:justify-center">
           <h2 className="display max-w-2xl text-4xl leading-tight text-cream sm:text-5xl">
             Browse the full catalogue
           </h2>
