@@ -2,6 +2,8 @@
 
 Brisbane-facing listing site for **Australian Motor Homes Pty Ltd**. Stock is at Bennetts Green, NSW, with delivery into Brisbane and nationwide.
 
+**Handing this site to a new owner?** Follow [HANDOVER.md](./HANDOVER.md). Run `npm run handover` to build a zip they can upload to any host.
+
 ## Local development
 
 ```bash
@@ -17,6 +19,7 @@ Cloud Agent environments run `npm ci` then `./scripts/dev-start.sh`, which start
 | --- | --- |
 | `npm run dev` | Development server on port 3000 |
 | `npm run build` | Production build |
+| `npm run handover` | Handover pack (guide + static site) for a new host or domain |
 | `npm run lint` | ESLint |
 | `npm test` | Inventory filter tests |
 

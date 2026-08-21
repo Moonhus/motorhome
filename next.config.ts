@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
+import { resolveHostFromEnv } from "./src/lib/host";
 
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const { basePath } = resolveHostFromEnv();
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -8,8 +9,12 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  basePath: isGitHubPages ? "/motorhome" : "",
-  assetPrefix: isGitHubPages ? "/motorhome" : undefined,
+  ...(basePath
+    ? {
+        basePath,
+        assetPrefix: basePath,
+      }
+    : {}),
 };
 
 export default nextConfig;

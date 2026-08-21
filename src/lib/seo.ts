@@ -1,12 +1,9 @@
 import type { Motorhome } from "@/data/motorhomes";
+import { joinSiteUrl } from "@/lib/host";
 import { site } from "@/lib/site";
-import { withBasePath } from "@/lib/paths";
-
-const siteOrigin = "https://moonhus.github.io";
 
 export function absoluteUrl(path = "/") {
-  const normalised = path.startsWith("/") ? path : `/${path}`;
-  return `${siteOrigin}${withBasePath(normalised)}`;
+  return joinSiteUrl(site.url, path);
 }
 
 export function listingPath(slug: string) {
