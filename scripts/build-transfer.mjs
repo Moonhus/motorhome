@@ -46,7 +46,7 @@ if (existsSync("site-transfer.zip")) {
   rmSync("site-transfer.zip");
 }
 
-const zip = spawnSync("zip", ["-r", "-q", "site-transfer.zip", "."], {
+const zip = spawnSync("zip", ["-r", "-q", "../site-transfer.zip", "."], {
   cwd: "out",
   stdio: "inherit",
 });
