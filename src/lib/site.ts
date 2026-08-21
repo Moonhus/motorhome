@@ -1,3 +1,7 @@
+import { resolveHostFromEnv } from "@/lib/host";
+
+const host = resolveHostFromEnv();
+
 export const site = {
   name: "Commercial Motorhomes",
   legalName: "Australian Motor Homes Pty Ltd",
@@ -11,7 +15,7 @@ export const site = {
   delivery: "Free delivery to Brisbane",
   warranty: "12-month warranty",
   email: "inquire.chrispaytn@gmail.com",
-  url: "https://moonhus.github.io/motorhome",
+  url: host.siteUrl,
   tagline: "Used motorhomes for sale in Brisbane. Free delivery. 12-month warranty.",
   description:
     "Used motorhomes for sale in Brisbane — Avida, Sunliner, Avan and KEA from our South Australia yard. Car licence layouts, free delivery to Brisbane, 12-month warranty. Email us today and we will be in touch shortly.",
