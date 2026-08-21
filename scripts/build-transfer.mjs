@@ -1,5 +1,5 @@
+import { cpSync, existsSync, mkdirSync, rmSync } from "node:fs";
 import { spawnSync } from "node:child_process";
-import { existsSync, rmSync } from "node:fs";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
@@ -7,11 +7,11 @@ if (!siteUrl) {
   console.error(`Set NEXT_PUBLIC_SITE_URL to the public address of the new host.
 
 Examples:
-  NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com.au npm run build:transfer
-  NEXT_PUBLIC_SITE_URL=https://newowner.github.io/motorhome npm run build:transfer
+  NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com.au npm run handover
+  NEXT_PUBLIC_SITE_URL=https://newowner.github.io/motorhome npm run handover
 
-This writes a static site into out/ and site-transfer.zip that you can upload
-to any web host, or attach as a GitHub Pages custom domain.`);
+This writes a handover pack (guide + static website) you can give to the
+new owner.`);
   process.exit(1);
 }
 
@@ -42,22 +42,32 @@ function run(command, args) {
 run("npm", ["run", "build"]);
 run(process.execPath, ["scripts/write-cname.mjs", "out/CNAME"]);
 
-if (existsSync("site-transfer.zip")) {
-  rmSync("site-transfer.zip");
+const packDir = "handover";
+rmSync(packDir, { recursive: true, force: true });
+mkdirSync(`${packDir}/website`, { recursive: true });
+cpSync("out", `${packDir}/website`, { recursive: true });
+cpSync("HANDOVER.md", `${packDir}/HANDOVER.md`);
+
+for (const zipName of ["handover.zip", "site-transfer.zip"]) {
+  if (existsSync(zipName)) {
+    rmSync(zipName);
+  }
 }
 
-const zip = spawnSync("zip", ["-r", "-q", "../site-transfer.zip", "."], {
-  cwd: "out",
+const zip = spawnSync("zip", ["-r", "-q", "handover.zip", "handover"], {
   stdio: "inherit",
 });
 
 if (zip.status === 0) {
-  console.log(`Transfer bundle ready:
-  out/                 static files for any web host
-  site-transfer.zip    same files as a zip
-  Public URL: ${siteUrl}`);
+  console.log(`Handover pack ready for ${siteUrl}
+
+  handover/HANDOVER.md   start here — give this to the new owner
+  handover/website/      upload these files to the new host
+  handover.zip           send this folder as a zip
+
+Read handover/HANDOVER.md for domain, GitHub, email, and stock steps.`);
   process.exit(0);
 }
 
-console.log(`Transfer files ready in out/ for ${siteUrl}
-(zip not created — install zip if you want site-transfer.zip)`);
+console.log(`Handover files ready in handover/ for ${siteUrl}
+(zip not created — install zip if you want handover.zip)`);

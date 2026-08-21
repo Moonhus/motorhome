@@ -34,8 +34,10 @@ yarn-error.log*
 .env*
 !.env.example
 
-# transfer bundle
+# transfer / handover bundles
 /site-transfer.zip
+/handover.zip
+/handover/
 
 # vercel
 .vercel
